@@ -1,0 +1,2 @@
+import Link from 'next/link';
+export default function NotFound(){return <div className="container empty-state"><div style={{color:'var(--accent)',fontSize:12,letterSpacing:2,fontWeight:800}}>ERREUR 404</div><h1>Cette page a pris une autre route.</h1><p>Le contenu que vous cherchez n’existe pas ou n’est plus disponible.</p><Link href="/" className="button button-accent">Retour à l’accueil →</Link></div>}
