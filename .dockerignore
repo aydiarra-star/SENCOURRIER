@@ -1,0 +1,29 @@
+# Le contexte de build est la racine du monorepo : on exclut tout ce qui n'est
+# pas nécessaire à la compilation et, surtout, les fichiers de secrets.
+.git
+.github
+node_modules
+**/node_modules
+.next
+**/.next
+dist
+**/dist
+coverage
+**/coverage
+docs
+*.md
+!README.md
+
+# Secrets et environnements locaux
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Artefacts locaux
+*.log
+.DS_Store
+.idea
+.vscode
+tmp

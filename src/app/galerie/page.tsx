@@ -1,6 +1,0 @@
-import type { Metadata } from 'next';
-import Image from 'next/image';
-import { Eyebrow } from '@/components/Editorial';
-export const metadata:Metadata={title:'Galerie'};
-const photos=[['dakar-coast','Dakar, entre terre et océan'],['market','La vie des marchés'],['fishing','Au rythme des pirogues'],['youth','La génération de demain'],['sport','La passion du terrain'],['architecture','La ville en mouvement'],['music','Les scènes qui vibrent'],['agriculture','Cultiver l’avenir'],['community','La force du collectif']];
-export default function GaleriePage(){return <><div className="container page-hero"><Eyebrow>REGARDS / GALERIE</Eyebrow><h1>Le Sénégal en <em>images.</em></h1><p>Des instants, des lieux, des visages. Notre pays se raconte aussi sans mots.</p></div><div className="container page-content"><div className="gallery-grid">{photos.map(([image,caption])=><div className="gallery-item" key={image}><Image src={`/images/${image}.jpg`} alt={caption} fill sizes="(max-width: 580px) 100vw, (max-width: 1000px) 50vw, 66vw"/><div className="gallery-caption">{caption}</div></div>)}</div><p className="notice">Visuels d’illustration générés pour SENCOURRIER. Ils ne documentent pas un événement précis.</p></div></>}

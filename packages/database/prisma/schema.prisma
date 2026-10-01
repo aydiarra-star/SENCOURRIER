@@ -1,0 +1,1208 @@
+// SENCOURRIER — Schéma de base de données
+// Le média numérique de référence du Sénégal
+//
+// Conventions :
+//  - Toutes les tables utilisent un identifiant CUID pour rester triable et
+//    non devinable dans les URLs publiques.
+//  - Chaque entité éditoriale possède un `slug` unique et stable : il constitue
+//    le permalien SEO et ne doit jamais être modifié après publication.
+//  - Les suppressions éditoriales sont logiques (`deletedAt`) afin de préserver
+//    les permaliens et l'historique de modification.
+
+generator client {
+  provider      = "prisma-client-js"
+  // Sortie explicite : en monorepo, npm hoiste `@prisma/client` à la racine et
+  // la génération par défaut atterrit hors du paquet, ce qui casse la
+  // résolution côté API et côté web.
+  output        = "../generated/client"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ÉNUMÉRATIONS
+// ─────────────────────────────────────────────────────────────────────────────
+
+enum Role {
+  SUPER_ADMIN
+  PUBLISHER
+  EDITOR_IN_CHIEF
+  JOURNALIST
+  CORRESPONDENT
+  COMMUNITY_MANAGER
+  PREMIUM_SUBSCRIBER
+  READER
+}
+
+enum ArticleStatus {
+  DRAFT
+  PENDING_REVIEW
+  APPROVED
+  SCHEDULED
+  PUBLISHED
+  ARCHIVED
+  REJECTED
+}
+
+enum ArticleFormat {
+  STANDARD
+  LIVE
+  ANALYSIS
+  INTERVIEW
+  OPINION
+  PHOTO_ESSAY
+  VIDEO_REPORT
+}
+
+enum MediaType {
+  IMAGE
+  VIDEO
+  AUDIO
+  DOCUMENT
+}
+
+enum MediaProvider {
+  AZURE_BLOB
+  YOUTUBE
+  VIMEO
+  EXTERNAL
+}
+
+enum CommentStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  SPAM
+}
+
+enum SubscriptionTier {
+  FREE
+  PREMIUM
+  PREMIUM_ANNUAL
+  PRESS_PRO
+}
+
+enum SubscriptionStatus {
+  TRIALING
+  ACTIVE
+  PAST_DUE
+  CANCELED
+  EXPIRED
+}
+
+enum PaymentProvider {
+  STRIPE
+  WAVE
+  ORANGE_MONEY
+  FREE_MONEY
+}
+
+enum PaymentStatus {
+  PENDING
+  SUCCEEDED
+  FAILED
+  REFUNDED
+}
+
+enum AdSlotPlacement {
+  HEADER_LEADERBOARD
+  SIDEBAR_TOP
+  SIDEBAR_MIDDLE
+  IN_ARTICLE
+  IN_FEED
+  FOOTER
+  STICKY_MOBILE
+}
+
+enum NewsletterStatus {
+  PENDING
+  CONFIRMED
+  UNSUBSCRIBED
+  BOUNCED
+}
+
+enum NotificationChannel {
+  WEB_PUSH
+  EMAIL
+  IN_APP
+}
+
+enum NotificationKind {
+  BREAKING_NEWS
+  NEW_ARTICLE
+  NEWSLETTER
+  COMMENT_REPLY
+  SUBSCRIPTION
+  SYSTEM
+}
+
+enum RevisionAction {
+  CREATED
+  UPDATED
+  SUBMITTED
+  APPROVED
+  REJECTED
+  SCHEDULED
+  PUBLISHED
+  UNPUBLISHED
+  ARCHIVED
+  DELETED
+}
+
+enum ModerationDecision {
+  APPROVED
+  REJECTED
+  SPAM
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// IDENTITÉ ET ACCÈS
+// ─────────────────────────────────────────────────────────────────────────────
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  emailVerified DateTime?
+  name          String?
+  displayName   String
+  passwordHash  String?
+  image         String?
+  role          Role      @default(READER)
+  phone         String?
+  bio           String?   @db.Text
+  isActive      Boolean   @default(true)
+  isBanned      Boolean   @default(false)
+  banReason     String?
+  lastLoginAt   DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  deletedAt     DateTime?
+
+  // Authentification
+  accounts           Account[]
+  sessions           Session[]
+  twoFactorSecret    TwoFactorSecret?
+  refreshTokens      RefreshToken[]
+
+  // Profil éditorial
+  authorProfile      AuthorProfile?
+  authoredArticles   ArticleAuthor[]
+  reviewedArticles   Article[]         @relation("ArticleReviewer")
+  comments           Comment[]
+  liveEntries        LiveBlogEntry[]
+  revisions          ArticleRevision[]
+  moderatedComments  CommentModeration[]
+  auditLogs          AuditLog[]
+
+  // Expérience lecteur
+  bookmarks          Bookmark[]
+  readingHistory     ReadingHistory[]
+  readingListItems   ReadingListItem[]
+  readingLists       ReadingList[]
+  preferences        UserPreference?
+  notifications      Notification[]
+  pushSubscriptions  PushSubscription[]
+  searchLogs         SearchQueryLog[]
+  aiConversations    AiConversation[]
+
+  // Facturation
+  subscriptions      Subscription[]
+  payments           Payment[]
+  invoices           Invoice[]
+
+  @@index([role])
+  @@index([createdAt])
+  @@index([deletedAt])
+  @@map("users")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  ipAddress    String?
+  userAgent    String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+model RefreshToken {
+  id        String   @id @default(cuid())
+  userId    String
+  tokenHash String   @unique
+  expiresAt DateTime
+  revokedAt DateTime?
+  userAgent String?
+  ipAddress String?
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([expiresAt])
+  @@map("refresh_tokens")
+}
+
+model TwoFactorSecret {
+  id            String    @id @default(cuid())
+  userId        String    @unique
+  secret        String
+  recoveryCodes String[]  @default([])
+  confirmedAt   DateTime?
+  createdAt     DateTime  @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("two_factor_secrets")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// RÉDACTION
+// ─────────────────────────────────────────────────────────────────────────────
+
+model AuthorProfile {
+  id             String   @id @default(cuid())
+  userId         String   @unique
+  slug           String   @unique
+  displayName    String
+  jobTitle       String?
+  bio            String?  @db.Text
+  avatarUrl      String?
+  coverImageUrl  String?
+  twitterHandle  String?
+  linkedinUrl    String?
+  emailPublic    String?
+  location       String?
+  expertise      String[] @default([])
+  isFeatured     Boolean  @default(false)
+  isActive       Boolean  @default(true)
+  articleCount   Int      @default(0)
+  totalViews     Int      @default(0)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([isFeatured])
+  @@index([slug])
+  @@map("author_profiles")
+}
+
+model Category {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  name        String
+  shortName   String?
+  description String?  @db.Text
+  accent      String   @default("green")
+  icon        String?
+  coverImage  String?
+  position    Int      @default(0)
+  priority    Float    @default(0.8)
+  isActive    Boolean  @default(true)
+  isInMenu    Boolean  @default(true)
+  seoTitle    String?
+  seoDescription String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  parentId String?
+  parent   Category?  @relation("CategoryTree", fields: [parentId], references: [id], onDelete: SetNull)
+  children Category[] @relation("CategoryTree")
+
+  articles Article[]
+
+  @@index([parentId])
+  @@index([position])
+  @@index([isActive, isInMenu])
+  @@map("categories")
+}
+
+model Tag {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  name        String
+  description String?  @db.Text
+  usageCount  Int      @default(0)
+  isTrending  Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  articles ArticleTag[]
+
+  @@index([isTrending])
+  @@index([usageCount])
+  @@map("tags")
+}
+
+model Article {
+  id       String @id @default(cuid())
+  slug     String @unique
+  title    String
+  subtitle String?
+  excerpt  String @db.Text
+  bodyHtml String @db.Text
+  bodyText String @db.Text
+
+  format  ArticleFormat @default(STANDARD)
+  status  ArticleStatus @default(DRAFT)
+
+  isPremium      Boolean @default(false)
+  isBreaking     Boolean @default(false)
+  isFeatured     Boolean @default(false)
+  isPinnedToTop  Boolean @default(false)
+  allowComments  Boolean @default(true)
+
+  readingMinutes Int      @default(1)
+  wordCount      Int      @default(0)
+  viewCount      Int      @default(0)
+  shareCount     Int      @default(0)
+  commentCount   Int      @default(0)
+
+  publishedAt DateTime?
+  scheduledAt DateTime?
+  expiresAt   DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  deletedAt   DateTime?
+
+  // SEO
+  seoTitle       String?
+  seoDescription String?
+  canonicalUrl   String?
+  ogImageUrl     String?
+  noIndex        Boolean @default(false)
+  noFollow       Boolean @default(false)
+  focusKeyword   String?
+  structuredData Json?
+
+  // Relations
+  categoryId String?
+  category   Category? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+
+  heroImageId String?
+  heroImage   Media?  @relation("ArticleHeroImage", fields: [heroImageId], references: [id], onDelete: SetNull)
+
+  reviewedById String?
+  reviewedBy   User?   @relation("ArticleReviewer", fields: [reviewedById], references: [id], onDelete: SetNull)
+
+  authors       ArticleAuthor[]
+  tags          ArticleTag[]
+  gallery       ArticleMedia[]
+  comments      Comment[]
+  liveEntries   LiveBlogEntry[]
+  revisions     ArticleRevision[]
+  bookmarks     Bookmark[]
+  readingHistory ReadingHistory[]
+  readingListItems ReadingListItem[]
+  notifications Notification[]
+  relatedFrom   ArticleRelation[] @relation("ArticleRelationFrom")
+  relatedTo     ArticleRelation[] @relation("ArticleRelationTo")
+
+  @@index([status, publishedAt])
+  @@index([categoryId, status, publishedAt])
+  @@index([isBreaking, publishedAt])
+  @@index([isFeatured, publishedAt])
+  @@index([isPremium])
+  @@index([publishedAt])
+  @@index([deletedAt])
+  @@index([scheduledAt])
+  @@map("articles")
+}
+
+/// Ordre des co-signatures : un article peut être signé par plusieurs journalistes.
+model ArticleAuthor {
+  articleId String
+  userId    String
+  position  Int      @default(0)
+  role      String?  @default("Auteur")
+  createdAt DateTime @default(now())
+
+  article Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([articleId, userId])
+  @@index([userId])
+  @@map("article_authors")
+}
+
+model ArticleTag {
+  articleId String
+  tagId     String
+  createdAt DateTime @default(now())
+
+  article Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  tag     Tag     @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([articleId, tagId])
+  @@index([tagId])
+  @@map("article_tags")
+}
+
+/// Association manuelle « à lire aussi » ; en l'absence d'entrée, le moteur de
+/// recommandation calcule les articles liés par similarité de tags.
+model ArticleRelation {
+  id         String   @id @default(cuid())
+  fromId     String
+  toId       String
+  score      Float    @default(1)
+  createdAt  DateTime @default(now())
+
+  from Article @relation("ArticleRelationFrom", fields: [fromId], references: [id], onDelete: Cascade)
+  to   Article @relation("ArticleRelationTo", fields: [toId], references: [id], onDelete: Cascade)
+
+  @@unique([fromId, toId])
+  @@index([toId])
+  @@map("article_relations")
+}
+
+/// Journal d'audit éditorial : conserve un instantané complet à chaque étape du
+/// cycle de vie pour permettre la restauration et la traçabilité.
+model ArticleRevision {
+  id         String         @id @default(cuid())
+  articleId  String
+  authorId   String?
+  action     RevisionAction
+  title      String
+  excerpt    String         @db.Text
+  bodyHtml   String         @db.Text
+  status     ArticleStatus
+  comment    String?        @db.Text
+  diff       Json?
+  version    Int            @default(1)
+  createdAt  DateTime       @default(now())
+
+  article Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  author  User?   @relation(fields: [authorId], references: [id], onDelete: SetNull)
+
+  @@index([articleId, version])
+  @@index([authorId])
+  @@map("article_revisions")
+}
+
+/// Fil d'actualité en direct attaché à un article de format LIVE.
+model LiveBlogEntry {
+  id        String   @id @default(cuid())
+  articleId String
+  authorId  String?
+  bodyHtml  String   @db.Text
+  isPinned  Boolean  @default(false)
+  isKeyEvent Boolean @default(false)
+  publishedAt DateTime @default(now())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  article Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  author  User?   @relation(fields: [authorId], references: [id], onDelete: SetNull)
+
+  @@index([articleId, publishedAt])
+  @@map("live_blog_entries")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// MÉDIAS
+// ─────────────────────────────────────────────────────────────────────────────
+
+model Media {
+  id          String        @id @default(cuid())
+  type        MediaType     @default(IMAGE)
+  provider    MediaProvider @default(AZURE_BLOB)
+
+  url          String        @db.Text
+  thumbnailUrl String?
+  storageKey   String?       @unique
+  mimeType     String?
+  sizeBytes    Int?
+  width        Int?
+  height       Int?
+  durationSeconds Int?
+  checksum     String?
+
+  title       String?
+  altText     String?
+  caption     String?       @db.Text
+  credit      String?
+  focalPointX Float?        @default(0.5)
+  focalPointY Float?        @default(0.5)
+  blurDataUrl String?       @db.Text
+
+  uploadedById String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  deletedAt    DateTime?
+
+  heroForArticles Article[]      @relation("ArticleHeroImage")
+  articleGallery  ArticleMedia[]
+  video           Video?
+  podcastCover    PodcastShow?   @relation("PodcastShowCover")
+  episodeCover    PodcastEpisode[] @relation("EpisodeCover")
+
+  @@index([type])
+  @@index([provider])
+  @@index([createdAt])
+  @@map("media")
+}
+
+model ArticleMedia {
+  id        String  @id @default(cuid())
+  articleId String
+  mediaId   String
+  position  Int     @default(0)
+  caption   String? @db.Text
+
+  article Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  media   Media   @relation(fields: [mediaId], references: [id], onDelete: Cascade)
+
+  @@unique([articleId, mediaId])
+  @@index([mediaId])
+  @@map("article_media")
+}
+
+model Video {
+  id          String        @id @default(cuid())
+  slug        String        @unique
+  title       String
+  description String        @db.Text
+  provider    MediaProvider @default(YOUTUBE)
+  embedUrl    String        @db.Text
+  sourceUrl   String?       @db.Text
+  durationSeconds Int?
+  isPremium   Boolean       @default(false)
+  isLive      Boolean       @default(false)
+  viewCount   Int           @default(0)
+  publishedAt DateTime      @default(now())
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  deletedAt   DateTime?
+
+  thumbnailId String? @unique
+  thumbnail   Media?  @relation(fields: [thumbnailId], references: [id], onDelete: SetNull)
+
+  @@index([publishedAt])
+  @@index([isLive])
+  @@map("videos")
+}
+
+model PodcastShow {
+  id            String   @id @default(cuid())
+  slug          String   @unique
+  name          String
+  tagline       String?
+  description   String   @db.Text
+  hostName      String?
+  language      String   @default("fr")
+  category      String?
+  isPremium     Boolean  @default(false)
+  isActive      Boolean  @default(true)
+  episodeCount  Int      @default(0)
+  rssUrl        String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  coverId String? @unique
+  cover   Media?  @relation("PodcastShowCover", fields: [coverId], references: [id], onDelete: SetNull)
+
+  episodes PodcastEpisode[]
+
+  @@index([isActive])
+  @@map("podcast_shows")
+}
+
+model PodcastEpisode {
+  id              String   @id @default(cuid())
+  slug            String   @unique
+  showId          String
+  title           String
+  description     String   @db.Text
+  seasonNumber    Int?
+  episodeNumber   Int?
+  audioUrl        String   @db.Text
+  durationSeconds Int      @default(0)
+  transcript      String?  @db.Text
+  isPremium       Boolean  @default(false)
+  isExplicit      Boolean  @default(false)
+  playCount       Int      @default(0)
+  publishedAt     DateTime @default(now())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  deletedAt       DateTime?
+
+  show    PodcastShow @relation(fields: [showId], references: [id], onDelete: Cascade)
+  coverId String?
+  cover   Media?      @relation("EpisodeCover", fields: [coverId], references: [id], onDelete: SetNull)
+
+  @@index([showId, publishedAt])
+  @@index([publishedAt])
+  @@map("podcast_episodes")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// COMMUNAUTÉ
+// ─────────────────────────────────────────────────────────────────────────────
+
+model Comment {
+  id        String        @id @default(cuid())
+  articleId String
+  authorId  String?
+  parentId  String?
+  body      String        @db.Text
+  status    CommentStatus @default(PENDING)
+  authorName String
+  authorEmail String?
+  ipHash    String?
+  userAgent String?
+  likeCount Int           @default(0)
+  reportCount Int         @default(0)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  deletedAt DateTime?
+
+  article  Article  @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  author   User?    @relation(fields: [authorId], references: [id], onDelete: SetNull)
+  parent   Comment? @relation("CommentThread", fields: [parentId], references: [id], onDelete: Cascade)
+  replies  Comment[] @relation("CommentThread")
+  moderation CommentModeration[]
+
+  @@index([articleId, status, createdAt])
+  @@index([parentId])
+  @@index([status])
+  @@map("comments")
+}
+
+model CommentModeration {
+  id          String             @id @default(cuid())
+  commentId   String
+  moderatorId String?
+  decision    ModerationDecision
+  reason      String?            @db.Text
+  createdAt   DateTime           @default(now())
+
+  comment   Comment @relation(fields: [commentId], references: [id], onDelete: Cascade)
+  moderator User?   @relation(fields: [moderatorId], references: [id], onDelete: SetNull)
+
+  @@index([commentId])
+  @@map("comment_moderations")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// LECTEUR : FAVORIS, HISTORIQUE, PRÉFÉRENCES
+// ─────────────────────────────────────────────────────────────────────────────
+
+model Bookmark {
+  id        String   @id @default(cuid())
+  userId    String
+  articleId String
+  note      String?  @db.Text
+  createdAt DateTime @default(now())
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  article Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, articleId])
+  @@index([userId, createdAt])
+  @@map("bookmarks")
+}
+
+model ReadingHistory {
+  id        String   @id @default(cuid())
+  userId    String
+  articleId String
+  progress  Float    @default(0)
+  readAt    DateTime @default(now())
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  article Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, articleId])
+  @@index([userId, readAt])
+  @@map("reading_history")
+}
+
+model ReadingList {
+  id          String   @id @default(cuid())
+  userId      String
+  slug        String
+  name        String
+  description String?
+  isPublic    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user  User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  items ReadingListItem[]
+
+  @@unique([userId, slug])
+  @@index([userId])
+  @@map("reading_lists")
+}
+
+model ReadingListItem {
+  id            String   @id @default(cuid())
+  readingListId String
+  articleId     String
+  userId        String
+  position      Int      @default(0)
+  addedAt       DateTime @default(now())
+
+  readingList ReadingList @relation(fields: [readingListId], references: [id], onDelete: Cascade)
+  article     Article     @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([readingListId, articleId])
+  @@index([userId])
+  @@map("reading_list_items")
+}
+
+model UserPreference {
+  id                 String   @id @default(cuid())
+  userId             String   @unique
+  darkMode           Boolean  @default(false)
+  breakingNewsAlerts Boolean  @default(true)
+  newArticleAlerts   Boolean  @default(true)
+  weeklyDigest       Boolean  @default(true)
+  newsletterOptIn    Boolean  @default(true)
+  preferredCategories String[] @default([])
+  preferredLanguage  String   @default("fr")
+  fontScale          Float    @default(1)
+  reducedMotion      Boolean  @default(false)
+  updatedAt          DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("user_preferences")
+}
+
+model Notification {
+  id        String              @id @default(cuid())
+  userId    String
+  kind      NotificationKind    @default(SYSTEM)
+  channel   NotificationChannel @default(IN_APP)
+  title     String
+  body      String              @db.Text
+  url       String?
+  articleId String?
+  readAt    DateTime?
+  sentAt    DateTime?
+  createdAt DateTime            @default(now())
+
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  article Article? @relation(fields: [articleId], references: [id], onDelete: SetNull)
+
+  @@index([userId, readAt])
+  @@index([userId, createdAt])
+  @@map("notifications")
+}
+
+model PushSubscription {
+  id        String   @id @default(cuid())
+  userId    String
+  endpoint  String   @unique @db.Text
+  p256dh    String   @db.Text
+  auth      String   @db.Text
+  userAgent String?
+  createdAt DateTime @default(now())
+  lastUsedAt DateTime?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("push_subscriptions")
+}
+
+model NewsletterSubscriber {
+  id            String           @id @default(cuid())
+  email         String           @unique
+  userId        String?
+  status        NewsletterStatus @default(PENDING)
+  interests     String[]         @default([])
+  frequency     String           @default("weekly")
+  confirmToken  String?          @unique
+  confirmedAt   DateTime?
+  unsubscribedAt DateTime?
+  source        String?
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+
+  @@index([status])
+  @@map("newsletter_subscribers")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ABONNEMENTS ET PAIEMENTS
+// ─────────────────────────────────────────────────────────────────────────────
+
+model SubscriptionPlan {
+  id           String           @id @default(cuid())
+  tier         SubscriptionTier
+  name         String
+  description  String           @db.Text
+  priceAmount  Int
+  currency     String           @default("XOF")
+  interval     String           @default("month")
+  features     String[]         @default([])
+  isPopular    Boolean          @default(false)
+  isActive     Boolean          @default(true)
+  trialDays    Int              @default(0)
+  stripePriceId String?         @unique
+  position     Int              @default(0)
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+
+  subscriptions Subscription[]
+
+  @@index([tier])
+  @@map("subscription_plans")
+}
+
+model Subscription {
+  id                 String             @id @default(cuid())
+  userId             String
+  planId             String
+  tier               SubscriptionTier   @default(FREE)
+  status             SubscriptionStatus @default(ACTIVE)
+  provider           PaymentProvider?
+  providerRef        String?            @unique
+  currentPeriodStart DateTime?
+  currentPeriodEnd   DateTime?
+  cancelAtPeriodEnd  Boolean            @default(false)
+  canceledAt         DateTime?
+  trialEndsAt        DateTime?
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+
+  user     User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  plan     SubscriptionPlan @relation(fields: [planId], references: [id])
+  payments Payment[]
+  invoices Invoice[]
+
+  @@index([userId, status])
+  @@index([status, currentPeriodEnd])
+  @@map("subscriptions")
+}
+
+model Payment {
+  id             String          @id @default(cuid())
+  userId         String
+  subscriptionId String?
+  provider       PaymentProvider
+  status         PaymentStatus   @default(PENDING)
+  amount         Int
+  currency       String          @default("XOF")
+  reference      String          @unique
+  providerRef    String?
+  payload        Json?
+  failureReason  String?
+  paidAt         DateTime?
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  subscription Subscription? @relation(fields: [subscriptionId], references: [id], onDelete: SetNull)
+  invoice      Invoice?
+
+  @@index([userId, createdAt])
+  @@index([status])
+  @@index([provider])
+  @@map("payments")
+}
+
+model Invoice {
+  id             String   @id @default(cuid())
+  number         String   @unique
+  userId         String
+  subscriptionId String?
+  paymentId      String?  @unique
+  amount         Int
+  taxAmount      Int      @default(0)
+  currency       String   @default("XOF")
+  issuedAt       DateTime @default(now())
+  dueAt          DateTime?
+  paidAt         DateTime?
+  pdfUrl         String?
+  lineItems      Json?
+
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  subscription Subscription? @relation(fields: [subscriptionId], references: [id], onDelete: SetNull)
+  payment      Payment?      @relation(fields: [paymentId], references: [id], onDelete: SetNull)
+
+  @@index([userId, issuedAt])
+  @@map("invoices")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// PUBLICITÉ ET MONÉTISATION
+// ─────────────────────────────────────────────────────────────────────────────
+
+model AdSlot {
+  id           String          @id @default(cuid())
+  name         String
+  placement    AdSlotPlacement
+  imageUrl     String?
+  targetUrl    String?
+  htmlSnippet  String?         @db.Text
+  googleAdUnit String?
+  categorySlug String?
+  weight       Int             @default(1)
+  impressions  Int             @default(0)
+  clicks       Int             @default(0)
+  startsAt     DateTime?
+  endsAt       DateTime?
+  isActive     Boolean         @default(true)
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+
+  @@index([placement, isActive])
+  @@map("ad_slots")
+}
+
+model SponsoredContent {
+  id          String   @id @default(cuid())
+  articleId   String   @unique
+  sponsorName String
+  sponsorUrl  String?
+  label       String   @default("Contenu sponsorisé")
+  startsAt    DateTime @default(now())
+  endsAt      DateTime?
+  createdAt   DateTime @default(now())
+
+  @@map("sponsored_content")
+}
+
+model AffiliateLink {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  label       String
+  targetUrl   String   @db.Text
+  merchant    String?
+  clicks      Int      @default(0)
+  conversions Int      @default(0)
+  revenue     Int      @default(0)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+
+  @@map("affiliate_links")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ANALYTICS
+// ─────────────────────────────────────────────────────────────────────────────
+
+/// Événement de page vue brut. Table volumineuse : à partitionner par mois en
+/// production (voir docs/architecture/base-de-donnees.md).
+model PageViewEvent {
+  id          String   @id @default(cuid())
+  sessionId   String
+  userId      String?
+  articleId   String?
+  path        String
+  referrer    String?
+  source      String?
+  medium      String?
+  campaign    String?
+  country     String?
+  region      String?
+  city        String?
+  deviceType  String?
+  browser     String?
+  os          String?
+  language    String?
+  isPremium   Boolean  @default(false)
+  durationMs  Int?
+  scrollDepth Int?
+  createdAt   DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([articleId, createdAt])
+  @@index([path, createdAt])
+  @@index([source, createdAt])
+  @@index([country, createdAt])
+  @@map("page_view_events")
+}
+
+/// Agrégat journalier pré-calculé : le tableau de bord lit cette table pour
+/// rester rapide quelle que soit la volumétrie d'événements bruts.
+model DailyMetric {
+  id              String   @id @default(cuid())
+  date            DateTime @db.Date
+  visitors        Int      @default(0)
+  pageViews       Int      @default(0)
+  sessions        Int      @default(0)
+  avgSessionMs    Int      @default(0)
+  bounceRate      Float    @default(0)
+  newSubscribers  Int      @default(0)
+  canceledSubs    Int      @default(0)
+  revenueXof      Int      @default(0)
+  adImpressions   Int      @default(0)
+  adRevenueXof    Int      @default(0)
+  topArticleIds   String[] @default([])
+
+  @@unique([date])
+  @@index([date])
+  @@map("daily_metrics")
+}
+
+model SearchQueryLog {
+  id          String   @id @default(cuid())
+  query       String
+  userId      String?
+  resultCount Int      @default(0)
+  clickedId   String?
+  tookMs      Int      @default(0)
+  createdAt   DateTime @default(now())
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([query])
+  @@index([createdAt])
+  @@map("search_query_logs")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ASSISTANT IA (RAG)
+// ─────────────────────────────────────────────────────────────────────────────
+
+model AiConversation {
+  id        String   @id @default(cuid())
+  userId    String?
+  sessionId String?
+  title     String?
+  scope     String   @default("general")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user     User?       @relation(fields: [userId], references: [id], onDelete: SetNull)
+  messages AiMessage[]
+
+  @@index([userId, createdAt])
+  @@map("ai_conversations")
+}
+
+model AiMessage {
+  id             String   @id @default(cuid())
+  conversationId String
+  role           String
+  content        String   @db.Text
+  citations      Json?
+  promptTokens   Int      @default(0)
+  completionTokens Int    @default(0)
+  model          String?
+  createdAt      DateTime @default(now())
+
+  conversation AiConversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  @@index([conversationId, createdAt])
+  @@map("ai_messages")
+}
+
+/// Index vectoriel pour le RAG. `embedding` est de type pgvector ; l'extension
+/// est créée par la migration SQL dédiée (voir prisma/migrations).
+model AiEmbedding {
+  id         String   @id @default(cuid())
+  articleId  String?
+  chunkIndex Int      @default(0)
+  content    String   @db.Text
+  tokenCount Int      @default(0)
+  model      String   @default("text-embedding-3-large")
+  createdAt  DateTime @default(now())
+
+  @@index([articleId])
+  @@map("ai_embeddings")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// EXPLOITATION : AUDIT, PARAMÈTRES, REDIRECTIONS, CONTACTS
+// ─────────────────────────────────────────────────────────────────────────────
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  actorId    String?
+  action     String
+  entityType String
+  entityId   String?
+  before     Json?
+  after      Json?
+  ipAddress  String?
+  userAgent  String?
+  createdAt  DateTime @default(now())
+
+  actor User? @relation(fields: [actorId], references: [id], onDelete: SetNull)
+
+  @@index([entityType, entityId])
+  @@index([actorId])
+  @@index([createdAt])
+  @@map("audit_logs")
+}
+
+model Setting {
+  key       String   @id
+  value     Json
+  group     String   @default("general")
+  updatedAt DateTime @updatedAt
+
+  @@index([group])
+  @@map("settings")
+}
+
+model Redirect {
+  id         String   @id @default(cuid())
+  fromPath   String   @unique
+  toPath     String
+  statusCode Int      @default(301)
+  hitCount   Int      @default(0)
+  isActive   Boolean  @default(true)
+  createdAt  DateTime @default(now())
+
+  @@map("redirects")
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String
+  message   String   @db.Text
+  topic     String   @default("general")
+  status    String   @default("NEW")
+  handledBy String?
+  createdAt DateTime @default(now())
+
+  @@index([status, createdAt])
+  @@map("contact_messages")
+}

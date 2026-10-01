@@ -1,3 +1,0 @@
-import { NextRequest, NextResponse } from 'next/server';
-export function middleware(req:NextRequest){const password=process.env.ADMIN_PASSWORD;if(!password)return NextResponse.next();const auth=req.headers.get('authorization');let valid=false;try{if(auth?.startsWith('Basic ')){const raw=atob(auth.slice(6));const colon=raw.indexOf(':');valid=colon>=0&&raw.slice(0,colon)===(process.env.ADMIN_USER||'admin')&&raw.slice(colon+1)===password;}}catch{}if(!valid)return new NextResponse('Authentification requise',{status:401,headers:{'WWW-Authenticate':'Basic realm="Sencourrier rédaction", charset="UTF-8"'}});return NextResponse.next();}
-export const config={matcher:['/admin/:path*','/api/admin/:path*']};

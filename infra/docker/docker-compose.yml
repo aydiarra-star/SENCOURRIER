@@ -1,0 +1,154 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# SENCOURRIER — stack complète conteneurisée
+#
+# Pour l'intégration continue et les environnements de recette : tout tourne
+# dans Docker. En production, l'API et le web sont destinés à Azure Container
+# Apps (ou AKS) et PostgreSQL à Azure Database for PostgreSQL.
+#
+#   docker compose -f infra/docker/docker-compose.yml up -d --build
+#
+# Le fichier .env de la racine fournit les valeurs ; les secrets de production
+# ne doivent jamais être écrits ici.
+# ═══════════════════════════════════════════════════════════════════════════
+
+name: sencourrier
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: sencourrier-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-sencourrier}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-sencourrier}
+      POSTGRES_DB: ${POSTGRES_DB:-sencourrier}
+      POSTGRES_INITDB_ARGS: '--encoding=UTF8 --locale-provider=icu --icu-locale=fr-FR --locale=C.UTF-8'
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        ['CMD-SHELL', 'pg_isready -U ${POSTGRES_USER:-sencourrier} -d ${POSTGRES_DB:-sencourrier}']
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    # Aucun port publié : seuls les services du réseau interne y accèdent.
+    networks: [backend]
+
+  redis:
+    image: redis:7.4-alpine
+    container_name: sencourrier-redis
+    restart: unless-stopped
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    command:
+      - redis-server
+      - --appendonly
+      - 'yes'
+      - --appendfsync
+      - everysec
+      - --maxmemory
+      - 512mb
+      - --maxmemory-policy
+      - allkeys-lru
+    networks: [backend]
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.15.3
+    container_name: sencourrier-elasticsearch
+    restart: unless-stopped
+    environment:
+      discovery.type: single-node
+      xpack.security.enabled: 'false'
+      xpack.security.http.ssl.enabled: 'false'
+      ES_JAVA_OPTS: -Xms512m -Xmx512m
+      bootstrap.memory_lock: 'true'
+      ingest.geoip.downloader.enabled: 'false'
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+    ulimits:
+      memlock: { soft: -1, hard: -1 }
+      nofile: { soft: 65536, hard: 65536 }
+    healthcheck:
+      test: ['CMD-SHELL', 'curl -fsS http://localhost:9200/_cluster/health || exit 1']
+      interval: 15s
+      timeout: 10s
+      retries: 10
+      start_period: 60s
+    networks: [backend]
+
+  api:
+    build:
+      context: ../..
+      dockerfile: infra/docker/Dockerfile.api
+    image: sencourrier/api:latest
+    container_name: sencourrier-api
+    restart: unless-stopped
+    depends_on:
+      postgres: { condition: service_healthy }
+      redis: { condition: service_healthy }
+    environment:
+      NODE_ENV: production
+      API_PORT: 3001
+      # Les noms d'hôtes sont ceux du réseau Compose, pas « localhost ».
+      DATABASE_URL: postgresql://${POSTGRES_USER:-sencourrier}:${POSTGRES_PASSWORD:-sencourrier}@postgres:5432/${POSTGRES_DB:-sencourrier}?schema=public
+      REDIS_URL: redis://redis:6379
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3000}
+      JWT_ACCESS_SECRET: ${JWT_ACCESS_SECRET:?JWT_ACCESS_SECRET est requis}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:?JWT_REFRESH_SECRET est requis}
+      JWT_ACCESS_TTL: ${JWT_ACCESS_TTL:-15m}
+      JWT_REFRESH_TTL: ${JWT_REFRESH_TTL:-30d}
+      JWT_ISSUER: ${JWT_ISSUER:-sencourrier.sn}
+      JWT_AUDIENCE: ${JWT_AUDIENCE:-sencourrier-web}
+      RESEND_API_KEY: ${RESEND_API_KEY:-}
+      MAIL_FROM_EMAIL: ${MAIL_FROM_EMAIL:-noreply@sencourrier.sn}
+      AZURE_STORAGE_CONNECTION_STRING: ${AZURE_STORAGE_CONNECTION_STRING:-}
+      STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY:-}
+      RUN_MIGRATIONS: 'true'
+    ports:
+      - '${API_PORT:-3001}:3001'
+    networks: [backend, frontend]
+
+  web:
+    build:
+      context: ../..
+      dockerfile: infra/docker/Dockerfile.web
+      args:
+        # Valeurs figées à la compilation (NEXT_PUBLIC_*).
+        NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-http://localhost:3000}
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:3001}
+        NEXT_PUBLIC_GA_MEASUREMENT_ID: ${NEXT_PUBLIC_GA_MEASUREMENT_ID:-}
+        NEXT_PUBLIC_GTM_ID: ${NEXT_PUBLIC_GTM_ID:-}
+    image: sencourrier/web:latest
+    container_name: sencourrier-web
+    restart: unless-stopped
+    depends_on:
+      api: { condition: service_healthy }
+    environment:
+      NODE_ENV: production
+      # Le rendu serveur lit la base directement pour les pages publiques.
+      DATABASE_URL: postgresql://${POSTGRES_USER:-sencourrier}:${POSTGRES_PASSWORD:-sencourrier}@postgres:5432/${POSTGRES_DB:-sencourrier}?schema=public
+      REDIS_URL: redis://redis:6379
+      NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-http://localhost:3000}
+      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:3001}
+      NEXTAUTH_URL: ${NEXTAUTH_URL:-http://localhost:3000}
+      NEXTAUTH_SECRET: ${NEXTAUTH_SECRET:?NEXTAUTH_SECRET est requis}
+    ports:
+      - '${WEB_PORT:-3000}:3000'
+    networks: [backend, frontend]
+
+volumes:
+  postgres-data:
+  redis-data:
+  elasticsearch-data:
+
+networks:
+  backend:
+    internal: true
+  frontend:
