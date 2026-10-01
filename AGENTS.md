@@ -15,6 +15,11 @@ Fuseau : `Africa/Dakar`. Le contenu éditorial est en français ; les termes
 techniques restent en anglais là où c'est l'usage (noms de bibliothèques,
 d'API, de types).
 
+Le monorepo est la structure de référence. Une application Next.js avait été
+ajoutée à la racine du dépôt (PR #1) : elle a été retirée. Ne pas recréer de
+`src/`, `public/` ou `next.config.ts` à la racine — tout code applicatif va
+dans `apps/*`, tout code partagé dans `packages/*`.
+
 ---
 
 ## Commandes utiles
