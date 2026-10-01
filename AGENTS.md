@@ -111,3 +111,17 @@ curl -G --data-urlencode "q=Sénégal" http://localhost:3001/api/v1/search
 `docs/` contient la conception complète : architecture, base de données, UML,
 design et wireframes, API, déploiement, guide utilisateur. Toute évolution
 structurelle doit être répercutée dans le document correspondant.
+
+---
+
+## Publication
+
+- Le portail et l'API tournent sur Azure (`cd.yml`).
+- L'aperçu public de l'interface est publié sur GitHub Pages :
+  <https://aydiarra-star.github.io/SENCOURRIER/> — servi depuis la branche
+  `gh-pages`, à la racine du domaine, sous le sous-chemin `/SENCOURRIER/`.
+- Pour republier l'aperçu : `npm run build:showcase`, puis pousser le contenu
+  de `apps/showcase/out` sur `gh-pages`. `.nojekyll` doit rester présent, sinon
+  GitHub Pages masque `_next/`.
+- Les workflows de `.github/workflows/` exigent un jeton portant le scope
+  `workflow` : GitHub refuse leur poussée sans lui.
