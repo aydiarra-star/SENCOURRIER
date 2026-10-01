@@ -1,0 +1,233 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ───────────────────────────────────────────────────────────────────────────
+   SENCOURRIER — jetons de design
+   Les couleurs sémantiques sont exprimées en HSL afin que Tailwind puisse
+   appliquer des opacités (ex. `bg-primary/10`) sans casser le thème sombre.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+@layer base {
+  :root {
+    /* Surfaces */
+    --background: 0 0% 100%;
+    --foreground: 215 27.9% 16.9%; /* Gris Premium #1F2937 */
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 27.9% 16.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 27.9% 16.9%;
+
+    /* Vert Sénégal #00853F */
+    --primary: 148.4 100% 26.1%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 215 27.9% 16.9%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215 16% 46.9%;
+
+    /* Jaune Or #FCD116 */
+    --accent: 48.8 97.5% 53.7%;
+    --accent-foreground: 215 27.9% 16.9%;
+
+    /* Rouge #E31B23 */
+    --destructive: 357.6 78.7% 49.8%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 148.4 100% 26.1%;
+
+    --radius: 0.75rem;
+
+    /* Surfaces éditoriales dédiées */
+    --newsroom: 210 40% 98%;
+    --kicker: 148.4 100% 26.1%;
+  }
+
+  .dark {
+    --background: 222 47% 7%; /* #0B1220 */
+    --foreground: 210 40% 96%;
+
+    --card: 217 33% 12%;
+    --card-foreground: 210 40% 96%;
+
+    --popover: 217 33% 12%;
+    --popover-foreground: 210 40% 96%;
+
+    /* Le vert est éclairci en thème sombre pour préserver le contraste AA */
+    --primary: 148.4 62% 42%;
+    --primary-foreground: 222 47% 7%;
+
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 96%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 48.8 97.5% 53.7%;
+    --accent-foreground: 222 47% 7%;
+
+    --destructive: 357.6 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 217 33% 20%;
+    --input: 217 33% 20%;
+    --ring: 148.4 62% 42%;
+
+    --newsroom: 217 33% 10%;
+    --kicker: 148.4 62% 50%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    text-rendering: optimizeLegibility;
+    font-feature-settings:
+      'kern' 1,
+      'liga' 1,
+      'calt' 1;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Cible tactile confortable pour les liens de navigation mobile */
+  :focus-visible {
+    @apply ring-ring ring-offset-background outline-none ring-2 ring-offset-2;
+  }
+
+  ::selection {
+    background-color: #fcd116;
+    color: #1f2937;
+  }
+}
+
+@layer components {
+  /* ── Ruban tricolore : signature visuelle de la marque ── */
+  .senegal-rule {
+    background: linear-gradient(
+      90deg,
+      #00853f 0%,
+      #00853f 33.33%,
+      #fcd116 33.33%,
+      #fcd116 66.66%,
+      #e31b23 66.66%,
+      #e31b23 100%
+    );
+  }
+
+  .kicker {
+    @apply font-ui text-kicker uppercase tracking-[0.09em];
+  }
+
+  .section-heading {
+    @apply border-brand-slate-900 flex items-baseline justify-between gap-4 border-b-2 pb-2 dark:border-white/20;
+  }
+
+  .section-heading-title {
+    @apply font-display text-brand-slate-900 text-xl font-extrabold tracking-tight dark:text-white;
+  }
+
+  .card-editorial {
+    @apply border-border bg-card shadow-editorial hover:shadow-editorial-lg overflow-hidden rounded-lg border transition-shadow duration-300;
+  }
+
+  .link-underline {
+    @apply after:bg-brand-green relative inline-block after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:transition-all after:duration-300 hover:after:w-full;
+  }
+
+  .premium-badge {
+    @apply rounded-xs from-brand-yellow to-brand-yellow-300 font-ui text-brand-slate-900 inline-flex items-center gap-1 bg-gradient-to-r px-2 py-0.5 text-[0.625rem] font-bold uppercase tracking-wider;
+  }
+
+  .breaking-badge {
+    @apply rounded-xs bg-brand-red font-ui inline-flex items-center gap-1.5 px-2 py-0.5 text-[0.625rem] font-bold uppercase tracking-wider text-white;
+  }
+
+  .live-dot {
+    @apply animate-pulse-live inline-block h-2 w-2 rounded-full bg-white;
+  }
+
+  /* Squelette de chargement respectant le thème */
+  .skeleton {
+    @apply bg-muted relative overflow-hidden rounded-md;
+  }
+
+  .skeleton::after {
+    @apply animate-shimmer absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent;
+    content: '';
+  }
+
+  /* Le fil d'Ariane conserve une hauteur stable pour éviter le CLS */
+  .breadcrumb {
+    @apply font-ui text-muted-foreground flex flex-wrap items-center gap-1.5 text-xs;
+  }
+
+  /* Conteneur d'article : largeur de lecture maîtrisée + gouttières sûres */
+  .article-prose {
+    @apply prose prose-lg dark:prose-invert max-w-none;
+  }
+
+  .article-prose > p:first-of-type::first-letter {
+    @apply font-display text-brand-green float-left mr-3 mt-1 text-[3.5rem] font-black leading-[0.8];
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .scrollbar-none {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Empêche le débordement horizontal du bandeau défilant */
+  .mask-fade-x {
+    mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+  }
+}

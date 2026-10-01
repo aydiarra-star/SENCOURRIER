@@ -1,0 +1,2122 @@
+{
+  "generatedAt": "2026-09-30T21:55:03.864Z",
+  "lead": {
+    "id": "cmuol9zas005fzihpnuk7txx8",
+    "slug": "lions-de-la-teranga-le-senegal-s-impose-2-0-et-valide-sa-qualification-02",
+    "title": "Lions de la Teranga : le Sénégal s'impose 2-0 et valide sa qualification",
+    "subtitle": "Une victoire maîtrisée au stade Abdoulaye Wade devant 45 000 spectateurs",
+    "excerpt": "Portés par une première période de haute intensité, les Lions ont dominé leur adversaire et composté leur billet pour la phase finale. La défense n'a pas encaissé depuis cinq matchs.",
+    "isPremium": false,
+    "isBreaking": true,
+    "isFeatured": true,
+    "format": "STANDARD",
+    "readingMinutes": 1,
+    "viewCount": 34121,
+    "commentCount": 0,
+    "publishedAt": "2026-09-30T19:00:06.000Z",
+    "category": {
+      "id": "cmuol9ywl0013zihp9bwbq7ao",
+      "slug": "sports",
+      "name": "Sports",
+      "shortName": "Sports",
+      "accent": "blue"
+    },
+    "heroImage": {
+      "url": "https://picsum.photos/seed/art-lions-de-la-teranga-le-senegal-s-impose-2-0-et-valide-sa-qualification-02/1600/900",
+      "thumbnailUrl": "https://picsum.photos/seed/art-lions-de-la-teranga-le-senegal-s-impose-2-0-et-valide-sa-qualification-02/640/360",
+      "altText": "Lions de la Teranga : le Sénégal s'impose 2-0 et valide sa qualification",
+      "width": 1600,
+      "height": 900
+    },
+    "authors": [
+      {
+        "position": 0,
+        "role": "Auteur",
+        "user": {
+          "id": "cmuol9z6z0032zihp8xyl7e86",
+          "displayName": "Ibrahima Ba",
+          "name": "Ibrahima Ba",
+          "image": null
+        }
+      }
+    ]
+  },
+  "secondary": [
+    {
+      "id": "cmuol9z89003uzihpgvcq9gpp",
+      "slug": "conseil-des-ministres-le-gouvernement-adopte-un-plan-d-urgence-pour-l--03",
+      "title": "Conseil des ministres : le gouvernement adopte un plan d'urgence pour l'emploi des jeunes",
+      "subtitle": "Un dispositif de 45 milliards FCFA ciblant 120 000 primo-demandeurs d'emploi sur trois ans",
+      "excerpt": "Réuni au Palais de la République, le Conseil des ministres a adopté mercredi un programme national d'insertion professionnelle des jeunes, assorti d'un fonds de garantie destiné aux très petites entreprises.",
+      "isPremium": false,
+      "isBreaking": false,
+      "isFeatured": true,
+      "format": "STANDARD",
+      "readingMinutes": 1,
+      "viewCount": 18420,
+      "commentCount": 3,
+      "publishedAt": "2026-09-30T18:00:05.892Z",
+      "category": {
+        "id": "cmuol9yvf0000zihp2t5m5yiw",
+        "slug": "politique",
+        "name": "Politique",
+        "shortName": "Politique",
+        "accent": "green"
+      },
+      "heroImage": {
+        "url": "https://picsum.photos/seed/art-conseil-des-ministres-le-gouvernement-adopte-un-plan-d-urgence-pour-l--03/1600/900",
+        "thumbnailUrl": "https://picsum.photos/seed/art-conseil-des-ministres-le-gouvernement-adopte-un-plan-d-urgence-pour-l--03/640/360",
+        "altText": "Conseil des ministres : le gouvernement adopte un plan d'urgence pour l'emploi des jeunes",
+        "width": 1600,
+        "height": 900
+      },
+      "authors": [
+        {
+          "position": 0,
+          "role": "Auteur",
+          "user": {
+            "id": "cmuol9z6r002uzihp0wcws9s7",
+            "displayName": "Moussa Fall",
+            "name": "Moussa Fall",
+            "image": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "cmuol9z8y0046zihp4wfixn9o",
+      "slug": "sante-le-nouvel-hopital-de-diamniadio-entre-en-service-partiel-06",
+      "title": "Santé : le nouvel hôpital de Diamniadio entre en service partiel",
+      "subtitle": "Six services ouvrent progressivement, avec une capacité cible de 300 lits",
+      "excerpt": "Le nouvel établissement hospitalier de Diamniadio a accueilli ses premiers patients. Six services sur douze sont opérationnels, le reste devant ouvrir d'ici la fin de l'année.",
+      "isPremium": false,
+      "isBreaking": false,
+      "isFeatured": true,
+      "format": "STANDARD",
+      "readingMinutes": 1,
+      "viewCount": 12670,
+      "commentCount": 3,
+      "publishedAt": "2026-09-30T15:00:05.934Z",
+      "category": {
+        "id": "cmuol9yvt000bzihpmaxwofu8",
+        "slug": "societe",
+        "name": "Société",
+        "shortName": "Société",
+        "accent": "teal"
+      },
+      "heroImage": {
+        "url": "https://picsum.photos/seed/art-sante-le-nouvel-hopital-de-diamniadio-entre-en-service-partiel-06/1600/900",
+        "thumbnailUrl": "https://picsum.photos/seed/art-sante-le-nouvel-hopital-de-diamniadio-entre-en-service-partiel-06/640/360",
+        "altText": "Santé : le nouvel hôpital de Diamniadio entre en service partiel",
+        "width": 1600,
+        "height": 900
+      },
+      "authors": [
+        {
+          "position": 0,
+          "role": "Auteur",
+          "user": {
+            "id": "cmuol9z740036zihp4hiyajob",
+            "displayName": "Mariama Diallo",
+            "name": "Mariama Diallo",
+            "image": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "cmuol9zbi005yzihpaxtld4q9",
+      "slug": "intelligence-artificielle-le-senegal-lance-un-centre-national-de-reche-12",
+      "title": "Intelligence artificielle : le Sénégal lance un centre national de recherche appliquée",
+      "subtitle": "Le centre sera adossé aux universités et aux entreprises du secteur numérique",
+      "excerpt": "Le pays se dote d'un centre national dédié à l'intelligence artificielle appliquée, avec pour priorité la santé, l'agriculture et l'administration publique.",
+      "isPremium": false,
+      "isBreaking": false,
+      "isFeatured": true,
+      "format": "STANDARD",
+      "readingMinutes": 1,
+      "viewCount": 13410,
+      "commentCount": 0,
+      "publishedAt": "2026-09-29T19:00:06.026Z",
+      "category": {
+        "id": "cmuol9yww001gzihpuo6bmnvo",
+        "slug": "technologies",
+        "name": "Technologies",
+        "shortName": "Tech",
+        "accent": "violet"
+      },
+      "heroImage": {
+        "url": "https://picsum.photos/seed/art-intelligence-artificielle-le-senegal-lance-un-centre-national-de-reche-12/1600/900",
+        "thumbnailUrl": "https://picsum.photos/seed/art-intelligence-artificielle-le-senegal-lance-un-centre-national-de-reche-12/640/360",
+        "altText": "Intelligence artificielle : le Sénégal lance un centre national de recherche appliquée",
+        "width": 1600,
+        "height": 900
+      },
+      "authors": [
+        {
+          "position": 0,
+          "role": "Auteur",
+          "user": {
+            "id": "cmuol9z7c003ezihp51tgfj6j",
+            "displayName": "Nadia Sy",
+            "name": "Nadia Sy",
+            "image": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "cmuol9zcn006szihpdqh8gubn",
+      "slug": "diaspora-les-transferts-de-fonds-vers-le-senegal-atteignent-un-niveau--14",
+      "title": "Diaspora : les transferts de fonds vers le Sénégal atteignent un niveau record",
+      "subtitle": "Plus de 3 000 milliards FCFA transférés en un an, malgré la hausse des frais",
+      "excerpt": "Les transferts de la diaspora sénégalaise ont atteint un niveau record, dépassant les 3 000 milliards de francs CFA sur douze mois, selon les données de la banque centrale.",
+      "isPremium": false,
+      "isBreaking": false,
+      "isFeatured": true,
+      "format": "STANDARD",
+      "readingMinutes": 1,
+      "viewCount": 10452,
+      "commentCount": 0,
+      "publishedAt": "2026-09-29T17:00:06.067Z",
+      "category": {
+        "id": "cmuol9yxm002bzihpnz87ud3a",
+        "slug": "diaspora",
+        "name": "Diaspora",
+        "shortName": "Diaspora",
+        "accent": "orange"
+      },
+      "heroImage": {
+        "url": "https://picsum.photos/seed/art-diaspora-les-transferts-de-fonds-vers-le-senegal-atteignent-un-niveau--14/1600/900",
+        "thumbnailUrl": "https://picsum.photos/seed/art-diaspora-les-transferts-de-fonds-vers-le-senegal-atteignent-un-niveau--14/640/360",
+        "altText": "Diaspora : les transferts de fonds vers le Sénégal atteignent un niveau record",
+        "width": 1600,
+        "height": 900
+      },
+      "authors": [
+        {
+          "position": 0,
+          "role": "Auteur",
+          "user": {
+            "id": "cmuol9z7f003izihp7rp6hi9o",
+            "displayName": "Ousmane Touré",
+            "name": "Ousmane Touré",
+            "image": null
+          }
+        }
+      ]
+    }
+  ],
+  "featured": [
+    {
+      "id": "cmuol9zas005fzihpnuk7txx8",
+      "slug": "lions-de-la-teranga-le-senegal-s-impose-2-0-et-valide-sa-qualification-02",
+      "title": "Lions de la Teranga : le Sénégal s'impose 2-0 et valide sa qualification",
+      "subtitle": "Une victoire maîtrisée au stade Abdoulaye Wade devant 45 000 spectateurs",
+      "excerpt": "Portés par une première période de haute intensité, les Lions ont dominé leur adversaire et composté leur billet pour la phase finale. La défense n'a pas encaissé depuis cinq matchs.",
+      "isPremium": false,
+      "isBreaking": true,
+      "isFeatured": true,
+      "format": "STANDARD",
+      "readingMinutes": 1,
+      "viewCount": 34121,
+      "commentCount": 0,
+      "publishedAt": "2026-09-30T19:00:06.000Z",
+      "category": {
+        "id": "cmuol9ywl0013zihp9bwbq7ao",
+        "slug": "sports",
+        "name": "Sports",
+        "shortName": "Sports",
+        "accent": "blue"
+      },
+      "heroImage": {
+        "url": "https://picsum.photos/seed/art-lions-de-la-teranga-le-senegal-s-impose-2-0-et-valide-sa-qualification-02/1600/900",
+        "thumbnailUrl": "https://picsum.photos/seed/art-lions-de-la-teranga-le-senegal-s-impose-2-0-et-valide-sa-qualification-02/640/360",
+        "altText": "Lions de la Teranga : le Sénégal s'impose 2-0 et valide sa qualification",
+        "width": 1600,
+        "height": 900
+      },
+      "authors": [
+        {
+          "position": 0,
+          "role": "Auteur",
+          "user": {
+            "id": "cmuol9z6z0032zihp8xyl7e86",
+            "displayName": "Ibrahima Ba",
+            "name": "Ibrahima Ba",
+            "image": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "cmuol9z89003uzihpgvcq9gpp",
+      "slug": "conseil-des-ministres-le-gouvernement-adopte-un-plan-d-urgence-pour-l--03",
+      "title": "Conseil des ministres : le gouvernement adopte un plan d'urgence pour l'emploi des jeunes",
+      "subtitle": "Un dispositif de 45 milliards FCFA ciblant 120 000 primo-demandeurs d'emploi sur trois ans",
+      "excerpt": "Réuni au Palais de la République, le Conseil des ministres a adopté mercredi un programme national d'insertion professionnelle des jeunes, assorti d'un fonds de garantie destiné aux très petites entreprises.",
+      "isPremium": false,
+      "isBreaking": false,
+      "isFeatured": true,
+      "format": "STANDARD",
+      "readingMinutes": 1,
+      "viewCount": 18420,
+      "commentCount": 3,
+      "publishedAt": "2026-09-30T18:00:05.892Z",
+      "category": {
+        "id": "cmuol9yvf0000zihp2t5m5yiw",
+        "slug": "politique",
+        "name": "Politique",
+        "shortName": "Politique",
+        "accent": "green"
+      },
+      "heroImage": {
+        "url": "https://picsum.photos/seed/art-conseil-des-ministres-le-gouvernement-adopte-un-plan-d-urgence-pour-l--03/1600/900",
+        "thumbnailUrl": "https://picsum.photos/seed/art-conseil-des-ministres-le-gouvernement-adopte-un-plan-d-urgence-pour-l--03/640/360",
+        "altText": "Conseil des ministres : le gouvernement adopte un plan d'urgence pour l'emploi des jeunes",
+        "width": 1600,
+        "height": 900
+      },
+      "authors": [
+        {
+          "position": 0,
+          "role": "Auteur",
+          "user": {
+            "id": "cmuol9z6r002uzihp0wcws9s7",
+            "displayName": "Moussa Fall",
+            "name": "Moussa Fall",
+            "image": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "cmuol9z8y0046zihp4wfixn9o",
+      "slug": "sante-le-nouvel-hopital-de-diamniadio-entre-en-service-partiel-06",
+      "title": "Santé : le nouvel hôpital de Diamniadio entre en service partiel",
+      "subtitle": "Six services ouvrent progressivement, avec une capacité cible de 300 lits",
+      "excerpt": "Le nouvel établissement hospitalier de Diamniadio a accueilli ses premiers patients. Six services sur douze sont opérationnels, le reste devant ouvrir d'ici la fin de l'année.",
+      "isPremium": false,
+      "isBreaking": false,
+      "isFeatured": true,
+      "format": "STANDARD",
+      "readingMinutes": 1,
+      "viewCount": 12670,
+      "commentCount": 3,
+      "publishedAt": "2026-09-30T15:00:05.934Z",
+      "category": {
+        "id": "cmuol9yvt000bzihpmaxwofu8",
+        "slug": "societe",
+        "name": "Société",
+        "shortName": "Société",
+        "accent": "teal"
+      },
+      "heroImage": {
+        "url": "https://picsum.photos/seed/art-sante-le-nouvel-hopital-de-diamniadio-entre-en-service-partiel-06/1600/900",
+        "thumbnailUrl": "https://picsum.photos/seed/art-sante-le-nouvel-hopital-de-diamniadio-entre-en-service-partiel-06/640/360",
+        "altText": "Santé : le nouvel hôpital de Diamniadio entre en service partiel",
+        "width": 1600,
+        "height": 900
+      },
+      "authors": [
+        {
+          "position": 0,
+          "role": "Auteur",
+          "user": {
+            "id": "cmuol9z740036zihp4hiyajob",
+            "displayName": "Mariama Diallo",
+            "name": "Mariama Diallo",
+            "image": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "cmuol9zbi005yzihpaxtld4q9",
+      "slug": "intelligence-artificielle-le-senegal-lance-un-centre-national-de-reche-12",
+      "title": "Intelligence artificielle : le Sénégal lance un centre national de recherche appliquée",
+      "subtitle": "Le centre sera adossé aux universités et aux entreprises du secteur numérique",
+      "excerpt": "Le pays se dote d'un centre national dédié à l'intelligence artificielle appliquée, avec pour priorité la santé, l'agriculture et l'administration publique.",
+      "isPremium": false,
+      "isBreaking": false,
+      "isFeatured": true,
+      "format": "STANDARD",
+      "readingMinutes": 1,
+      "viewCount": 13410,
+      "commentCount": 0,
+      "publishedAt": "2026-09-29T19:00:06.026Z",
+      "category": {
+        "id": "cmuol9yww001gzihpuo6bmnvo",
+        "slug": "technologies",
+        "name": "Technologies",
+        "shortName": "Tech",
+        "accent": "violet"
+      },
+      "heroImage": {
+        "url": "https://picsum.photos/seed/art-intelligence-artificielle-le-senegal-lance-un-centre-national-de-reche-12/1600/900",
+        "thumbnailUrl": "https://picsum.photos/seed/art-intelligence-artificielle-le-senegal-lance-un-centre-national-de-reche-12/640/360",
+        "altText": "Intelligence artificielle : le Sénégal lance un centre national de recherche appliquée",
+        "width": 1600,
+        "height": 900
+      },
+      "authors": [
+        {
+          "position": 0,
+          "role": "Auteur",
+          "user": {
+            "id": "cmuol9z7c003ezihp51tgfj6j",
+            "displayName": "Nadia Sy",
+            "name": "Nadia Sy",
+            "image": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "cmuol9zcn006szihpdqh8gubn",
+      "slug": "diaspora-les-transferts-de-fonds-vers-le-senegal-atteignent-un-niveau--14",
+      "title": "Diaspora : les transferts de fonds vers le Sénégal atteignent un niveau record",
+      "subtitle": "Plus de 3 000 milliards FCFA transférés en un an, malgré la hausse des frais",
+      "excerpt": "Les transferts de la diaspora sénégalaise ont atteint un niveau record, dépassant les 3 000 milliards de francs CFA sur douze mois, selon les données de la banque centrale.",
+      "isPremium": false,
+      "isBreaking": false,
+      "isFeatured": true,
+      "format": "STANDARD",
+      "readingMinutes": 1,
+      "viewCount": 10452,
+      "commentCount": 0,
+      "publishedAt": "2026-09-29T17:00:06.067Z",
+      "category": {
+        "id": "cmuol9yxm002bzihpnz87ud3a",
+        "slug": "diaspora",
+        "name": "Diaspora",
+        "shortName": "Diaspora",
+        "accent": "orange"
+      },
+      "heroImage": {
+        "url": "https://picsum.photos/seed/art-diaspora-les-transferts-de-fonds-vers-le-senegal-atteignent-un-niveau--14/1600/900",
+        "thumbnailUrl": "https://picsum.photos/seed/art-diaspora-les-transferts-de-fonds-vers-le-senegal-atteignent-un-niveau--14/640/360",
+        "altText": "Diaspora : les transferts de fonds vers le Sénégal atteignent un niveau record",
+        "width": 1600,
+        "height": 900
+      },
+      "authors": [
+        {
+          "position": 0,
+          "role": "Auteur",
+          "user": {
+            "id": "cmuol9z7f003izihp7rp6hi9o",
+            "displayName": "Ousmane Touré",
+            "name": "Ousmane Touré",
+            "image": null
+          }
+        }
+      ]
+    }
+  ],
+  "breaking": [
+    {
+      "id": "cmuol9z9k004jzihpppu6rheq",
+      "slug": "environnement-l-erosion-cotiere-s-accelere-a-saint-louis-400-familles--01",
+      "title": "Environnement : l'érosion côtière s'accélère à Saint-Louis, 400 familles à relocaliser",
+      "publishedAt": "2026-09-30T20:00:05.956Z",
+      "category": {
+        "slug": "societe",
+        "name": "Société",
+        "accent": "teal"
+      }
+    },
+    {
+      "id": "cmuol9zas005fzihpnuk7txx8",
+      "slug": "lions-de-la-teranga-le-senegal-s-impose-2-0-et-valide-sa-qualification-02",
+      "title": "Lions de la Teranga : le Sénégal s'impose 2-0 et valide sa qualification",
+      "publishedAt": "2026-09-30T19:00:06.000Z",
+      "category": {
+        "slug": "sports",
+        "name": "Sports",
+        "accent": "blue"
+      }
+    }
+  ],
+  "latest": [
+    {
+      "id": "cmuol9z9k004jzihpppu6rheq",
+      "slug": "environnement-l-erosion-cotiere-s-accelere-a-saint-louis-400-familles--01",
+      "title": "Environnement : l'érosion côtière s'accélère à Saint-Louis, 400 familles à relocaliser",
+      "publishedAt": "2026-09-30T20:00:05.956Z",
+      "category": {
+        "slug": "societe",
+        "name": "Société",
+        "accent": "teal"
+      }
+    },
+    {
+      "id": "cmuol9zas005fzihpnuk7txx8",
+      "slug": "lions-de-la-teranga-le-senegal-s-impose-2-0-et-valide-sa-qualification-02",
+      "title": "Lions de la Teranga : le Sénégal s'impose 2-0 et valide sa qualification",
+      "publishedAt": "2026-09-30T19:00:06.000Z",
+      "category": {
+        "slug": "sports",
+        "name": "Sports",
+        "accent": "blue"
+      }
+    },
+    {
+      "id": "cmuol9z89003uzihpgvcq9gpp",
+      "slug": "conseil-des-ministres-le-gouvernement-adopte-un-plan-d-urgence-pour-l--03",
+      "title": "Conseil des ministres : le gouvernement adopte un plan d'urgence pour l'emploi des jeunes",
+      "publishedAt": "2026-09-30T18:00:05.892Z",
+      "category": {
+        "slug": "politique",
+        "name": "Politique",
+        "accent": "green"
+      }
+    },
+    {
+      "id": "cmuol9z8y0046zihp4wfixn9o",
+      "slug": "sante-le-nouvel-hopital-de-diamniadio-entre-en-service-partiel-06",
+      "title": "Santé : le nouvel hôpital de Diamniadio entre en service partiel",
+      "publishedAt": "2026-09-30T15:00:05.934Z",
+      "category": {
+        "slug": "societe",
+        "name": "Société",
+        "accent": "teal"
+      }
+    }
+  ],
+  "tags": [
+    {
+      "id": "cmuol9z9h004fzihpfb9mooln",
+      "slug": "littoral",
+      "name": "littoral",
+      "usageCount": 1
+    },
+    {
+      "id": "cmuol9z9q004mzihp0l319nzo",
+      "slug": "gaz",
+      "name": "gaz",
+      "usageCount": 1
+    },
+    {
+      "id": "cmuol9z7s003pzihpsf954xu9",
+      "slug": "emploi",
+      "name": "emploi",
+      "usageCount": 0
+    },
+    {
+      "id": "cmuol9zaq005bzihpyp4gk1ma",
+      "slug": "football",
+      "name": "football",
+      "usageCount": 0
+    },
+    {
+      "id": "cmuol9zbg005tzihp92lumq3z",
+      "slug": "ia",
+      "name": "IA",
+      "usageCount": 0
+    }
+  ],
+  "podcasts": [
+    {
+      "id": "cmuol9zet008fzihp7z9n01nx",
+      "slug": "le-debrief",
+      "name": "Le Débrief",
+      "tagline": "L'actualité sénégalaise décryptée chaque soir",
+      "hostName": "Fatou Ndiaye",
+      "category": "Actualité",
+      "episodeCount": 4,
+      "cover": {
+        "url": "https://picsum.photos/seed/pod-le-debrief/800/800",
+        "altText": "Le Débrief"
+      },
+      "episodes": [
+        {
+          "id": "cmuol9zew008hzihpdnt7rjue",
+          "slug": "le-debrief-emploi-des-jeunes-le-plan-du-gouvernement-peut-il-fonctionne-0",
+          "title": "Emploi des jeunes : le plan du gouvernement peut-il fonctionner ?",
+          "durationSeconds": 1680,
+          "publishedAt": "2026-09-30T21:00:06.151Z"
+        }
+      ]
+    },
+    {
+      "id": "cmuol9zf7008qzihphl9p3bdx",
+      "slug": "grand-format",
+      "name": "Grand Format",
+      "tagline": "Le magazine des grandes enquêtes",
+      "hostName": "Amadou Diarra",
+      "category": "Enquêtes",
+      "episodeCount": 3,
+      "cover": {
+        "url": "https://picsum.photos/seed/pod-grand-format/800/800",
+        "altText": "Grand Format"
+      },
+      "episodes": [
+        {
+          "id": "cmuol9zf9008szihpjnc6757h",
+          "slug": "grand-format-enquete-les-coulisses-du-marche-public-de-plusieurs-milliard-0",
+          "title": "Enquête : les coulisses du marché public de plusieurs milliards",
+          "durationSeconds": 3120,
+          "publishedAt": "2026-09-27T21:00:06.165Z"
+        }
+      ]
+    },
+    {
+      "id": "cmuol9zfh008zzihpzurjmqji",
+      "slug": "teranga-tech",
+      "name": "Teranga Tech",
+      "tagline": "L'écosystème numérique africain",
+      "hostName": "Nadia Sy",
+      "category": "Technologies",
+      "episodeCount": 3,
+      "cover": {
+        "url": "https://picsum.photos/seed/pod-teranga-tech/800/800",
+        "altText": "Teranga Tech"
+      },
+      "episodes": [
+        {
+          "id": "cmuol9zfi0091zihpsg5t2ew0",
+          "slug": "teranga-tech-ia-appliquee-le-senegal-peut-il-creer-ses-propres-modeles-0",
+          "title": "IA appliquée : le Sénégal peut-il créer ses propres modèles ?",
+          "durationSeconds": 1980,
+          "publishedAt": "2026-09-29T21:00:06.174Z"
+        }
+      ]
+    },
+    {
+      "id": "cmuol9zfp0098zihpft5w600s",
+      "slug": "les-lions",
+      "name": "Les Lions",
+      "tagline": "Le podcast qui vit au rythme du sport sénégalais",
+      "hostName": "Ibrahima Ba",
+      "category": "Sports",
+      "episodeCount": 2,
+      "cover": {
+        "url": "https://picsum.photos/seed/pod-les-lions/800/800",
+        "altText": "Les Lions"
+      },
+      "episodes": [
+        {
+          "id": "cmuol9zfr009azihpn0w1wkfs",
+          "slug": "les-lions-qualification-validee-les-cles-de-la-victoire-des-lions-0",
+          "title": "Qualification validée : les clés de la victoire des Lions",
+          "durationSeconds": 1560,
+          "publishedAt": "2026-09-30T21:00:06.182Z"
+        }
+      ]
+    }
+  ],
+  "videos": [
+    {
+      "id": "cmuol9zfw009fzihpoutzqsr9",
+      "slug": "direct-jt-soir",
+      "title": "Le journal du soir — édition complète",
+      "description": "L'intégralité de l'édition du soir : politique, économie, société et sport.",
+      "durationSeconds": 1500,
+      "isLive": false,
+      "viewCount": 24081,
+      "publishedAt": "2026-09-30T21:00:06.188Z",
+      "thumbnail": {
+        "url": "https://picsum.photos/seed/vid-direct-jt-soir/1280/720",
+        "altText": "Le journal du soir — édition complète"
+      }
+    },
+    {
+      "id": "cmuol9zg5009lzihpvj7s4vn4",
+      "slug": "itw-ministre-emploi",
+      "title": "Entretien — le ministre de l'Emploi détaille le plan jeunes",
+      "description": "Vingt minutes d’entretien sur le financement, le calendrier et les critères d’évaluation du dispositif.",
+      "durationSeconds": 1260,
+      "isLive": false,
+      "viewCount": 27262,
+      "publishedAt": "2026-09-29T21:00:06.197Z",
+      "thumbnail": {
+        "url": "https://picsum.photos/seed/vid-itw-ministre-emploi/1280/720",
+        "altText": "Entretien — le ministre de l'Emploi détaille le plan jeunes"
+      }
+    },
+    {
+      "id": "cmuol9zg1009izihp3ru7627z",
+      "slug": "reportage-saint-louis",
+      "title": "Reportage — Saint-Louis face à la montée des eaux",
+      "description": "Immersion dans les quartiers menacés par l’érosion côtière, avec les habitants et les scientifiques.",
+      "durationSeconds": 780,
+      "isLive": false,
+      "viewCount": 23578,
+      "publishedAt": "2026-09-29T21:00:06.193Z",
+      "thumbnail": {
+        "url": "https://picsum.photos/seed/vid-reportage-saint-louis/1280/720",
+        "altText": "Reportage — Saint-Louis face à la montée des eaux"
+      }
+    },
+    {
+      "id": "cmuol9zg8009ozihpy9ei3scq",
+      "slug": "debat-economie",
+      "title": "Débat — Pétrole et gaz : quelles retombées pour les Sénégalais ?",
+      "description": "Trois économistes confrontent leurs analyses sur la gestion des recettes extractives.",
+      "durationSeconds": 2700,
+      "isLive": false,
+      "viewCount": 21300,
+      "publishedAt": "2026-09-28T21:00:06.200Z",
+      "thumbnail": {
+        "url": "https://picsum.photos/seed/vid-debat-economie/1280/720",
+        "altText": "Débat — Pétrole et gaz : quelles retombées pour les Sénégalais ?"
+      }
+    },
+    {
+      "id": "cmuol9zgc009rzihpqddelqd0",
+      "slug": "grand-combat-lutte",
+      "title": "Lutte — les coulisses de l'arène de Pikine",
+      "description": "Préparation, écuries et ambiance : reportage au plus près du grand combat.",
+      "durationSeconds": 900,
+      "isLive": false,
+      "viewCount": 44608,
+      "publishedAt": "2026-09-27T21:00:06.203Z",
+      "thumbnail": {
+        "url": "https://picsum.photos/seed/vid-grand-combat-lutte/1280/720",
+        "altText": "Lutte — les coulisses de l'arène de Pikine"
+      }
+    },
+    {
+      "id": "cmuol9zgf009uzihp0lpbu9kt",
+      "slug": "teranga-tech-ia",
+      "title": "Teranga Tech — le centre national IA en questions",
+      "description": "Table ronde avec les chercheurs impliqués dans le futur centre national d’intelligence artificielle.",
+      "durationSeconds": 1620,
+      "isLive": false,
+      "viewCount": 22081,
+      "publishedAt": "2026-09-26T21:00:06.207Z",
+      "thumbnail": {
+        "url": "https://picsum.photos/seed/vid-teranga-tech-ia/1280/720",
+        "altText": "Teranga Tech — le centre national IA en questions"
+      }
+    }
+  ],
+  "ad": {
+    "id": "cmuol9zgv009xzihpwead3722",
+    "name": "Leaderboard en-tête",
+    "imageUrl": "https://picsum.photos/seed/ad-HEADER_LEADERBOARD/728/90",
+    "targetUrl": "https://www.sencourrier.sn/publicite",
+    "htmlSnippet": null
+  },
+  "categories": [
+    {
+      "id": "cmuol9yvf0000zihp2t5m5yiw",
+      "slug": "politique",
+      "name": "Politique",
+      "shortName": "Politique",
+      "accent": "green",
+      "children": [
+        {
+          "id": "cmuol9yvj0002zihpcll4229l",
+          "slug": "presidence",
+          "name": "Présidence"
+        },
+        {
+          "id": "cmuol9yvm0004zihpngfp4kb3",
+          "slug": "gouvernement",
+          "name": "Gouvernement"
+        },
+        {
+          "id": "cmuol9yvo0006zihpi358qoqe",
+          "slug": "assemblee-nationale",
+          "name": "Assemblée nationale"
+        },
+        {
+          "id": "cmuol9yvq0008zihp77jekb2c",
+          "slug": "elections",
+          "name": "Élections"
+        },
+        {
+          "id": "cmuol9yvr000azihp7qqy3fuy",
+          "slug": "partis-politiques",
+          "name": "Partis politiques"
+        }
+      ]
+    },
+    {
+      "id": "cmuol9yvt000bzihpmaxwofu8",
+      "slug": "societe",
+      "name": "Société",
+      "shortName": "Société",
+      "accent": "teal",
+      "children": [
+        {
+          "id": "cmuol9yvu000dzihpu8t9de8u",
+          "slug": "education",
+          "name": "Éducation"
+        },
+        {
+          "id": "cmuol9yvv000fzihpltxlj4qr",
+          "slug": "sante",
+          "name": "Santé"
+        },
+        {
+          "id": "cmuol9yw0000hzihp8gt4ldei",
+          "slug": "religion",
+          "name": "Religion"
+        },
+        {
+          "id": "cmuol9yw6000jzihp4gvx9t9j",
+          "slug": "culture",
+          "name": "Culture"
+        },
+        {
+          "id": "cmuol9yw7000lzihphitcwnjk",
+          "slug": "environnement",
+          "name": "Environnement"
+        },
+        {
+          "id": "cmuol9yw9000nzihptvyoayxt",
+          "slug": "jeunesse",
+          "name": "Jeunesse"
+        }
+      ]
+    },
+    {
+      "id": "cmuol9ywa000ozihp7d61x3im",
+      "slug": "economie",
+      "name": "Économie",
+      "shortName": "Éco",
+      "accent": "yellow",
+      "children": [
+        {
+          "id": "cmuol9ywb000qzihp583pszxg",
+          "slug": "entreprises",
+          "name": "Entreprises"
+        },
+        {
+          "id": "cmuol9ywd000szihp0rnrteuy",
+          "slug": "startups",
+          "name": "Startups"
+        },
+        {
+          "id": "cmuol9ywe000uzihpg987v4rn",
+          "slug": "finances",
+          "name": "Finances"
+        },
+        {
+          "id": "cmuol9ywf000wzihpxbm3k2p8",
+          "slug": "bourse",
+          "name": "Bourse"
+        },
+        {
+          "id": "cmuol9ywh000yzihps0lh7irc",
+          "slug": "agriculture",
+          "name": "Agriculture"
+        },
+        {
+          "id": "cmuol9ywi0010zihpxxrpgpgy",
+          "slug": "peche",
+          "name": "Pêche"
+        },
+        {
+          "id": "cmuol9ywk0012zihp2l3n7p0r",
+          "slug": "energie",
+          "name": "Énergie"
+        }
+      ]
+    },
+    {
+      "id": "cmuol9ywl0013zihp9bwbq7ao",
+      "slug": "sports",
+      "name": "Sports",
+      "shortName": "Sports",
+      "accent": "blue",
+      "children": [
+        {
+          "id": "cmuol9ywn0015zihprxshzeur",
+          "slug": "football",
+          "name": "Football"
+        },
+        {
+          "id": "cmuol9ywo0017zihpkkgxxq5z",
+          "slug": "lutte",
+          "name": "Lutte"
+        },
+        {
+          "id": "cmuol9ywp0019zihpwtkpaqzo",
+          "slug": "basketball",
+          "name": "Basketball"
+        },
+        {
+          "id": "cmuol9ywr001bzihpv04xv5je",
+          "slug": "handball",
+          "name": "Handball"
+        },
+        {
+          "id": "cmuol9yws001dzihpqwglr6ch",
+          "slug": "competitions-africaines",
+          "name": "Compétitions africaines"
+        },
+        {
+          "id": "cmuol9ywu001fzihpg2ua3e27",
+          "slug": "competitions-internationales",
+          "name": "Compétitions internationales"
+        }
+      ]
+    },
+    {
+      "id": "cmuol9yww001gzihpuo6bmnvo",
+      "slug": "technologies",
+      "name": "Technologies",
+      "shortName": "Tech",
+      "accent": "violet",
+      "children": [
+        {
+          "id": "cmuol9ywx001izihptcrxjzd7",
+          "slug": "ia",
+          "name": "Intelligence artificielle"
+        },
+        {
+          "id": "cmuol9ywz001kzihp3l03sabu",
+          "slug": "innovation",
+          "name": "Innovation"
+        },
+        {
+          "id": "cmuol9yx1001mzihpmqgpb9nm",
+          "slug": "telecoms",
+          "name": "Télécoms"
+        },
+        {
+          "id": "cmuol9yx2001ozihpmkp108ju",
+          "slug": "cybersecurite",
+          "name": "Cybersécurité"
+        }
+      ]
+    },
+    {
+      "id": "cmuol9yx4001pzihpjonafzbf",
+      "slug": "faits-divers",
+      "name": "Faits Divers",
+      "shortName": "Faits divers",
+      "accent": "red",
+      "children": [
+        {
+          "id": "cmuol9yx5001rzihpdab118b4",
+          "slug": "justice",
+          "name": "Justice"
+        },
+        {
+          "id": "cmuol9yx7001tzihp1yho94oj",
+          "slug": "securite",
+          "name": "Sécurité"
+        },
+        {
+          "id": "cmuol9yx8001vzihpavrq0b4c",
+          "slug": "accidents",
+          "name": "Accidents"
+        },
+        {
+          "id": "cmuol9yxa001xzihpa1bw1khp",
+          "slug": "enquetes",
+          "name": "Enquêtes"
+        }
+      ]
+    },
+    {
+      "id": "cmuol9yxb001yzihpmgxu0hzl",
+      "slug": "international",
+      "name": "International",
+      "shortName": "International",
+      "accent": "slate",
+      "children": [
+        {
+          "id": "cmuol9yxd0020zihptzk6xd09",
+          "slug": "afrique",
+          "name": "Afrique"
+        },
+        {
+          "id": "cmuol9yxe0022zihphlnv18ms",
+          "slug": "cedeao",
+          "name": "CEDEAO"
+        },
+        {
+          "id": "cmuol9yxg0024zihp7153f7z7",
+          "slug": "europe",
+          "name": "Europe"
+        },
+        {
+          "id": "cmuol9yxh0026zihppg2vwfx0",
+          "slug": "asie",
+          "name": "Asie"
+        },
+        {
+          "id": "cmuol9yxj0028zihpkgm2dlj1",
+          "slug": "moyen-orient",
+          "name": "Moyen-Orient"
+        },
+        {
+          "id": "cmuol9yxl002azihphj9c9vzs",
+          "slug": "ameriques",
+          "name": "Amériques"
+        }
+      ]
+    },
+    {
+      "id": "cmuol9yxm002bzihpnz87ud3a",
+      "slug": "diaspora",
+      "name": "Diaspora",
+      "shortName": "Diaspora",
+      "accent": "orange",
+      "children": [
+        {
+          "id": "cmuol9yxo002dzihpjihuafv8",
+          "slug": "france",
+          "name": "France"
+        },
+        {
+          "id": "cmuol9yxp002fzihpoyxvu0jb",
+          "slug": "italie",
+          "name": "Italie"
+        },
+        {
+          "id": "cmuol9yxq002hzihp4778r2zp",
+          "slug": "espagne",
+          "name": "Espagne"
+        },
+        {
+          "id": "cmuol9yxs002jzihp8lw1mlro",
+          "slug": "etats-unis",
+          "name": "États-Unis"
+        },
+        {
+          "id": "cmuol9yxt002lzihpw8bbjpjl",
+          "slug": "canada",
+          "name": "Canada"
+        }
+      ]
+    }
+  ],
+  "plans": [
+    {
+      "id": "plan-free",
+      "tier": "FREE",
+      "name": "Gratuit",
+      "description": "L'essentiel de l'actualité sénégalaise, en accès libre et sans limite de consultation.",
+      "priceAmount": 0,
+      "currency": "XOF",
+      "interval": "month",
+      "features": [
+        "Accès à tous les articles standards",
+        "Newsletter quotidienne",
+        "TV en direct et podcasts publics",
+        "Application web progressive (PWA)",
+        "Commentaires modérés"
+      ],
+      "isPopular": false,
+      "isActive": true,
+      "trialDays": 0,
+      "stripePriceId": null,
+      "position": 0,
+      "createdAt": "2026-09-30T21:00:06.210Z",
+      "updatedAt": "2026-09-30T21:00:06.210Z"
+    },
+    {
+      "id": "plan-premium",
+      "tier": "PREMIUM",
+      "name": "Premium Mensuel",
+      "description": "Tout SENCOURRIER, sans publicité, avec les dossiers exclusifs de la rédaction.",
+      "priceAmount": 2500,
+      "currency": "XOF",
+      "interval": "month",
+      "features": [
+        "Tous les articles exclusifs et analyses",
+        "Suppression totale des publicités",
+        "Dossiers spéciaux et enquêtes longues",
+        "Podcasts premium et versions intégrales",
+        "Newsletter réservée aux abonnés",
+        "Accès anticipé aux publications",
+        "Archives complètes depuis 2024"
+      ],
+      "isPopular": true,
+      "isActive": true,
+      "trialDays": 0,
+      "stripePriceId": null,
+      "position": 1,
+      "createdAt": "2026-09-30T21:00:06.213Z",
+      "updatedAt": "2026-09-30T21:00:06.213Z"
+    },
+    {
+      "id": "plan-premium_annual",
+      "tier": "PREMIUM_ANNUAL",
+      "name": "Premium Annuel",
+      "description": "Deux mois offerts par rapport à l'abonnement mensuel, pour les lecteurs fidèles.",
+      "priceAmount": 25000,
+      "currency": "XOF",
+      "interval": "year",
+      "features": [
+        "Toutes les avantages de l'offre Premium",
+        "Économie de 5 000 FCFA par an",
+        "Accès aux rencontres avec la rédaction",
+        "Version numérique du magazine annuel",
+        "Badge abonné sur les commentaires"
+      ],
+      "isPopular": false,
+      "isActive": true,
+      "trialDays": 0,
+      "stripePriceId": null,
+      "position": 2,
+      "createdAt": "2026-09-30T21:00:06.214Z",
+      "updatedAt": "2026-09-30T21:00:06.214Z"
+    },
+    {
+      "id": "plan-press_pro",
+      "tier": "PRESS_PRO",
+      "name": "Presse Pro",
+      "description": "Offre destinée aux entreprises, institutions, ONG et professionnels de l’information.",
+      "priceAmount": 75000,
+      "currency": "XOF",
+      "interval": "year",
+      "features": [
+        "Tous les avantages Premium",
+        "Cinq comptes nominatifs",
+        "Licence de reproduction interne",
+        "Veille sectorielle personnalisée",
+        "Accès à l’API de contenus",
+        "Facturation sur bon de commande"
+      ],
+      "isPopular": false,
+      "isActive": true,
+      "trialDays": 0,
+      "stripePriceId": null,
+      "position": 3,
+      "createdAt": "2026-09-30T21:00:06.216Z",
+      "updatedAt": "2026-09-30T21:00:06.216Z"
+    }
+  ],
+  "sections": [
+    {
+      "id": "cmuol9yvf0000zihp2t5m5yiw",
+      "slug": "politique",
+      "name": "Politique",
+      "accent": "green",
+      "articles": [
+        {
+          "id": "cmuol9z89003uzihpgvcq9gpp",
+          "slug": "conseil-des-ministres-le-gouvernement-adopte-un-plan-d-urgence-pour-l--03",
+          "title": "Conseil des ministres : le gouvernement adopte un plan d'urgence pour l'emploi des jeunes",
+          "subtitle": "Un dispositif de 45 milliards FCFA ciblant 120 000 primo-demandeurs d'emploi sur trois ans",
+          "excerpt": "Réuni au Palais de la République, le Conseil des ministres a adopté mercredi un programme national d'insertion professionnelle des jeunes, assorti d'un fonds de garantie destiné aux très petites entreprises.",
+          "isPremium": false,
+          "isBreaking": false,
+          "isFeatured": true,
+          "format": "STANDARD",
+          "readingMinutes": 1,
+          "viewCount": 18420,
+          "commentCount": 3,
+          "publishedAt": "2026-09-30T18:00:05.892Z",
+          "category": {
+            "id": "cmuol9yvf0000zihp2t5m5yiw",
+            "slug": "politique",
+            "name": "Politique",
+            "shortName": "Politique",
+            "accent": "green"
+          },
+          "heroImage": {
+            "url": "https://picsum.photos/seed/art-conseil-des-ministres-le-gouvernement-adopte-un-plan-d-urgence-pour-l--03/1600/900",
+            "thumbnailUrl": "https://picsum.photos/seed/art-conseil-des-ministres-le-gouvernement-adopte-un-plan-d-urgence-pour-l--03/640/360",
+            "altText": "Conseil des ministres : le gouvernement adopte un plan d'urgence pour l'emploi des jeunes",
+            "width": 1600,
+            "height": 900
+          },
+          "authors": [
+            {
+              "position": 0,
+              "role": "Auteur",
+              "user": {
+                "id": "cmuol9z6r002uzihp0wcws9s7",
+                "displayName": "Moussa Fall",
+                "name": "Moussa Fall",
+                "image": null
+              }
+            }
+          ]
+        },
+        {
+          "id": "cmuol9z8n0040zihp14y8m9yc",
+          "slug": "elections-la-cena-presente-son-calendrier-pour-les-prochaines-election-20",
+          "title": "Élections : la CENA présente son calendrier pour les prochaines élections locales",
+          "subtitle": "Le fichier électoral sera révisé à partir du mois prochain dans les 557 communes",
+          "excerpt": "La Commission électorale nationale autonome a détaillé le calendrier de révision du fichier électoral et les modalités d'inscription pour les élections locales à venir.",
+          "isPremium": false,
+          "isBreaking": false,
+          "isFeatured": false,
+          "format": "STANDARD",
+          "readingMinutes": 1,
+          "viewCount": 7840,
+          "commentCount": 3,
+          "publishedAt": "2026-09-28T21:00:05.922Z",
+          "category": {
+            "id": "cmuol9yvf0000zihp2t5m5yiw",
+            "slug": "politique",
+            "name": "Politique",
+            "shortName": "Politique",
+            "accent": "green"
+          },
+          "heroImage": {
+            "url": "https://picsum.photos/seed/art-elections-la-cena-presente-son-calendrier-pour-les-prochaines-election-20/1600/900",
+            "thumbnailUrl": "https://picsum.photos/seed/art-elections-la-cena-presente-son-calendrier-pour-les-prochaines-election-20/640/360",
+            "altText": "Élections : la CENA présente son calendrier pour les prochaines élections locales",
+            "width": 1600,
+            "height": 900
+          },
+          "authors": [
+            {
+              "position": 0,
+              "role": "Auteur",
+              "user": {
+                "id": "cmuol9z6r002uzihp0wcws9s7",
+                "displayName": "Moussa Fall",
+                "name": "Moussa Fall",
+                "image": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cmuol9yvt000bzihpmaxwofu8",
+      "slug": "societe",
+      "name": "Société",
+      "accent": "teal",
+      "articles": [
+        {
+          "id": "cmuol9z9k004jzihpppu6rheq",
+          "slug": "environnement-l-erosion-cotiere-s-accelere-a-saint-louis-400-familles--01",
+          "title": "Environnement : l'érosion côtière s'accélère à Saint-Louis, 400 familles à relocaliser",
+          "subtitle": "Le trait de côte recule de plus de deux mètres par an dans certains quartiers",
+          "excerpt": "La commune de Saint-Louis fait face à une accélération de l'érosion côtière. Un plan de relocalisation concerne 400 familles installées sur la langue de Barbarie.",
+          "isPremium": false,
+          "isBreaking": true,
+          "isFeatured": false,
+          "format": "STANDARD",
+          "readingMinutes": 1,
+          "viewCount": 21890,
+          "commentCount": 3,
+          "publishedAt": "2026-09-30T20:00:05.956Z",
+          "category": {
+            "id": "cmuol9yvt000bzihpmaxwofu8",
+            "slug": "societe",
+            "name": "Société",
+            "shortName": "Société",
+            "accent": "teal"
+          },
+          "heroImage": {
+            "url": "https://picsum.photos/seed/art-environnement-l-erosion-cotiere-s-accelere-a-saint-louis-400-familles--01/1600/900",
+            "thumbnailUrl": "https://picsum.photos/seed/art-environnement-l-erosion-cotiere-s-accelere-a-saint-louis-400-familles--01/640/360",
+            "altText": "Environnement : l'érosion côtière s'accélère à Saint-Louis, 400 familles à relocaliser",
+            "width": 1600,
+            "height": 900
+          },
+          "authors": [
+            {
+              "position": 0,
+              "role": "Auteur",
+              "user": {
+                "id": "cmuol9z78003azihp2hrnajlu",
+                "displayName": "Cheikh Gueye",
+                "name": "Cheikh Gueye",
+                "image": null
+              }
+            }
+          ]
+        },
+        {
+          "id": "cmuol9z8y0046zihp4wfixn9o",
+          "slug": "sante-le-nouvel-hopital-de-diamniadio-entre-en-service-partiel-06",
+          "title": "Santé : le nouvel hôpital de Diamniadio entre en service partiel",
+          "subtitle": "Six services ouvrent progressivement, avec une capacité cible de 300 lits",
+          "excerpt": "Le nouvel établissement hospitalier de Diamniadio a accueilli ses premiers patients. Six services sur douze sont opérationnels, le reste devant ouvrir d'ici la fin de l'année.",
+          "isPremium": false,
+          "isBreaking": false,
+          "isFeatured": true,
+          "format": "STANDARD",
+          "readingMinutes": 1,
+          "viewCount": 12670,
+          "commentCount": 3,
+          "publishedAt": "2026-09-30T15:00:05.934Z",
+          "category": {
+            "id": "cmuol9yvt000bzihpmaxwofu8",
+            "slug": "societe",
+            "name": "Société",
+            "shortName": "Société",
+            "accent": "teal"
+          },
+          "heroImage": {
+            "url": "https://picsum.photos/seed/art-sante-le-nouvel-hopital-de-diamniadio-entre-en-service-partiel-06/1600/900",
+            "thumbnailUrl": "https://picsum.photos/seed/art-sante-le-nouvel-hopital-de-diamniadio-entre-en-service-partiel-06/640/360",
+            "altText": "Santé : le nouvel hôpital de Diamniadio entre en service partiel",
+            "width": 1600,
+            "height": 900
+          },
+          "authors": [
+            {
+              "position": 0,
+              "role": "Auteur",
+              "user": {
+                "id": "cmuol9z740036zihp4hiyajob",
+                "displayName": "Mariama Diallo",
+                "name": "Mariama Diallo",
+                "image": null
+              }
+            }
+          ]
+        },
+        {
+          "id": "cmuol9z9b004czihp2fuxa90o",
+          "slug": "education-la-rentree-universitaire-marquee-par-la-hausse-des-effectifs-15",
+          "title": "Éducation : la rentrée universitaire marquée par la hausse des effectifs en sciences",
+          "subtitle": "Les filières scientifiques enregistrent une progression de 18 % des inscriptions",
+          "excerpt": "Les universités publiques enregistrent une hausse notable des inscriptions en filières scientifiques, portée par les nouvelles bourses d'excellence et l'ouverture de licences professionnelles.",
+          "isPremium": false,
+          "isBreaking": false,
+          "isFeatured": false,
+          "format": "STANDARD",
+          "readingMinutes": 1,
+          "viewCount": 6450,
+          "commentCount": 3,
+          "publishedAt": "2026-09-29T16:00:05.946Z",
+          "category": {
+            "id": "cmuol9yvt000bzihpmaxwofu8",
+            "slug": "societe",
+            "name": "Société",
+            "shortName": "Société",
+            "accent": "teal"
+          },
+          "heroImage": {
+            "url": "https://picsum.photos/seed/art-education-la-rentree-universitaire-marquee-par-la-hausse-des-effectifs-15/1600/900",
+            "thumbnailUrl": "https://picsum.photos/seed/art-education-la-rentree-universitaire-marquee-par-la-hausse-des-effectifs-15/640/360",
+            "altText": "Éducation : la rentrée universitaire marquée par la hausse des effectifs en sciences",
+            "width": 1600,
+            "height": 900
+          },
+          "authors": [
+            {
+              "position": 0,
+              "role": "Auteur",
+              "user": {
+                "id": "cmuol9z740036zihp4hiyajob",
+                "displayName": "Mariama Diallo",
+                "name": "Mariama Diallo",
+                "image": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cmuol9ywa000ozihp7d61x3im",
+      "slug": "economie",
+      "name": "Économie",
+      "accent": "yellow",
+      "articles": [
+        {
+          "id": "cmuol9z9t004qzihpfis6j2nn",
+          "slug": "energie-le-champ-gazier-grand-tortue-ahmeyim-livre-ses-premiers-volume-18",
+          "title": "Énergie : le champ gazier Grand Tortue Ahmeyim livre ses premiers volumes",
+          "subtitle": "Une étape décisive pour la souveraineté énergétique du Sénégal",
+          "excerpt": "Le projet gazier offshore partagé avec la Mauritanie a livré ses premiers volumes commerciaux. Les recettes attendues transforment l'équation budgétaire du pays.",
+          "isPremium": false,
+          "isBreaking": false,
+          "isFeatured": true,
+          "format": "STANDARD",
+          "readingMinutes": 1,
+          "viewCount": 16230,
+          "commentCount": 3,
+          "publishedAt": "2026-09-29T13:00:05.965Z",
+          "category": {
+            "id": "cmuol9ywa000ozihp7d61x3im",
+            "slug": "economie",
+            "name": "Économie",
+            "shortName": "Éco",
+            "accent": "yellow"
+          },
+          "heroImage": {
+            "url": "https://picsum.photos/seed/art-energie-le-champ-gazier-grand-tortue-ahmeyim-livre-ses-premiers-volume-18/1600/900",
+            "thumbnailUrl": "https://picsum.photos/seed/art-energie-le-champ-gazier-grand-tortue-ahmeyim-livre-ses-premiers-volume-18/640/360",
+            "altText": "Énergie : le champ gazier Grand Tortue Ahmeyim livre ses premiers volumes",
+            "width": 1600,
+            "height": 900
+          },
+          "authors": [
+            {
+              "position": 0,
+              "role": "Auteur",
+              "user": {
+                "id": "cmuol9z6v002yzihpg338deha",
+                "displayName": "Awa Sow",
+                "name": "Awa Sow",
+                "image": null
+              }
+            }
+          ]
+        },
+        {
+          "id": "cmuol9zdl007czihp3ixxn1ba",
+          "slug": "dossier-special-petrole-et-gaz-les-dix-annees-qui-vont-transformer-le--21",
+          "title": "Dossier spécial — Pétrole et gaz : les dix années qui vont transformer le Sénégal",
+          "subtitle": "Enquête sur les contrats, le contenu local et les risques de la malédiction des ressources",
+          "excerpt": "Comment éviter la malédiction des ressources ? Enquête sur les contrats pétroliers et gaziers, le contenu local, la fiscalité et les choix budgétaires qui détermineront la trajectoire du pays.",
+          "isPremium": true,
+          "isBreaking": false,
+          "isFeatured": true,
+          "format": "ANALYSIS",
+          "readingMinutes": 1,
+          "viewCount": 22340,
+          "commentCount": 0,
+          "publishedAt": "2026-09-28T20:00:06.092Z",
+          "category": {
+            "id": "cmuol9ywa000ozihp7d61x3im",
+            "slug": "economie",
+            "name": "Économie",
+            "shortName": "Éco",
+            "accent": "yellow"
+          },
+          "heroImage": {
+            "url": "https://picsum.photos/seed/art-dossier-special-petrole-et-gaz-les-dix-annees-qui-vont-transformer-le--21/1600/900",
+            "thumbnailUrl": "https://picsum.photos/seed/art-dossier-special-petrole-et-gaz-les-dix-annees-qui-vont-transformer-le--21/640/360",
+            "altText": "Dossier spécial — Pétrole et gaz : les dix années qui vont transformer le Sénégal",
+            "width": 1600,
+            "height": 900
+          },
+          "authors": [
+            {
+              "position": 0,
+              "role": "Auteur",
+              "user": {
+                "id": "cmuol9z6v002yzihpg338deha",
+                "displayName": "Awa Sow",
+                "name": "Awa Sow",
+                "image": null
+              }
+            }
+          ]
+        },
+        {
+          "id": "cmuol9za3004xzihpc639uz71",
+          "slug": "startups-une-fintech-dakaroise-leve-12-millions-de-dollars-en-serie-a-24",
+          "title": "Startups : une fintech dakaroise lève 12 millions de dollars en série A",
+          "subtitle": "Le tour de table doit financer l'expansion vers quatre pays de la sous-région",
+          "excerpt": "La jeune pousse dakaroise spécialisée dans les paiements marchands a bouclé une levée de 12 millions de dollars, l'une des plus importantes du secteur au Sénégal.",
+          "isPremium": false,
+          "isBreaking": false,
+          "isFeatured": false,
+          "format": "STANDARD",
+          "readingMinutes": 1,
+          "viewCount": 11050,
+          "commentCount": 0,
+          "publishedAt": "2026-09-28T17:00:05.976Z",
+          "category": {
+            "id": "cmuol9ywa000ozihp7d61x3im",
+            "slug": "economie",
+            "name": "Économie",
+            "shortName": "Éco",
+            "accent": "yellow"
+          },
+          "heroImage": {
+            "url": "https://picsum.photos/seed/art-startups-une-fintech-dakaroise-leve-12-millions-de-dollars-en-serie-a-24/1600/900",
+            "thumbnailUrl": "https://picsum.photos/seed/art-startups-une-fintech-dakaroise-leve-12-millions-de-dollars-en-serie-a-24/640/360",
+            "altText": "Startups : une fintech dakaroise lève 12 millions de dollars en série A",
+            "width": 1600,
+            "height": 900
+          },
+          "authors": [
+            {
+              "position": 0,
+              "role": "Auteur",
+              "user": {
+                "id": "cmuol9z6v002yzihpg338deha",
+                "displayName": "Awa Sow",
+                "name": "Awa Sow",
+                "image": null
+              }
+            }
+          ]
+        },
+        {
+          "id": "cmuol9zac0053zihplvv9vyjd",
+          "slug": "peche-la-campagne-de-debarquement-en-baisse-de-9-sur-le-port-de-dakar-30",
+          "title": "Pêche : la campagne de débarquement en baisse de 9 % sur le port de Dakar",
+          "subtitle": "Les professionnels pointent la raréfaction de la ressource et la hausse du coût du carburant",
+          "excerpt": "Les débarquements enregistrés au port de Dakar reculent de 9 % sur la campagne écoulée, sous l'effet conjugué de la raréfaction de la ressource et de la hausse des coûts d'exploitation.",
+          "isPremium": false,
+          "isBreaking": false,
+          "isFeatured": false,
+          "format": "STANDARD",
+          "readingMinutes": 1,
+          "viewCount": 5780,
+          "commentCount": 0,
+          "publishedAt": "2026-09-27T21:00:05.984Z",
+          "category": {
+            "id": "cmuol9ywa000ozihp7d61x3im",
+            "slug": "economie",
+            "name": "Économie",
+            "shortName": "Éco",
+            "accent": "yellow"
+          },
+          "heroImage": {
+            "url": "https://picsum.photos/seed/art-peche-la-campagne-de-debarquement-en-baisse-de-9-sur-le-port-de-dakar-30/1600/900",
+            "thumbnailUrl": "https://picsum.photos/seed/art-peche-la-campagne-de-debarquement-en-baisse-de-9-sur-le-port-de-dakar-30/640/360",
+            "altText": "Pêche : la campagne de débarquement en baisse de 9 % sur le port de Dakar",
+            "width": 1600,
+            "height": 900
+          },
+          "authors": [
+            {
+              "position": 0,
+              "role": "Auteur",
+              "user": {
+                "id": "cmuol9z78003azihp2hrnajlu",
+                "displayName": "Cheikh Gueye",
+                "name": "Cheikh Gueye",
+                "image": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cmuol9ywl0013zihp9bwbq7ao",
+      "slug": "sports",
+      "name": "Sports",
+      "accent": "blue",
+      "articles": [
+        {
+          "id": "cmuol9zas005fzihpnuk7txx8",
+          "slug": "lions-de-la-teranga-le-senegal-s-impose-2-0-et-valide-sa-qualification-02",
+          "title": "Lions de la Teranga : le Sénégal s'impose 2-0 et valide sa qualification",
+          "subtitle": "Une victoire maîtrisée au stade Abdoulaye Wade devant 45 000 spectateurs",
+          "excerpt": "Portés par une première période de haute intensité, les Lions ont dominé leur adversaire et composté leur billet pour la phase finale. La défense n'a pas encaissé depuis cinq matchs.",
+          "isPremium": false,
+          "isBreaking": true,
+          "isFeatured": true,
+          "format": "STANDARD",
+          "readingMinutes": 1,
+          "viewCount": 34121,
+          "commentCount": 0,
+          "publishedAt": "2026-09-30T19:00:06.000Z",
+          "category": {
+            "id": "cmuol9ywl0013zihp9bwbq7ao",
+            "slug": "sports",
+            "name": "Sports",
+            "shortName": "Sports",
+            "accent": "blue"
+          },
+          "heroImage": {
+            "url": "https://picsum.photos/seed/art-lions-de-la-teranga-le-senegal-s-impose-2-0-et-valide-sa-qualification-02/1600/900",
+            "thumbnailUrl": "https://picsum.photos/seed/art-lions-de-la-teranga-le-senegal-s-impose-2-0-et-valide-sa-qualification-02/640/360",
+            "altText": "Lions de la Teranga : le Sénégal s'impose 2-0 et valide sa qualification",
+            "width": 1600,
+            "height": 900
+          },
+          "authors": [
+            {
+              "position": 0,
+              "role": "Auteur",
+              "user": {
+                "id": "cmuol9z6z0032zihp8xyl7e86",
+                "displayName": "Ibrahima Ba",
+                "name": "Ibrahima Ba",
+                "image": null
+              }
+            }
+          ]
+        },
+        {
+          "id": "cmuol9zb0005lzihp7rdbzkle",
+          "slug": "lutte-le-grand-combat-de-l-arene-annonce-pour-la-fin-du-mois-13",
+          "title": "Lutte : le grand combat de l'arène annoncé pour la fin du mois",
+          "subtitle": "Deux écuries rivales s'affrontent dans une affiche très attendue à Pikine",
+          "excerpt": "Le combat entre les deux champions les plus suivis de la saison de lutte sénégalaise se tiendra à Pikine. Les écuries ont officialisé l'affiche devant la presse.",
+          "isPremium": false,
+          "isBreaking": false,
+          "isFeatured": false,
+          "format": "STANDARD",
+          "readingMinutes": 1,
+          "viewCount": 19760,
+          "commentCount": 0,
+          "publishedAt": "2026-09-29T18:00:06.008Z",
+          "category": {
+            "id": "cmuol9ywl0013zihp9bwbq7ao",
+            "slug": "sports",
+            "name": "Sports",
+            "shortName": "Sports",
+            "accent": "blue"
+          },
+          "heroImage": {
+            "url": "https://picsum.photos/seed/art-lutte-le-grand-combat-de-l-arene-annonce-pour-la-fin-du-mois-13/1600/900",
+            "thumbnailUrl": "https://picsum.photos/seed/art-lutte-le-grand-combat-de-l-arene-annonce-pour-la-fin-du-mois-13/640/360",
+            "altText": "Lutte : le grand combat de l'arène annoncé pour la fin du mois",
+            "width": 1600,
+            "height": 900
+          },
+          "authors": [
+            {
+              "position": 0,
+              "role": "Auteur",
+              "user": {
+                "id": "cmuol9z6z0032zihp8xyl7e86",
+                "displayName": "Ibrahima Ba",
+                "name": "Ibrahima Ba",
+                "image": null
+              }
+            }
+          ]
+        },
+        {
+          "id": "cmuol9zb9005rzihp96ngk3f4",
+          "slug": "basketball-le-senegal-decroche-sa-qualification-pour-le-tournoi-contin-30",
+          "title": "Basketball : le Sénégal décroche sa qualification pour le tournoi continental",
+          "subtitle": "Les Lions du basket renversent un match mal engagé dans le dernier quart-temps",
+          "excerpt": "Menés de douze points à l'entame du dernier quart-temps, les basketteurs sénégalais ont renversé la rencontre pour arracher leur qualification.",
+          "isPremium": false,
+          "isBreaking": false,
+          "isFeatured": false,
+          "format": "STANDARD",
+          "readingMinutes": 1,
+          "viewCount": 8940,
+          "commentCount": 0,
+          "publishedAt": "2026-09-27T21:00:06.017Z",
+          "category": {
+            "id": "cmuol9ywl0013zihp9bwbq7ao",
+            "slug": "sports",
+            "name": "Sports",
+            "shortName": "Sports",
+            "accent": "blue"
+          },
+          "heroImage": {
+            "url": "https://picsum.photos/seed/art-basketball-le-senegal-decroche-sa-qualification-pour-le-tournoi-contin-30/1600/900",
+            "thumbnailUrl": "https://picsum.photos/seed/art-basketball-le-senegal-decroche-sa-qualification-pour-le-tournoi-contin-30/640/360",
+            "altText": "Basketball : le Sénégal décroche sa qualification pour le tournoi continental",
+            "width": 1600,
+            "height": 900
+          },
+          "authors": [
+            {
+              "position": 0,
+              "role": "Auteur",
+              "user": {
+                "id": "cmuol9z6z0032zihp8xyl7e86",
+                "displayName": "Ibrahima Ba",
+                "name": "Ibrahima Ba",
+                "image": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cmuol9yww001gzihpuo6bmnvo",
+      "slug": "technologies",
+      "name": "Technologies",
+      "accent": "violet",
+      "articles": [
+        {
+          "id": "cmuol9zbi005yzihpaxtld4q9",
+          "slug": "intelligence-artificielle-le-senegal-lance-un-centre-national-de-reche-12",
+          "title": "Intelligence artificielle : le Sénégal lance un centre national de recherche appliquée",
+          "subtitle": "Le centre sera adossé aux universités et aux entreprises du secteur numérique",
+          "excerpt": "Le pays se dote d'un centre national dédié à l'intelligence artificielle appliquée, avec pour priorité la santé, l'agriculture et l'administration publique.",
+          "isPremium": false,
+          "isBreaking": false,
+          "isFeatured": true,
+          "format": "STANDARD",
+          "readingMinutes": 1,
+          "viewCount": 13410,
+          "commentCount": 0,
+          "publishedAt": "2026-09-29T19:00:06.026Z",
+          "category": {
+            "id": "cmuol9yww001gzihpuo6bmnvo",
+            "slug": "technologies",
+            "name": "Technologies",
+            "shortName": "Tech",
+            "accent": "violet"
+          },
+          "heroImage": {
+            "url": "https://picsum.photos/seed/art-intelligence-artificielle-le-senegal-lance-un-centre-national-de-reche-12/1600/900",
+            "thumbnailUrl": "https://picsum.photos/seed/art-intelligence-artificielle-le-senegal-lance-un-centre-national-de-reche-12/640/360",
+            "altText": "Intelligence artificielle : le Sénégal lance un centre national de recherche appliquée",
+            "width": 1600,
+            "height": 900
+          },
+          "authors": [
+            {
+              "position": 0,
+              "role": "Auteur",
+              "user": {
+                "id": "cmuol9z7c003ezihp51tgfj6j",
+                "displayName": "Nadia Sy",
+                "name": "Nadia Sy",
+                "image": null
+              }
+            }
+          ]
+        },
+        {
+          "id": "cmuol9zbr0064zihpayhza8rv",
+          "slug": "cybersecurite-une-campagne-de-sensibilisation-face-a-la-hausse-des-fra-26",
+          "title": "Cybersécurité : une campagne de sensibilisation face à la hausse des fraudes en ligne",
+          "subtitle": "Les signalements ont doublé en un an, principalement sur le mobile money",
+          "excerpt": "Face au doublement des signalements de fraude en ligne, les autorités lancent une campagne nationale de sensibilisation ciblant les usagers du mobile money.",
+          "isPremium": false,
+          "isBreaking": false,
+          "isFeatured": false,
+          "format": "STANDARD",
+          "readingMinutes": 1,
+          "viewCount": 9870,
+          "commentCount": 0,
+          "publishedAt": "2026-09-28T15:00:06.035Z",
+          "category": {
+            "id": "cmuol9yww001gzihpuo6bmnvo",
+            "slug": "technologies",
+            "name": "Technologies",
+            "shortName": "Tech",
+            "accent": "violet"
+          },
+          "heroImage": {
+            "url": "https://picsum.photos/seed/art-cybersecurite-une-campagne-de-sensibilisation-face-a-la-hausse-des-fra-26/1600/900",
+            "thumbnailUrl": "https://picsum.photos/seed/art-cybersecurite-une-campagne-de-sensibilisation-face-a-la-hausse-des-fra-26/640/360",
+            "altText": "Cybersécurité : une campagne de sensibilisation face à la hausse des fraudes en ligne",
+            "width": 1600,
+            "height": 900
+          },
+          "authors": [
+            {
+              "position": 0,
+              "role": "Auteur",
+              "user": {
+                "id": "cmuol9z7c003ezihp51tgfj6j",
+                "displayName": "Nadia Sy",
+                "name": "Nadia Sy",
+                "image": null
+              }
+            }
+          ]
+        },
+        {
+          "id": "cmuol9zby006azihpqcw06xoi",
+          "slug": "telecoms-le-deploiement-de-la-fibre-optique-accelere-dans-les-regions-50",
+          "title": "Télécoms : le déploiement de la fibre optique accélère dans les régions",
+          "subtitle": "Objectif de couverture de 90 % des communes d'ici trois ans",
+          "excerpt": "Le programme national de déploiement de la fibre optique franchit une nouvelle étape avec la connexion de plusieurs chefs-lieux de région à haut débit.",
+          "isPremium": false,
+          "isBreaking": false,
+          "isFeatured": false,
+          "format": "STANDARD",
+          "readingMinutes": 1,
+          "viewCount": 5120,
+          "commentCount": 0,
+          "publishedAt": "2026-09-25T21:00:06.043Z",
+          "category": {
+            "id": "cmuol9yww001gzihpuo6bmnvo",
+            "slug": "technologies",
+            "name": "Technologies",
+            "shortName": "Tech",
+            "accent": "violet"
+          },
+          "heroImage": {
+            "url": "https://picsum.photos/seed/art-telecoms-le-deploiement-de-la-fibre-optique-accelere-dans-les-regions-50/1600/900",
+            "thumbnailUrl": "https://picsum.photos/seed/art-telecoms-le-deploiement-de-la-fibre-optique-accelere-dans-les-regions-50/640/360",
+            "altText": "Télécoms : le déploiement de la fibre optique accélère dans les régions",
+            "width": 1600,
+            "height": 900
+          },
+          "authors": [
+            {
+              "position": 0,
+              "role": "Auteur",
+              "user": {
+                "id": "cmuol9z7c003ezihp51tgfj6j",
+                "displayName": "Nadia Sy",
+                "name": "Nadia Sy",
+                "image": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cmuol9yxb001yzihpmgxu0hzl",
+      "slug": "international",
+      "name": "International",
+      "accent": "slate",
+      "articles": []
+    },
+    {
+      "id": "cmuol9yxm002bzihpnz87ud3a",
+      "slug": "diaspora",
+      "name": "Diaspora",
+      "accent": "orange",
+      "articles": [
+        {
+          "id": "cmuol9zcn006szihpdqh8gubn",
+          "slug": "diaspora-les-transferts-de-fonds-vers-le-senegal-atteignent-un-niveau--14",
+          "title": "Diaspora : les transferts de fonds vers le Sénégal atteignent un niveau record",
+          "subtitle": "Plus de 3 000 milliards FCFA transférés en un an, malgré la hausse des frais",
+          "excerpt": "Les transferts de la diaspora sénégalaise ont atteint un niveau record, dépassant les 3 000 milliards de francs CFA sur douze mois, selon les données de la banque centrale.",
+          "isPremium": false,
+          "isBreaking": false,
+          "isFeatured": true,
+          "format": "STANDARD",
+          "readingMinutes": 1,
+          "viewCount": 10452,
+          "commentCount": 0,
+          "publishedAt": "2026-09-29T17:00:06.067Z",
+          "category": {
+            "id": "cmuol9yxm002bzihpnz87ud3a",
+            "slug": "diaspora",
+            "name": "Diaspora",
+            "shortName": "Diaspora",
+            "accent": "orange"
+          },
+          "heroImage": {
+            "url": "https://picsum.photos/seed/art-diaspora-les-transferts-de-fonds-vers-le-senegal-atteignent-un-niveau--14/1600/900",
+            "thumbnailUrl": "https://picsum.photos/seed/art-diaspora-les-transferts-de-fonds-vers-le-senegal-atteignent-un-niveau--14/640/360",
+            "altText": "Diaspora : les transferts de fonds vers le Sénégal atteignent un niveau record",
+            "width": 1600,
+            "height": 900
+          },
+          "authors": [
+            {
+              "position": 0,
+              "role": "Auteur",
+              "user": {
+                "id": "cmuol9z7f003izihp7rp6hi9o",
+                "displayName": "Ousmane Touré",
+                "name": "Ousmane Touré",
+                "image": null
+              }
+            }
+          ]
+        },
+        {
+          "id": "cmuol9zcv006yzihpn1gz25sq",
+          "slug": "france-la-communaute-senegalaise-se-mobilise-pour-la-scolarisation-des-42",
+          "title": "France : la communauté sénégalaise se mobilise pour la scolarisation des enfants",
+          "subtitle": "Un réseau associatif finance des bourses et de l'accompagnement scolaire",
+          "excerpt": "Un collectif d'associations sénégalaises de France lance un programme de bourses et d'accompagnement scolaire destiné aux enfants de familles récemment arrivées.",
+          "isPremium": false,
+          "isBreaking": false,
+          "isFeatured": false,
+          "format": "STANDARD",
+          "readingMinutes": 1,
+          "viewCount": 4890,
+          "commentCount": 0,
+          "publishedAt": "2026-09-26T19:00:06.075Z",
+          "category": {
+            "id": "cmuol9yxm002bzihpnz87ud3a",
+            "slug": "diaspora",
+            "name": "Diaspora",
+            "shortName": "Diaspora",
+            "accent": "orange"
+          },
+          "heroImage": {
+            "url": "https://picsum.photos/seed/art-france-la-communaute-senegalaise-se-mobilise-pour-la-scolarisation-des-42/1600/900",
+            "thumbnailUrl": "https://picsum.photos/seed/art-france-la-communaute-senegalaise-se-mobilise-pour-la-scolarisation-des-42/640/360",
+            "altText": "France : la communauté sénégalaise se mobilise pour la scolarisation des enfants",
+            "width": 1600,
+            "height": 900
+          },
+          "authors": [
+            {
+              "position": 0,
+              "role": "Auteur",
+              "user": {
+                "id": "cmuol9z7f003izihp7rp6hi9o",
+                "displayName": "Ousmane Touré",
+                "name": "Ousmane Touré",
+                "image": null
+              }
+            }
+          ]
+        },
+        {
+          "id": "cmuol9zd30074zihpewsr2kkx",
+          "slug": "italie-la-regularisation-des-travailleurs-senegalais-au-c-ur-des-discu-70",
+          "title": "Italie : la régularisation des travailleurs sénégalais au cœur des discussions",
+          "subtitle": "Les associations demandent un guichet unique pour les demandes en cours",
+          "excerpt": "Les associations de la diaspora sénégalaise en Italie demandent la mise en place d'un guichet unique pour accélérer le traitement des dossiers de régularisation en attente.",
+          "isPremium": false,
+          "isBreaking": false,
+          "isFeatured": false,
+          "format": "STANDARD",
+          "readingMinutes": 1,
+          "viewCount": 3760,
+          "commentCount": 0,
+          "publishedAt": "2026-09-23T21:00:06.083Z",
+          "category": {
+            "id": "cmuol9yxm002bzihpnz87ud3a",
+            "slug": "diaspora",
+            "name": "Diaspora",
+            "shortName": "Diaspora",
+            "accent": "orange"
+          },
+          "heroImage": {
+            "url": "https://picsum.photos/seed/art-italie-la-regularisation-des-travailleurs-senegalais-au-c-ur-des-discu-70/1600/900",
+            "thumbnailUrl": "https://picsum.photos/seed/art-italie-la-regularisation-des-travailleurs-senegalais-au-c-ur-des-discu-70/640/360",
+            "altText": "Italie : la régularisation des travailleurs sénégalais au cœur des discussions",
+            "width": 1600,
+            "height": 900
+          },
+          "authors": [
+            {
+              "position": 0,
+              "role": "Auteur",
+              "user": {
+                "id": "cmuol9z7f003izihp7rp6hi9o",
+                "displayName": "Ousmane Touré",
+                "name": "Ousmane Touré",
+                "image": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cmuol9yx4001pzihpjonafzbf",
+      "slug": "faits-divers",
+      "name": "Faits Divers",
+      "accent": "red",
+      "articles": [
+        {
+          "id": "cmuol9zc6006gzihptqy7jb14",
+          "slug": "justice-ouverture-du-proces-tres-attendu-dans-l-affaire-de-detournemen-17",
+          "title": "Justice : ouverture du procès très attendu dans l'affaire de détournement de fonds publics",
+          "subtitle": "Douze prévenus comparaissent devant la Cour de répression de l'enrichissement illicite",
+          "excerpt": "Le procès de douze prévenus poursuivis pour détournement de fonds publics s'est ouvert devant la Cour de répression de l'enrichissement illicite, dans une affaire suivie de près par l'opinion.",
+          "isPremium": false,
+          "isBreaking": false,
+          "isFeatured": false,
+          "format": "STANDARD",
+          "readingMinutes": 1,
+          "viewCount": 14230,
+          "commentCount": 0,
+          "publishedAt": "2026-09-29T14:00:06.050Z",
+          "category": {
+            "id": "cmuol9yx4001pzihpjonafzbf",
+            "slug": "faits-divers",
+            "name": "Faits Divers",
+            "shortName": "Faits divers",
+            "accent": "red"
+          },
+          "heroImage": {
+            "url": "https://picsum.photos/seed/art-justice-ouverture-du-proces-tres-attendu-dans-l-affaire-de-detournemen-17/1600/900",
+            "thumbnailUrl": "https://picsum.photos/seed/art-justice-ouverture-du-proces-tres-attendu-dans-l-affaire-de-detournemen-17/640/360",
+            "altText": "Justice : ouverture du procès très attendu dans l'affaire de détournement de fonds publics",
+            "width": 1600,
+            "height": 900
+          },
+          "authors": [
+            {
+              "position": 0,
+              "role": "Auteur",
+              "user": {
+                "id": "cmuol9z740036zihp4hiyajob",
+                "displayName": "Mariama Diallo",
+                "name": "Mariama Diallo",
+                "image": null
+              }
+            }
+          ]
+        },
+        {
+          "id": "cmuol9zce006mzihpxfvaot0p",
+          "slug": "securite-routiere-le-bilan-des-accidents-en-baisse-de-14-apres-les-con-29",
+          "title": "Sécurité routière : le bilan des accidents en baisse de 14 % après les contrôles renforcés",
+          "subtitle": "Les autorités annoncent la généralisation des radars sur les axes principaux",
+          "excerpt": "Le nombre d'accidents corporels recule de 14 % sur le semestre, à la suite du renforcement des contrôles et de la sensibilisation des transporteurs.",
+          "isPremium": false,
+          "isBreaking": false,
+          "isFeatured": false,
+          "format": "STANDARD",
+          "readingMinutes": 1,
+          "viewCount": 7650,
+          "commentCount": 0,
+          "publishedAt": "2026-09-28T12:00:06.058Z",
+          "category": {
+            "id": "cmuol9yx4001pzihpjonafzbf",
+            "slug": "faits-divers",
+            "name": "Faits Divers",
+            "shortName": "Faits divers",
+            "accent": "red"
+          },
+          "heroImage": {
+            "url": "https://picsum.photos/seed/art-securite-routiere-le-bilan-des-accidents-en-baisse-de-14-apres-les-con-29/1600/900",
+            "thumbnailUrl": "https://picsum.photos/seed/art-securite-routiere-le-bilan-des-accidents-en-baisse-de-14-apres-les-con-29/640/360",
+            "altText": "Sécurité routière : le bilan des accidents en baisse de 14 % après les contrôles renforcés",
+            "width": 1600,
+            "height": 900
+          },
+          "authors": [
+            {
+              "position": 0,
+              "role": "Auteur",
+              "user": {
+                "id": "cmuol9z740036zihp4hiyajob",
+                "displayName": "Mariama Diallo",
+                "name": "Mariama Diallo",
+                "image": null
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "article": {
+    "id": "cmuol9zas005fzihpnuk7txx8",
+    "slug": "lions-de-la-teranga-le-senegal-s-impose-2-0-et-valide-sa-qualification-02",
+    "title": "Lions de la Teranga : le Sénégal s'impose 2-0 et valide sa qualification",
+    "subtitle": "Une victoire maîtrisée au stade Abdoulaye Wade devant 45 000 spectateurs",
+    "excerpt": "Portés par une première période de haute intensité, les Lions ont dominé leur adversaire et composté leur billet pour la phase finale. La défense n'a pas encaissé depuis cinq matchs.",
+    "isPremium": false,
+    "isBreaking": true,
+    "isFeatured": true,
+    "format": "STANDARD",
+    "readingMinutes": 1,
+    "viewCount": 34121,
+    "commentCount": 0,
+    "publishedAt": "2026-09-30T19:00:06.000Z",
+    "category": {
+      "id": "cmuol9ywl0013zihp9bwbq7ao",
+      "slug": "sports",
+      "name": "Sports",
+      "shortName": "Sports",
+      "accent": "blue"
+    },
+    "heroImage": {
+      "url": "https://picsum.photos/seed/art-lions-de-la-teranga-le-senegal-s-impose-2-0-et-valide-sa-qualification-02/1600/900",
+      "thumbnailUrl": "https://picsum.photos/seed/art-lions-de-la-teranga-le-senegal-s-impose-2-0-et-valide-sa-qualification-02/640/360",
+      "altText": "Lions de la Teranga : le Sénégal s'impose 2-0 et valide sa qualification",
+      "width": 1600,
+      "height": 900
+    },
+    "authors": [
+      {
+        "position": 0,
+        "role": "Auteur",
+        "user": {
+          "id": "cmuol9z6z0032zihp8xyl7e86",
+          "displayName": "Ibrahima Ba",
+          "name": "Ibrahima Ba",
+          "image": null
+        }
+      }
+    ],
+    "bodyHtml": "<p>Le Sénégal s'est imposé 2-0 au stade Abdoulaye Wade devant 45 000 spectateurs, validant sa qualification pour la phase finale de la compétition continentale.</p>\n<p>Les Lions ont ouvert le score à la 23e minute sur un mouvement collectif conclu à l'entrée de la surface, avant de doubler la mise juste avant la pause sur coup de pied arrêté.</p>\n<p>La seconde période a été plus gestionnaire, l'équipe préservant sa solidité défensive. Le gardien n'a eu qu'une intervention réellement décisive à effectuer.</p>\n<p>« On a respecté le plan de jeu et on a su être patients », a commenté le sélectionneur en conférence de presse, saluant la performance de son milieu de terrain.</p>\n<p>Le Sénégal reste invaincu depuis huit rencontres et n'a plus encaissé de but depuis cinq matchs, une série qui place l'équipe parmi les favoris.</p>",
+    "tags": [
+      {
+        "tag": {
+          "id": "cmuol9zaq005bzihpyp4gk1ma",
+          "slug": "football",
+          "name": "football"
+        }
+      },
+      {
+        "tag": {
+          "id": "cmuol9zaq005dzihp0gyxsd7o",
+          "slug": "lions-de-la-teranga",
+          "name": "Lions de la Teranga"
+        }
+      },
+      {
+        "tag": {
+          "id": "cmuol9zaq005czihpoksikc0k",
+          "slug": "selection",
+          "name": "sélection"
+        }
+      }
+    ]
+  },
+  "related": [
+    {
+      "id": "cmuol9zb0005lzihp7rdbzkle",
+      "slug": "lutte-le-grand-combat-de-l-arene-annonce-pour-la-fin-du-mois-13",
+      "title": "Lutte : le grand combat de l'arène annoncé pour la fin du mois",
+      "subtitle": "Deux écuries rivales s'affrontent dans une affiche très attendue à Pikine",
+      "excerpt": "Le combat entre les deux champions les plus suivis de la saison de lutte sénégalaise se tiendra à Pikine. Les écuries ont officialisé l'affiche devant la presse.",
+      "isPremium": false,
+      "isBreaking": false,
+      "isFeatured": false,
+      "format": "STANDARD",
+      "readingMinutes": 1,
+      "viewCount": 19760,
+      "commentCount": 0,
+      "publishedAt": "2026-09-29T18:00:06.008Z",
+      "category": {
+        "id": "cmuol9ywl0013zihp9bwbq7ao",
+        "slug": "sports",
+        "name": "Sports",
+        "shortName": "Sports",
+        "accent": "blue"
+      },
+      "heroImage": {
+        "url": "https://picsum.photos/seed/art-lutte-le-grand-combat-de-l-arene-annonce-pour-la-fin-du-mois-13/1600/900",
+        "thumbnailUrl": "https://picsum.photos/seed/art-lutte-le-grand-combat-de-l-arene-annonce-pour-la-fin-du-mois-13/640/360",
+        "altText": "Lutte : le grand combat de l'arène annoncé pour la fin du mois",
+        "width": 1600,
+        "height": 900
+      },
+      "authors": [
+        {
+          "position": 0,
+          "role": "Auteur",
+          "user": {
+            "id": "cmuol9z6z0032zihp8xyl7e86",
+            "displayName": "Ibrahima Ba",
+            "name": "Ibrahima Ba",
+            "image": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "cmuol9zb9005rzihp96ngk3f4",
+      "slug": "basketball-le-senegal-decroche-sa-qualification-pour-le-tournoi-contin-30",
+      "title": "Basketball : le Sénégal décroche sa qualification pour le tournoi continental",
+      "subtitle": "Les Lions du basket renversent un match mal engagé dans le dernier quart-temps",
+      "excerpt": "Menés de douze points à l'entame du dernier quart-temps, les basketteurs sénégalais ont renversé la rencontre pour arracher leur qualification.",
+      "isPremium": false,
+      "isBreaking": false,
+      "isFeatured": false,
+      "format": "STANDARD",
+      "readingMinutes": 1,
+      "viewCount": 8940,
+      "commentCount": 0,
+      "publishedAt": "2026-09-27T21:00:06.017Z",
+      "category": {
+        "id": "cmuol9ywl0013zihp9bwbq7ao",
+        "slug": "sports",
+        "name": "Sports",
+        "shortName": "Sports",
+        "accent": "blue"
+      },
+      "heroImage": {
+        "url": "https://picsum.photos/seed/art-basketball-le-senegal-decroche-sa-qualification-pour-le-tournoi-contin-30/1600/900",
+        "thumbnailUrl": "https://picsum.photos/seed/art-basketball-le-senegal-decroche-sa-qualification-pour-le-tournoi-contin-30/640/360",
+        "altText": "Basketball : le Sénégal décroche sa qualification pour le tournoi continental",
+        "width": 1600,
+        "height": 900
+      },
+      "authors": [
+        {
+          "position": 0,
+          "role": "Auteur",
+          "user": {
+            "id": "cmuol9z6z0032zihp8xyl7e86",
+            "displayName": "Ibrahima Ba",
+            "name": "Ibrahima Ba",
+            "image": null
+          }
+        }
+      ]
+    }
+  ]
+}

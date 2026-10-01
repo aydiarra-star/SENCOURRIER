@@ -1,0 +1,93 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# SENCOURRIER — image du portail Next.js
+#
+# Contexte de build : la RACINE du monorepo (voir docker-compose.yml).
+#   docker build -f infra/docker/Dockerfile.web .
+#
+# `output: 'standalone'` (next.config.js) produit un serveur autonome : la
+# dernière étape ne copie que ce bundle, sans node_modules ni code source.
+# ═══════════════════════════════════════════════════════════════════════════
+
+# ─── Étape 1 : compilation ────────────────────────────────────────────────
+FROM node:22-bookworm-slim AS build
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+COPY apps/api/package.json apps/api/
+COPY apps/web/package.json apps/web/
+COPY packages/config/package.json packages/config/
+COPY packages/database/package.json packages/database/
+COPY packages/types/package.json packages/types/
+
+RUN npm ci
+
+COPY tsconfig.base.json ./
+COPY packages ./packages
+COPY apps/web ./apps/web
+
+RUN npx prisma generate --schema=packages/database/prisma/schema.prisma
+
+RUN npm run build --workspace=@sencourrier/config \
+ && npm run build --workspace=@sencourrier/types \
+ && npm run build --workspace=@sencourrier/database
+
+# Next.js évalue les variables NEXT_PUBLIC_* pendant la compilation : elles
+# sont figées dans le bundle. Elles doivent donc être passées en arguments de
+# build, pas seulement en variables d'exécution.
+ARG NEXT_PUBLIC_SITE_URL
+ARG NEXT_PUBLIC_API_URL
+ARG NEXT_PUBLIC_GA_MEASUREMENT_ID
+ARG NEXT_PUBLIC_GTM_ID
+ARG NEXT_PUBLIC_ENABLE_ADS=true
+ARG NEXT_PUBLIC_ENABLE_PREMIUM=true
+ARG NEXT_PUBLIC_ENABLE_AI_ASSISTANT=true
+ARG NEXT_PUBLIC_ENABLE_TV_LIVE=true
+ARG NEXT_PUBLIC_ENABLE_PODCASTS=true
+ARG NEXT_PUBLIC_ENABLE_COMMENTS=true
+ARG NEXT_PUBLIC_ENABLE_PWA=true
+ENV NEXT_PUBLIC_SITE_URL=$NEXT_PUBLIC_SITE_URL \
+    NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL \
+    NEXT_PUBLIC_GA_MEASUREMENT_ID=$NEXT_PUBLIC_GA_MEASUREMENT_ID \
+    NEXT_PUBLIC_GTM_ID=$NEXT_PUBLIC_GTM_ID \
+    NEXT_PUBLIC_ENABLE_ADS=$NEXT_PUBLIC_ENABLE_ADS \
+    NEXT_PUBLIC_ENABLE_PREMIUM=$NEXT_PUBLIC_ENABLE_PREMIUM \
+    NEXT_PUBLIC_ENABLE_AI_ASSISTANT=$NEXT_PUBLIC_ENABLE_AI_ASSISTANT \
+    NEXT_PUBLIC_ENABLE_TV_LIVE=$NEXT_PUBLIC_ENABLE_TV_LIVE \
+    NEXT_PUBLIC_ENABLE_PODCASTS=$NEXT_PUBLIC_ENABLE_PODCASTS \
+    NEXT_PUBLIC_ENABLE_COMMENTS=$NEXT_PUBLIC_ENABLE_COMMENTS \
+    NEXT_PUBLIC_ENABLE_PWA=$NEXT_PUBLIC_ENABLE_PWA
+
+RUN npm run build --workspace=@sencourrier/web
+
+# ─── Étape 2 : exécution ──────────────────────────────────────────────────
+FROM node:22-bookworm-slim AS runtime
+
+ENV NODE_ENV=production
+ENV PORT=3000
+ENV HOSTNAME=0.0.0.0
+
+WORKDIR /app
+
+# openssl est requis par le moteur Prisma : sans lui, le client
+# avertit qu'il ne sait pas quelle bibliothèque TLS charger.
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends openssl ca-certificates \
+ && rm -rf /var/lib/apt/lists/*
+
+RUN groupadd --system --gid 1001 nodejs \
+ && useradd --system --uid 1001 --gid nodejs nextjs
+
+# Le bundle autonome embarque son propre node_modules minimal.
+COPY --from=build --chown=nextjs:nodejs /app/apps/web/.next/standalone ./
+COPY --from=build --chown=nextjs:nodejs /app/apps/web/.next/static ./apps/web/.next/static
+COPY --from=build --chown=nextjs:nodejs /app/apps/web/public ./apps/web/public
+
+USER nextjs
+
+EXPOSE 3000
+
+HEALTHCHECK --interval=30s --timeout=5s --start-period=20s --retries=3 \
+  CMD node -e "fetch('http://127.0.0.1:3000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
+
+CMD ["node", "apps/web/server.js"]

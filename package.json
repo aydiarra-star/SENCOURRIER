@@ -1,0 +1,51 @@
+{
+  "name": "sencourrier",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SENCOURRIER — Le média numérique de référence du Sénégal",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "overrides": {
+    "@prisma/client": "6.19.3",
+    "prisma": "6.19.3"
+  },
+  "scripts": {
+    "dev": "npm run dev --workspace=@sencourrier/web",
+    "dev:web": "npm run dev --workspace=@sencourrier/web",
+    "dev:api": "npm run dev --workspace=@sencourrier/api",
+    "build": "npm run build --workspace=@sencourrier/api && npm run build --workspace=@sencourrier/web",
+    "build:web": "npm run build --workspace=@sencourrier/web",
+    "build:api": "npm run build --workspace=@sencourrier/api",
+    "build:showcase": "npm run build --workspace=@sencourrier/showcase",
+    "check:showcase-links": "node scripts/check-showcase-links.mjs",
+    "start:web": "npm run start --workspace=@sencourrier/web",
+    "start:api": "npm run start:prod --workspace=@sencourrier/api",
+    "lint": "npm run lint --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md,yml,yaml,css}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md,yml,yaml,css}\"",
+    "db:generate": "npm run db:generate --workspace=@sencourrier/database",
+    "db:migrate": "npm run db:migrate --workspace=@sencourrier/database",
+    "db:push": "npm run db:push --workspace=@sencourrier/database",
+    "db:seed": "npm run db:seed --workspace=@sencourrier/database",
+    "db:studio": "npm run db:studio --workspace=@sencourrier/database",
+    "docker:up": "docker compose -f infra/docker/docker-compose.yml up -d",
+    "docker:down": "docker compose -f infra/docker/docker-compose.yml down",
+    "docker:logs": "docker compose -f infra/docker/docker-compose.yml logs -f"
+  },
+  "devDependencies": {
+    "@prisma/client": "6.19.3",
+    "@types/node": "22.18.6",
+    "prisma": "6.19.3",
+    "prettier": "3.6.2",
+    "prettier-plugin-tailwindcss": "0.6.14",
+    "typescript": "5.9.2"
+  }
+}

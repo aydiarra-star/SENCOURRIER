@@ -1,0 +1,88 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# SENCOURRIER — image de l'API NestJS
+#
+# Contexte de build : la RACINE du monorepo (voir docker-compose.yml).
+#   docker build -f infra/docker/Dockerfile.api .
+#
+# Deux étapes : la compilation a besoin de toutes les dépendances (y compris
+# celles de développement et la CLI Prisma), l'exécution n'a besoin que du
+# serveur compilé et du client Prisma généré.
+# ═══════════════════════════════════════════════════════════════════════════
+
+# ─── Étape 1 : compilation ────────────────────────────────────────────────
+FROM node:22-bookworm-slim AS build
+
+WORKDIR /app
+
+# Les fichiers de manifeste seuls d'abord : la couche de dépendances n'est
+# reconstruite que lorsque les dépendances changent, pas à chaque édition.
+COPY package.json package-lock.json ./
+COPY apps/api/package.json apps/api/
+COPY apps/web/package.json apps/web/
+COPY packages/config/package.json packages/config/
+COPY packages/database/package.json packages/database/
+COPY packages/types/package.json packages/types/
+
+RUN npm ci
+
+COPY tsconfig.base.json ./
+COPY packages ./packages
+COPY apps/api ./apps/api
+
+# Le client Prisma est généré depuis le schéma : il doit exister avant que
+# TypeScript ne compile le code qui l'importe.
+RUN npx prisma generate --schema=packages/database/prisma/schema.prisma
+
+RUN npm run build --workspace=@sencourrier/config \
+ && npm run build --workspace=@sencourrier/types \
+ && npm run build --workspace=@sencourrier/database \
+ && npm run build --workspace=@sencourrier/api
+
+# ─── Étape 2 : exécution ──────────────────────────────────────────────────
+FROM node:22-bookworm-slim AS runtime
+
+ENV NODE_ENV=production
+
+WORKDIR /app
+
+# Utilisateur non privilégié : une compromission de l'API ne donne pas root.
+# openssl est requis par le moteur Prisma : sans lui, le client
+# avertit qu'il ne sait pas quelle bibliothèque TLS charger.
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends openssl ca-certificates \
+ && rm -rf /var/lib/apt/lists/*
+
+RUN groupadd --system --gid 1001 nodejs \
+ && useradd --system --uid 1001 --gid nodejs nestjs
+
+COPY package.json package-lock.json ./
+COPY apps/api/package.json apps/api/
+COPY apps/web/package.json apps/web/
+COPY packages/config/package.json packages/config/
+COPY packages/database/package.json packages/database/
+COPY packages/types/package.json packages/types/
+
+# `--omit=dev` écarte Jest, la CLI Nest et TypeScript de l'image finale.
+# La CLI Prisma reste nécessaire pour `migrate deploy` au démarrage.
+RUN npm ci --omit=dev --ignore-scripts && npm cache clean --force
+
+COPY --from=build /app/packages/database/prisma ./packages/database/prisma
+COPY --from=build /app/packages/database/generated ./packages/database/generated
+COPY --from=build /app/packages/database/dist ./packages/database/dist
+COPY --from=build /app/packages/config/dist ./packages/config/dist
+COPY --from=build /app/packages/types/dist ./packages/types/dist
+COPY --from=build /app/apps/api/dist ./apps/api/dist
+COPY infra/docker/entrypoint-api.sh /usr/local/bin/entrypoint-api.sh
+
+RUN chmod 755 /usr/local/bin/entrypoint-api.sh && chown -R nestjs:nodejs /app
+
+USER nestjs
+
+EXPOSE 3001
+
+# La sonde interroge la vraie route de santé, qui vérifie PostgreSQL et Redis.
+HEALTHCHECK --interval=30s --timeout=5s --start-period=40s --retries=3 \
+  CMD node -e "fetch('http://127.0.0.1:'+(process.env.API_PORT||3001)+'/api/v1/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
+
+ENTRYPOINT ["/usr/local/bin/entrypoint-api.sh"]
+CMD ["node", "apps/api/dist/main.js"]
