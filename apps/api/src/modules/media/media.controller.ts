@@ -15,7 +15,11 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { ApiBearerAuth, ApiBody, ApiConsumes, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { Role } from '@sencourrier/types';
 import { IsOptional, IsString, MaxLength } from 'class-validator';
-import { CurrentUser, Roles, type AuthenticatedUser } from '../../common/decorators/auth.decorators';
+import {
+  CurrentUser,
+  Roles,
+  type AuthenticatedUser,
+} from '../../common/decorators/auth.decorators';
 import { MediaService } from './media.service';
 
 class UpdateMediaDto {
@@ -45,7 +49,9 @@ export class MediaController {
   @Roles(Role.JOURNALIST)
   @UseInterceptors(FileInterceptor('file', { limits: { fileSize: 12 * 1024 * 1024 } }))
   @ApiConsumes('multipart/form-data')
-  @ApiBody({ schema: { type: 'object', properties: { file: { type: 'string', format: 'binary' } } } })
+  @ApiBody({
+    schema: { type: 'object', properties: { file: { type: 'string', format: 'binary' } } },
+  })
   @ApiOperation({ summary: 'Téléverser une image (optimisation WebP + miniature + blur)' })
   upload(@UploadedFile() file: Express.Multer.File, @CurrentUser() user: AuthenticatedUser) {
     if (!file) throw new BadRequestException('Aucun fichier reçu.');

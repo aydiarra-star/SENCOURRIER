@@ -46,6 +46,11 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
 
     if (!user) throw new UnauthorizedException('Compte introuvable ou désactivé.');
 
-    return { id: user.id, email: user.email, role: user.role as Role, displayName: user.displayName };
+    return {
+      id: user.id,
+      email: user.email,
+      role: user.role as Role,
+      displayName: user.displayName,
+    };
   }
 }

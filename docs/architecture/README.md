@@ -81,14 +81,14 @@ flowchart TB
 
 ## 3. Frontend — `apps/web`
 
-| Élément | Choix |
-| --- | --- |
-| Framework | Next.js 15.5 (App Router) |
-| UI | React 19, Tailwind CSS 3.4, composants shadcn/ui |
-| Animations | Framer Motion |
-| Typographies | Montserrat (titres), Inter (texte), Poppins (accents) |
-| Rendu | SSR + `force-dynamic` sur les routes éditoriales, cache CDN |
-| Sortie | `output: 'standalone'` (image Docker minimale) |
+| Élément      | Choix                                                       |
+| ------------ | ----------------------------------------------------------- |
+| Framework    | Next.js 15.5 (App Router)                                   |
+| UI           | React 19, Tailwind CSS 3.4, composants shadcn/ui            |
+| Animations   | Framer Motion                                               |
+| Typographies | Montserrat (titres), Inter (texte), Poppins (accents)       |
+| Rendu        | SSR + `force-dynamic` sur les routes éditoriales, cache CDN |
+| Sortie       | `output: 'standalone'` (image Docker minimale)              |
 
 ### Stratégie de rendu
 
@@ -109,18 +109,18 @@ se dégrade (navigation réduite) au lieu de renvoyer une erreur 500.
 
 ### Routes principales
 
-| Route | Rôle |
-| --- | --- |
-| `/` | Une et sections d'actualités |
-| `/[category]` · `/[category]/[sub]` | Rubrique et sous-rubrique |
-| `/article/[slug]` | Article |
-| `/dernieres-minutes` | Fil temps réel |
-| `/recherche` | Recherche |
-| `/tag/[slug]` · `/journaliste/[slug]` | Tag et page auteur |
-| `/tv-live` · `/videos` · `/podcasts` | Formats média |
-| `/abonnement` · `/connexion` · `/inscription` · `/profil` · `/tableau-de-bord` | Compte et abonnement |
-| `/sitemap.xml` · `/news-sitemap.xml` · `/rss.xml` · `/robots.txt` | SEO et syndication |
-| `/api/health` · `/api/contact` · `/api/newsletter/subscribe` | Points d'entrée internes |
+| Route                                                                          | Rôle                         |
+| ------------------------------------------------------------------------------ | ---------------------------- |
+| `/`                                                                            | Une et sections d'actualités |
+| `/[category]` · `/[category]/[sub]`                                            | Rubrique et sous-rubrique    |
+| `/article/[slug]`                                                              | Article                      |
+| `/dernieres-minutes`                                                           | Fil temps réel               |
+| `/recherche`                                                                   | Recherche                    |
+| `/tag/[slug]` · `/journaliste/[slug]`                                          | Tag et page auteur           |
+| `/tv-live` · `/videos` · `/podcasts`                                           | Formats média                |
+| `/abonnement` · `/connexion` · `/inscription` · `/profil` · `/tableau-de-bord` | Compte et abonnement         |
+| `/sitemap.xml` · `/news-sitemap.xml` · `/rss.xml` · `/robots.txt`              | SEO et syndication           |
+| `/api/health` · `/api/contact` · `/api/newsletter/subscribe`                   | Points d'entrée internes     |
 
 ---
 
@@ -131,20 +131,20 @@ NestJS 11, API REST versionnée sous `/api/v1`, documentée par Swagger sur
 
 ### Modules
 
-| Module | Responsabilité |
-| --- | --- |
-| `articles` | Cycle de vie éditorial, publication, révisions |
-| `categories` · `tags` | Taxonomie |
-| `authors` | Profils journalistes |
-| `auth` · `users` | Authentification (JWT, OAuth Google, 2FA), profils |
-| `search` | Recherche plein texte (trigrammes, accents ignorés) |
-| `media` | Médias (Azure Blob Storage) |
-| `subscriptions` | Offres, paiements, webhooks |
-| `newsletter` | Inscriptions et envois (Resend) |
-| `analytics` | Collecte et agrégation (GA4 côté client) |
-| `contact` | Formulaire de contact |
-| `scheduler` | Publications planifiées, agrégations nocturnes |
-| `health` | Sonde de disponibilité |
+| Module                | Responsabilité                                      |
+| --------------------- | --------------------------------------------------- |
+| `articles`            | Cycle de vie éditorial, publication, révisions      |
+| `categories` · `tags` | Taxonomie                                           |
+| `authors`             | Profils journalistes                                |
+| `auth` · `users`      | Authentification (JWT, OAuth Google, 2FA), profils  |
+| `search`              | Recherche plein texte (trigrammes, accents ignorés) |
+| `media`               | Médias (Azure Blob Storage)                         |
+| `subscriptions`       | Offres, paiements, webhooks                         |
+| `newsletter`          | Inscriptions et envois (Resend)                     |
+| `analytics`           | Collecte et agrégation (GA4 côté client)            |
+| `contact`             | Formulaire de contact                               |
+| `scheduler`           | Publications planifiées, agrégations nocturnes      |
+| `health`              | Sonde de disponibilité                              |
 
 ### Sécurité
 
@@ -211,11 +211,11 @@ Détails : [`../exploitation/README.md`](../exploitation/README.md).
 
 ## 8. Évolutions prévues
 
-| Horizon | Objectif |
-| --- | --- |
-| Court terme | Assistant IA (RAG sur Azure OpenAI), podcasts premium |
+| Horizon     | Objectif                                                      |
+| ----------- | ------------------------------------------------------------- |
+| Court terme | Assistant IA (RAG sur Azure OpenAI), podcasts premium         |
 | Moyen terme | Applications mobiles React Native (Android/iOS), TV numérique |
-| Long terme | Média panafricain multi-pays, rédaction distribuée |
+| Long terme  | Média panafricain multi-pays, rédaction distribuée            |
 
 Le socle est dimensionné pour plus d'un million de visiteurs mensuels : le
 rendu est statique ou mis en cache au bord, la base est répliquée en lecture,

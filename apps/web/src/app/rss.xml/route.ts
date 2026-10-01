@@ -20,7 +20,8 @@ export async function GET(): Promise<Response> {
 
   const items = articles
     .map((article) => {
-      const author = article.authors[0]?.user.displayName ?? article.authors[0]?.user.name ?? 'La rédaction';
+      const author =
+        article.authors[0]?.user.displayName ?? article.authors[0]?.user.name ?? 'La rédaction';
       const link = `${siteUrl}/article/${article.slug}`;
 
       return `    <item>
@@ -30,9 +31,7 @@ export async function GET(): Promise<Response> {
       <pubDate>${(article.publishedAt ?? new Date()).toUTCString()}</pubDate>
       <author>redaction@sencourrier.sn (${escapeXml(author)})</author>${
         article.category ? `\n      <category>${escapeXml(article.category.name)}</category>` : ''
-      }${
-        article.excerpt ? `\n      <description>${escapeXml(article.excerpt)}</description>` : ''
-      }
+      }${article.excerpt ? `\n      <description>${escapeXml(article.excerpt)}</description>` : ''}
     </item>`;
     })
     .join('\n');

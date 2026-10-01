@@ -8,7 +8,12 @@ import { VideoSection } from '@/components/home/video-section';
 import { LatestUpdates } from '@/components/home/latest-updates';
 import { TrendingTopics } from '@/components/home/trending-topics';
 import { NewsletterSignup } from '@/components/home/newsletter-signup';
-import { JsonLd, organizationSchema, websiteSchema, itemListSchema } from '@/components/seo/json-ld';
+import {
+  JsonLd,
+  organizationSchema,
+  websiteSchema,
+  itemListSchema,
+} from '@/components/seo/json-ld';
 import {
   getLeadArticle,
   getArticleCards,
@@ -36,16 +41,17 @@ const HOME_SECTIONS = [
 ];
 
 export default async function HomePage() {
-  const [lead, latest, shows, videos, leaderboard, footerAd, categories, tagList] = await Promise.all([
-    getLeadArticle(),
-    getArticleCards({ limit: 4 }),
-    getPodcastShows(4),
-    getVideos(6),
-    getAdSlot('HEADER_LEADERBOARD'),
-    getAdSlot('FOOTER'),
-    getCategoriesWithCounts(),
-    getTrendingTags(10),
-  ]);
+  const [lead, latest, shows, videos, leaderboard, footerAd, categories, tagList] =
+    await Promise.all([
+      getLeadArticle(),
+      getArticleCards({ limit: 4 }),
+      getPodcastShows(4),
+      getVideos(6),
+      getAdSlot('HEADER_LEADERBOARD'),
+      getAdSlot('FOOTER'),
+      getCategoriesWithCounts(),
+      getTrendingTags(10),
+    ]);
 
   // Une requête par rubrique affichée en section.
   const sectionArticles = await Promise.all(
@@ -63,7 +69,10 @@ export default async function HomePage() {
       </div>
 
       {/* ── UNE ─────────────────────────────────────────────────────────── */}
-      <section className="mx-auto max-w-screen-2xl px-4 pb-8 sm:px-6 lg:px-8" aria-labelledby="une-title">
+      <section
+        className="mx-auto max-w-screen-2xl px-4 pb-8 sm:px-6 lg:px-8"
+        aria-labelledby="une-title"
+      >
         <h1 id="une-title" className="sr-only">
           À la une — SENCOURRIER, l&apos;actualité du Sénégal
         </h1>
@@ -84,7 +93,12 @@ export default async function HomePage() {
           <div className="flex flex-col gap-6">
             <div className="flex flex-col divide-y divide-neutral-200 dark:divide-neutral-800">
               {latest.map((article) => (
-                <ArticleCard key={article.id} article={article} variant="compact" className="py-4 first:pt-0" />
+                <ArticleCard
+                  key={article.id}
+                  article={article}
+                  variant="compact"
+                  className="py-4 first:pt-0"
+                />
               ))}
             </div>
             <LatestUpdates updates={latest} />
@@ -96,13 +110,17 @@ export default async function HomePage() {
       <section className="border-y border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-900/50">
         <div className="mx-auto grid max-w-screen-2xl gap-4 px-4 py-5 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:px-8">
           {[
-            { icon: ShieldCheck, label: 'Information vérifiée', detail: 'Double source systématique' },
+            {
+              icon: ShieldCheck,
+              label: 'Information vérifiée',
+              detail: 'Double source systématique',
+            },
             { icon: Zap, label: 'Temps réel', detail: 'Fil d’actualité continu' },
             { icon: Radio, label: 'TV & podcasts', detail: 'Production propre' },
             { icon: Crown, label: 'Premium', detail: 'Enquêtes exclusives' },
           ].map(({ icon: Icon, label, detail }) => (
             <div key={label} className="flex items-center gap-3">
-              <Icon className="h-5 w-5 shrink-0 text-sn-green" aria-hidden />
+              <Icon className="text-sn-green h-5 w-5 shrink-0" aria-hidden />
               <div>
                 <p className="text-sm font-semibold">{label}</p>
                 <p className="text-xs text-neutral-500 dark:text-neutral-400">{detail}</p>
@@ -120,7 +138,11 @@ export default async function HomePage() {
           if (!category || articles.length === 0) return null;
 
           return (
-            <section key={section.slug} className="py-10" aria-labelledby={`section-${section.slug}`}>
+            <section
+              key={section.slug}
+              className="py-10"
+              aria-labelledby={`section-${section.slug}`}
+            >
               <div className="mb-5 flex items-end justify-between gap-4 border-b-2 border-neutral-900 pb-2 dark:border-neutral-100">
                 <h2
                   id={`section-${section.slug}`}
@@ -140,7 +162,7 @@ export default async function HomePage() {
                 </h2>
                 <Link
                   href={`/${category.slug}`}
-                  className="shrink-0 text-xs font-semibold uppercase tracking-wide text-sn-green hover:underline dark:text-sn-green-400"
+                  className="text-sn-green dark:text-sn-green-400 shrink-0 text-xs font-semibold uppercase tracking-wide hover:underline"
                 >
                   Tout voir →
                 </Link>

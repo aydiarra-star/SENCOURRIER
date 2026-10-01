@@ -11,7 +11,7 @@ export const BRAND = {
   shortName: 'SENCOURRIER',
   tagline: 'Le média numérique de référence du Sénégal',
   description:
-    "SENCOURRIER est le média numérique de référence du Sénégal : actualité politique, société, économie, sports, technologies, international et diaspora, en continu et en toute indépendance.",
+    'SENCOURRIER est le média numérique de référence du Sénégal : actualité politique, société, économie, sports, technologies, international et diaspora, en continu et en toute indépendance.',
   locale: 'fr_SN',
   language: 'fr',
   country: 'SN',
@@ -115,16 +115,21 @@ export const FONTS_GOOGLE_URL =
   'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800;900&family=Poppins:wght@400;500;600;700&display=swap';
 
 /** Editorial "kicker" accents used to colour category eyebrows consistently. */
-export const CATEGORY_ACCENT_CLASSES: Record<string, { text: string; bg: string; border: string }> = {
-  green: { text: 'text-brand-green', bg: 'bg-brand-green', border: 'border-brand-green' },
-  yellow: { text: 'text-brand-yellow-600', bg: 'bg-brand-yellow', border: 'border-brand-yellow' },
-  red: { text: 'text-brand-red', bg: 'bg-brand-red', border: 'border-brand-red' },
-  slate: { text: 'text-brand-slate-700', bg: 'bg-brand-slate-800', border: 'border-brand-slate-800' },
-  blue: { text: 'text-sky-700', bg: 'bg-sky-700', border: 'border-sky-700' },
-  violet: { text: 'text-violet-700', bg: 'bg-violet-700', border: 'border-violet-700' },
-  orange: { text: 'text-orange-600', bg: 'bg-orange-600', border: 'border-orange-600' },
-  teal: { text: 'text-teal-700', bg: 'bg-teal-700', border: 'border-teal-700' },
-};
+export const CATEGORY_ACCENT_CLASSES: Record<string, { text: string; bg: string; border: string }> =
+  {
+    green: { text: 'text-brand-green', bg: 'bg-brand-green', border: 'border-brand-green' },
+    yellow: { text: 'text-brand-yellow-600', bg: 'bg-brand-yellow', border: 'border-brand-yellow' },
+    red: { text: 'text-brand-red', bg: 'bg-brand-red', border: 'border-brand-red' },
+    slate: {
+      text: 'text-brand-slate-700',
+      bg: 'bg-brand-slate-800',
+      border: 'border-brand-slate-800',
+    },
+    blue: { text: 'text-sky-700', bg: 'bg-sky-700', border: 'border-sky-700' },
+    violet: { text: 'text-violet-700', bg: 'bg-violet-700', border: 'border-violet-700' },
+    orange: { text: 'text-orange-600', bg: 'bg-orange-600', border: 'border-orange-600' },
+    teal: { text: 'text-teal-700', bg: 'bg-teal-700', border: 'border-teal-700' },
+  };
 
 export const BREAKPOINTS = {
   sm: 640,

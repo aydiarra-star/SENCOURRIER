@@ -30,7 +30,9 @@ export async function GET(): Promise<Response> {
         </news:publication>
         <news:publication_date>${article.publishedAt?.toISOString()}</news:publication_date>
         <news:title>${escapeXml(article.title)}</news:title>${
-          article.category ? `\n        <news:keywords>${escapeXml(article.category.name)}</news:keywords>` : ''
+          article.category
+            ? `\n        <news:keywords>${escapeXml(article.category.name)}</news:keywords>`
+            : ''
         }
       </news:news>
     </url>`,

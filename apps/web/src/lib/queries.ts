@@ -30,7 +30,9 @@ const CARD_SELECT = {
   commentCount: true,
   publishedAt: true,
   category: { select: { id: true, slug: true, name: true, shortName: true, accent: true } },
-  heroImage: { select: { url: true, thumbnailUrl: true, altText: true, width: true, height: true } },
+  heroImage: {
+    select: { url: true, thumbnailUrl: true, altText: true, width: true, height: true },
+  },
   authors: {
     select: {
       position: true,
@@ -48,17 +50,28 @@ export type ArticleCard = Awaited<ReturnType<typeof getArticleCards>>[number];
  * d'accueil demande les mêmes listes depuis plusieurs composants.
  */
 export const getArticleCards = cache(
-  async (options: {
-    categorySlug?: string;
-    tagSlug?: string;
-    authorId?: string;
-    limit?: number;
-    offset?: number;
-    excludeIds?: string[];
-    onlyPremium?: boolean;
-    onlyBreaking?: boolean;
-  } = {}) => {
-    const { categorySlug, tagSlug, authorId, limit = 12, offset = 0, excludeIds, onlyPremium, onlyBreaking } = options;
+  async (
+    options: {
+      categorySlug?: string;
+      tagSlug?: string;
+      authorId?: string;
+      limit?: number;
+      offset?: number;
+      excludeIds?: string[];
+      onlyPremium?: boolean;
+      onlyBreaking?: boolean;
+    } = {},
+  ) => {
+    const {
+      categorySlug,
+      tagSlug,
+      authorId,
+      limit = 12,
+      offset = 0,
+      excludeIds,
+      onlyPremium,
+      onlyBreaking,
+    } = options;
 
     return prisma.article.findMany({
       where: {
@@ -97,7 +110,11 @@ export async function safeQuery<T>(run: () => Promise<T>, fallback: T): Promise<
 
 export const getLeadArticle = cache(async () => {
   return prisma.article.findFirst({
-    where: { status: 'PUBLISHED' as ArticleStatus, deletedAt: null, publishedAt: { lte: new Date() } },
+    where: {
+      status: 'PUBLISHED' as ArticleStatus,
+      deletedAt: null,
+      publishedAt: { lte: new Date() },
+    },
     orderBy: [{ isFeatured: 'desc' }, { publishedAt: 'desc' }],
     select: CARD_SELECT,
   });
@@ -171,7 +188,11 @@ export const getMenuCategories = cache(async () => {
 export const getLatestUpdates = cache(async (limit = 8) => {
   const since = new Date(Date.now() - 24 * 60 * 60 * 1000);
   return prisma.article.findMany({
-    where: { status: 'PUBLISHED' as ArticleStatus, deletedAt: null, publishedAt: { gte: since, lte: new Date() } },
+    where: {
+      status: 'PUBLISHED' as ArticleStatus,
+      deletedAt: null,
+      publishedAt: { gte: since, lte: new Date() },
+    },
     select: {
       id: true,
       slug: true,
@@ -254,19 +275,21 @@ export const getSubscriptionPlans = cache(async () => {
 });
 
 /** Articles liés : même catégorie, hors article courant. */
-export const getRelatedArticles = cache(async (categoryId: string, excludeId: string, limit = 3) => {
-  return prisma.article.findMany({
-    where: {
-      status: 'PUBLISHED' as ArticleStatus,
-      deletedAt: null,
-      categoryId,
-      id: { not: excludeId },
-    },
-    select: CARD_SELECT,
-    orderBy: { publishedAt: 'desc' },
-    take: limit,
-  });
-});
+export const getRelatedArticles = cache(
+  async (categoryId: string, excludeId: string, limit = 3) => {
+    return prisma.article.findMany({
+      where: {
+        status: 'PUBLISHED' as ArticleStatus,
+        deletedAt: null,
+        categoryId,
+        id: { not: excludeId },
+      },
+      select: CARD_SELECT,
+      orderBy: { publishedAt: 'desc' },
+      take: limit,
+    });
+  },
+);
 
 /** Profil d'un journaliste avec ses publications. */
 export const getAuthorBySlug = cache(async (slug: string) => {
@@ -274,7 +297,15 @@ export const getAuthorBySlug = cache(async (slug: string) => {
     where: { slug },
     include: {
       user: {
-        select: { id: true, displayName: true, name: true, image: true, email: true, bio: true, role: true },
+        select: {
+          id: true,
+          displayName: true,
+          name: true,
+          image: true,
+          email: true,
+          bio: true,
+          role: true,
+        },
       },
     },
   });

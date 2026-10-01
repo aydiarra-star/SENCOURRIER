@@ -101,7 +101,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   ]);
 
   return (
-    <html lang="fr" suppressHydrationWarning className={`${inter.variable} ${montserrat.variable} ${poppins.variable}`}>
+    <html
+      lang="fr"
+      suppressHydrationWarning
+      className={`${inter.variable} ${montserrat.variable} ${poppins.variable}`}
+    >
       <head>
         {/* Le thème est appliqué avant le premier rendu pour éviter tout flash. */}
         <script
@@ -113,7 +117,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <body className="min-h-screen bg-white font-sans text-neutral-900 antialiased dark:bg-neutral-950 dark:text-neutral-100">
         <a
           href="#contenu"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-sn-green focus:px-4 focus:py-2 focus:text-white"
+          className="focus:bg-sn-green sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:px-4 focus:py-2 focus:text-white"
         >
           Aller au contenu principal
         </a>

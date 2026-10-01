@@ -6,7 +6,8 @@ import { getArticleCards } from '@/lib/queries';
 export const dynamic = 'force-dynamic';
 export const metadata: Metadata = {
   title: 'Dernières minutes',
-  description: "Le fil d'actualité en continu de SENCOURRIER : toutes les informations publiées dans les dernières 24 heures.",
+  description:
+    "Le fil d'actualité en continu de SENCOURRIER : toutes les informations publiées dans les dernières 24 heures.",
   alternates: { canonical: '/dernieres-minutes' },
 };
 
@@ -15,15 +16,20 @@ export default async function LatestPage() {
 
   return (
     <>
-      <JsonLd data={breadcrumbSchema([{ name: 'Accueil', url: '/' }, { name: 'Dernières minutes', url: '/dernieres-minutes' }])} />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: 'Accueil', url: '/' },
+          { name: 'Dernières minutes', url: '/dernieres-minutes' },
+        ])}
+      />
       {articles.length > 0 && <JsonLd data={itemListSchema(articles)} />}
 
       <div className="border-b border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-900/50">
         <div className="mx-auto max-w-screen-2xl px-4 py-8 sm:px-6 lg:px-8">
-          <h1 className="flex items-center gap-3 font-display text-3xl font-extrabold tracking-tight sm:text-4xl">
+          <h1 className="font-display flex items-center gap-3 text-3xl font-extrabold tracking-tight sm:text-4xl">
             <span className="relative flex h-3 w-3">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sn-red opacity-75" />
-              <span className="relative inline-flex h-3 w-3 rounded-full bg-sn-red" />
+              <span className="bg-sn-red absolute inline-flex h-full w-full animate-ping rounded-full opacity-75" />
+              <span className="bg-sn-red relative inline-flex h-3 w-3 rounded-full" />
             </span>
             Dernières minutes
           </h1>

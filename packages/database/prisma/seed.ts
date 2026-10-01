@@ -7,14 +7,19 @@
  * Les images utilisent picsum.photos (déjà autorisé dans next.config.js) afin
  * que l'aperçu soit visuellement réaliste sans dépendre d'un CDN privé.
  */
-import { PrismaClient, Role, ArticleStatus, ArticleFormat, SubscriptionTier } from '../generated/client';
+import {
+  PrismaClient,
+  Role,
+  ArticleStatus,
+  ArticleFormat,
+  SubscriptionTier,
+} from '../generated/client';
 import { CATEGORIES } from '@sencourrier/types';
 import * as bcrypt from 'bcryptjs';
 
 const prisma = new PrismaClient();
 
-const img = (seed: string, w = 1600, h = 900) =>
-  `https://picsum.photos/seed/${seed}/${w}/${h}`;
+const img = (seed: string, w = 1600, h = 900) => `https://picsum.photos/seed/${seed}/${w}/${h}`;
 
 /** Calcule le temps de lecture à partir du corps de l'article (200 mots/min). */
 function readingMinutes(text: string): number {
@@ -43,7 +48,7 @@ const STAFF = [
     displayName: 'Amadou Diarra',
     role: Role.SUPER_ADMIN,
     jobTitle: 'Directeur de publication',
-    bio: "Fondateur de SENCOURRIER. Vingt ans de journalisme économique, ancien correspondant pour plusieurs rédactions internationales à Dakar.",
+    bio: 'Fondateur de SENCOURRIER. Vingt ans de journalisme économique, ancien correspondant pour plusieurs rédactions internationales à Dakar.',
     expertise: ['Économie', 'Politique publique'],
   },
   {
@@ -51,7 +56,7 @@ const STAFF = [
     displayName: 'Fatou Ndiaye',
     role: Role.EDITOR_IN_CHIEF,
     jobTitle: 'Rédactrice en chef',
-    bio: "Rédactrice en chef de SENCOURRIER. Spécialiste des questions politiques et institutionnelles sénégalaises.",
+    bio: 'Rédactrice en chef de SENCOURRIER. Spécialiste des questions politiques et institutionnelles sénégalaises.',
     expertise: ['Politique', 'Institutions'],
   },
   {
@@ -75,7 +80,7 @@ const STAFF = [
     displayName: 'Ibrahima Ba',
     role: Role.JOURNALIST,
     jobTitle: 'Chef de rubrique Sports',
-    bio: "Couvre les Lions de la Teranga, la lutte sénégalaise et le sport continental.",
+    bio: 'Couvre les Lions de la Teranga, la lutte sénégalaise et le sport continental.',
     expertise: ['Football', 'Lutte'],
   },
   {
@@ -83,7 +88,7 @@ const STAFF = [
     displayName: 'Mariama Diallo',
     role: Role.JOURNALIST,
     jobTitle: 'Journaliste société',
-    bio: "Santé, éducation et questions de société. Enquêtes de terrain à travers les régions.",
+    bio: 'Santé, éducation et questions de société. Enquêtes de terrain à travers les régions.',
     expertise: ['Santé', 'Éducation'],
   },
   {
@@ -91,7 +96,7 @@ const STAFF = [
     displayName: 'Cheikh Gueye',
     role: Role.CORRESPONDENT,
     jobTitle: 'Correspondant — Saint-Louis',
-    bio: "Correspondant dans le Nord. Couvre la pêche, le littoral et les collectivités locales.",
+    bio: 'Correspondant dans le Nord. Couvre la pêche, le littoral et les collectivités locales.',
     expertise: ['Pêche', 'Régions'],
   },
   {
@@ -138,8 +143,10 @@ const ARTICLES: SeedArticle[] = [
   {
     categorySlug: 'politique',
     authorEmail: 'moussa.fall@sencourrier.sn',
-    title: "Conseil des ministres : le gouvernement adopte un plan d'urgence pour l'emploi des jeunes",
-    subtitle: "Un dispositif de 45 milliards FCFA ciblant 120 000 primo-demandeurs d'emploi sur trois ans",
+    title:
+      "Conseil des ministres : le gouvernement adopte un plan d'urgence pour l'emploi des jeunes",
+    subtitle:
+      "Un dispositif de 45 milliards FCFA ciblant 120 000 primo-demandeurs d'emploi sur trois ans",
     excerpt:
       "Réuni au Palais de la République, le Conseil des ministres a adopté mercredi un programme national d'insertion professionnelle des jeunes, assorti d'un fonds de garantie destiné aux très petites entreprises.",
     body: [
@@ -158,16 +165,18 @@ const ARTICLES: SeedArticle[] = [
   {
     categorySlug: 'politique',
     authorEmail: 'fatou.ndiaye@sencourrier.sn',
-    title: "Assemblée nationale : le projet de loi sur le financement des collectivités locales en débat",
-    subtitle: "Les députés examinent une réforme attendue depuis la révision du Code général des collectivités",
+    title:
+      'Assemblée nationale : le projet de loi sur le financement des collectivités locales en débat',
+    subtitle:
+      'Les députés examinent une réforme attendue depuis la révision du Code général des collectivités',
     excerpt:
       "La commission des finances a entamé l'examen du projet de loi portant réforme du financement des collectivités territoriales, qui doit relever la part des recettes transférées aux communes.",
     body: [
       "La commission des finances de l'Assemblée nationale a ouvert lundi l'examen du projet de loi portant réforme du financement des collectivités territoriales. Le texte prévoit de porter de 25 % à 32 % la part des recettes fiscales transférées aux communes.",
       "L'objectif affiché est de réduire la dépendance des collectivités aux subventions d'équilibre et de leur donner de la visibilité pluriannuelle sur leurs ressources. Le texte introduit à cette fin une programmation budgétaire sur trois ans.",
-      "Plusieurs députés ont toutefois demandé des garanties sur la compensation intégrale des transferts de compétences, rappelant que les collectivités assument depuis des années des charges non financées.",
+      'Plusieurs députés ont toutefois demandé des garanties sur la compensation intégrale des transferts de compétences, rappelant que les collectivités assument depuis des années des charges non financées.',
       "Les associations de maires réclament de leur côté un mécanisme de péréquation plus lisible, afin que les communes rurales ne restent pas à l'écart de la dynamique des recettes.",
-      "Le vote en séance plénière est attendu à la fin du mois. Le texte devra ensuite être examiné par le Sénat.",
+      'Le vote en séance plénière est attendu à la fin du mois. Le texte devra ensuite être examiné par le Sénat.',
     ],
     tags: ['assemblée nationale', 'collectivités', 'finances publiques'],
     daysAgo: 1,
@@ -176,15 +185,15 @@ const ARTICLES: SeedArticle[] = [
   {
     categorySlug: 'politique',
     authorEmail: 'moussa.fall@sencourrier.sn',
-    title: "Élections : la CENA présente son calendrier pour les prochaines élections locales",
-    subtitle: "Le fichier électoral sera révisé à partir du mois prochain dans les 557 communes",
+    title: 'Élections : la CENA présente son calendrier pour les prochaines élections locales',
+    subtitle: 'Le fichier électoral sera révisé à partir du mois prochain dans les 557 communes',
     excerpt:
       "La Commission électorale nationale autonome a détaillé le calendrier de révision du fichier électoral et les modalités d'inscription pour les élections locales à venir.",
     body: [
-      "La Commission électorale nationale autonome a présenté le calendrier de révision du fichier électoral, qui débutera le mois prochain dans les 557 communes du pays. Les inscriptions seront possibles dans les centres principaux et secondaires.",
-      "La commission annonce un renforcement du dispositif biométrique et la mise en place de commissions départementales chargées de traiter les réclamations sous quinze jours.",
-      "Les partis politiques ont été invités à désigner des représentants à chaque niveau. « La transparence du fichier conditionne la crédibilité du scrutin », a souligné un membre de la commission.",
-      "Les opérations de révision se dérouleront sur six semaines, avec une prolongation possible dans les zones à faible densité administrative.",
+      'La Commission électorale nationale autonome a présenté le calendrier de révision du fichier électoral, qui débutera le mois prochain dans les 557 communes du pays. Les inscriptions seront possibles dans les centres principaux et secondaires.',
+      'La commission annonce un renforcement du dispositif biométrique et la mise en place de commissions départementales chargées de traiter les réclamations sous quinze jours.',
+      'Les partis politiques ont été invités à désigner des représentants à chaque niveau. « La transparence du fichier conditionne la crédibilité du scrutin », a souligné un membre de la commission.',
+      'Les opérations de révision se dérouleront sur six semaines, avec une prolongation possible dans les zones à faible densité administrative.',
     ],
     tags: ['élections', 'CENA', 'démocratie'],
     daysAgo: 2,
@@ -195,15 +204,15 @@ const ARTICLES: SeedArticle[] = [
   {
     categorySlug: 'societe',
     authorEmail: 'mariama.diallo@sencourrier.sn',
-    title: "Santé : le nouvel hôpital de Diamniadio entre en service partiel",
-    subtitle: "Six services ouvrent progressivement, avec une capacité cible de 300 lits",
+    title: 'Santé : le nouvel hôpital de Diamniadio entre en service partiel',
+    subtitle: 'Six services ouvrent progressivement, avec une capacité cible de 300 lits',
     excerpt:
       "Le nouvel établissement hospitalier de Diamniadio a accueilli ses premiers patients. Six services sur douze sont opérationnels, le reste devant ouvrir d'ici la fin de l'année.",
     body: [
-      "Le nouvel hôpital de Diamniadio a accueilli ses premiers patients cette semaine. Six services sur les douze prévus sont opérationnels : urgences, médecine générale, pédiatrie, gynécologie-obstétrique, imagerie et laboratoire.",
+      'Le nouvel hôpital de Diamniadio a accueilli ses premiers patients cette semaine. Six services sur les douze prévus sont opérationnels : urgences, médecine générale, pédiatrie, gynécologie-obstétrique, imagerie et laboratoire.',
       "L'établissement vise une capacité de 300 lits et l'accueil de 1 500 consultations par jour à pleine charge. Le plateau technique comprend un scanner, une IRM et deux salles d'intervention.",
       "« Nous montons en puissance par paliers pour garantir la qualité de prise en charge plutôt que d'ouvrir tout au même moment », explique la direction, qui évoque des difficultés de recrutement sur certains postes spécialisés.",
-      "Les syndicats de santé demandent des garanties sur les effectifs infirmiers, estimant que la montée en charge ne pourra se faire sans un plan de recrutement pluriannuel.",
+      'Les syndicats de santé demandent des garanties sur les effectifs infirmiers, estimant que la montée en charge ne pourra se faire sans un plan de recrutement pluriannuel.',
       "L'établissement doit à terme désengorger les structures de Dakar, qui concentrent aujourd'hui l'essentiel des hospitalisations de référence.",
     ],
     tags: ['santé', 'hôpital', 'Diamniadio'],
@@ -215,14 +224,14 @@ const ARTICLES: SeedArticle[] = [
   {
     categorySlug: 'societe',
     authorEmail: 'mariama.diallo@sencourrier.sn',
-    title: "Éducation : la rentrée universitaire marquée par la hausse des effectifs en sciences",
-    subtitle: "Les filières scientifiques enregistrent une progression de 18 % des inscriptions",
+    title: 'Éducation : la rentrée universitaire marquée par la hausse des effectifs en sciences',
+    subtitle: 'Les filières scientifiques enregistrent une progression de 18 % des inscriptions',
     excerpt:
       "Les universités publiques enregistrent une hausse notable des inscriptions en filières scientifiques, portée par les nouvelles bourses d'excellence et l'ouverture de licences professionnelles.",
     body: [
       "La rentrée universitaire s'ouvre sur une progression de 18 % des inscriptions en filières scientifiques, une première depuis plusieurs années. Les licences en mathématiques appliquées, informatique et sciences de l'ingénieur sont les plus demandées.",
       "Cette dynamique s'explique en partie par le dispositif de bourses d'excellence mis en place l'an dernier et par l'ouverture de nouvelles licences professionnelles adossées à des entreprises.",
-      "Les universités de proximité bénéficient également de la tendance : leurs effectifs progressent de 11 %, ce qui réduit la pression sur les campus de Dakar.",
+      'Les universités de proximité bénéficient également de la tendance : leurs effectifs progressent de 11 %, ce qui réduit la pression sur les campus de Dakar.',
       "Les syndicats étudiants pointent néanmoins la question des capacités d'accueil, notamment pour les travaux pratiques, et réclament la réhabilitation des laboratoires.",
       "Le ministère annonce un plan d'investissement dans les équipements pédagogiques sur deux ans.",
     ],
@@ -235,14 +244,14 @@ const ARTICLES: SeedArticle[] = [
     categorySlug: 'societe',
     authorEmail: 'cheikh.gueye@sencourrier.sn',
     title: "Environnement : l'érosion côtière s'accélère à Saint-Louis, 400 familles à relocaliser",
-    subtitle: "Le trait de côte recule de plus de deux mètres par an dans certains quartiers",
+    subtitle: 'Le trait de côte recule de plus de deux mètres par an dans certains quartiers',
     excerpt:
       "La commune de Saint-Louis fait face à une accélération de l'érosion côtière. Un plan de relocalisation concerne 400 familles installées sur la langue de Barbarie.",
     body: [
       "L'érosion côtière s'accélère à Saint-Louis, où le trait de côte recule de plus de deux mètres par an dans certains secteurs de la langue de Barbarie. Un plan de relocalisation concerne 400 familles.",
       "Les autorités municipales ont identifié trois sites d'accueil à l'intérieur des terres, avec un financement mixte incluant des bailleurs internationaux. La première phase devrait démarrer avant la saison des pluies.",
       "« Ce n'est pas seulement un problème de logement, c'est un problème de moyens d'existence », souligne un représentant des pêcheurs, dont les sites de débarquement sont directement menacés.",
-      "Les scientifiques appellent à un suivi régulier du trait de côte et à la restauration des cordons dunaires, seule protection naturelle encore efficace contre la houle.",
+      'Les scientifiques appellent à un suivi régulier du trait de côte et à la restauration des cordons dunaires, seule protection naturelle encore efficace contre la houle.',
       "Le littoral sénégalais, long de 700 kilomètres, concentre près des deux tiers de la population et l'essentiel des activités économiques du pays.",
     ],
     tags: ['environnement', 'littoral', 'Saint-Louis', 'climat'],
@@ -256,12 +265,12 @@ const ARTICLES: SeedArticle[] = [
   {
     categorySlug: 'economie',
     authorEmail: 'awa.sow@sencourrier.sn',
-    title: "Énergie : le champ gazier Grand Tortue Ahmeyim livre ses premiers volumes",
-    subtitle: "Une étape décisive pour la souveraineté énergétique du Sénégal",
+    title: 'Énergie : le champ gazier Grand Tortue Ahmeyim livre ses premiers volumes',
+    subtitle: 'Une étape décisive pour la souveraineté énergétique du Sénégal',
     excerpt:
       "Le projet gazier offshore partagé avec la Mauritanie a livré ses premiers volumes commerciaux. Les recettes attendues transforment l'équation budgétaire du pays.",
     body: [
-      "Le champ gazier Grand Tortue Ahmeyim a livré ses premiers volumes commerciaux, une étape décisive pour la souveraineté énergétique du Sénégal. Le gisement est exploité conjointement avec la Mauritanie.",
+      'Le champ gazier Grand Tortue Ahmeyim a livré ses premiers volumes commerciaux, une étape décisive pour la souveraineté énergétique du Sénégal. Le gisement est exploité conjointement avec la Mauritanie.',
       "Les recettes attendues modifient l'équation budgétaire du pays, avec un cadre de gestion intergénérationnelle destiné à lisser l'impact des fluctuations des prix sur les finances publiques.",
       "Le gaz sera principalement exporté sous forme liquéfiée, avec une part réservée au marché domestique pour l'électricité et l'industrie. Le projet prévoit aussi un volet de contenu local.",
       "« Le vrai défi commence maintenant : former les compétences nationales et industrialiser autour du gaz plutôt que de se contenter de l'exporter brut », estime un économiste de l'Université Cheikh Anta Diop.",
@@ -276,7 +285,7 @@ const ARTICLES: SeedArticle[] = [
   {
     categorySlug: 'economie',
     authorEmail: 'awa.sow@sencourrier.sn',
-    title: "Startups : une fintech dakaroise lève 12 millions de dollars en série A",
+    title: 'Startups : une fintech dakaroise lève 12 millions de dollars en série A',
     subtitle: "Le tour de table doit financer l'expansion vers quatre pays de la sous-région",
     excerpt:
       "La jeune pousse dakaroise spécialisée dans les paiements marchands a bouclé une levée de 12 millions de dollars, l'une des plus importantes du secteur au Sénégal.",
@@ -295,16 +304,17 @@ const ARTICLES: SeedArticle[] = [
   {
     categorySlug: 'economie',
     authorEmail: 'cheikh.gueye@sencourrier.sn',
-    title: "Pêche : la campagne de débarquement en baisse de 9 % sur le port de Dakar",
-    subtitle: "Les professionnels pointent la raréfaction de la ressource et la hausse du coût du carburant",
+    title: 'Pêche : la campagne de débarquement en baisse de 9 % sur le port de Dakar',
+    subtitle:
+      'Les professionnels pointent la raréfaction de la ressource et la hausse du coût du carburant',
     excerpt:
       "Les débarquements enregistrés au port de Dakar reculent de 9 % sur la campagne écoulée, sous l'effet conjugué de la raréfaction de la ressource et de la hausse des coûts d'exploitation.",
     body: [
-      "Les débarquements enregistrés au port de Dakar reculent de 9 % sur la campagne écoulée. Les professionnels invoquent la raréfaction de la ressource et la hausse du coût du carburant.",
+      'Les débarquements enregistrés au port de Dakar reculent de 9 % sur la campagne écoulée. Les professionnels invoquent la raréfaction de la ressource et la hausse du coût du carburant.',
       "Les pêcheurs artisanaux sont les plus touchés : leurs sorties en mer sont plus longues et moins productives, alors que le prix du carburant a augmenté de près d'un quart en deux ans.",
-      "Les organisations professionnelles réclament une subvention ciblée sur le carburant et un renforcement des aires marines protégées pour reconstituer les stocks.",
+      'Les organisations professionnelles réclament une subvention ciblée sur le carburant et un renforcement des aires marines protégées pour reconstituer les stocks.',
       "Les autorités annoncent la réactivation des patrouilles conjointes contre la pêche illicite, estimant que la pression étrangère reste l'un des principaux facteurs de surexploitation.",
-      "Le secteur fait vivre directement et indirectement près de 600 000 personnes au Sénégal.",
+      'Le secteur fait vivre directement et indirectement près de 600 000 personnes au Sénégal.',
     ],
     tags: ['pêche', 'économie', 'littoral'],
     daysAgo: 3,
@@ -314,14 +324,15 @@ const ARTICLES: SeedArticle[] = [
     categorySlug: 'economie',
     authorEmail: 'awa.sow@sencourrier.sn',
     title: "Agriculture : une récolte d'arachide excédentaire, mais des prix sous tension",
-    subtitle: "La production dépasse les prévisions, l'organisation de la filière reste le point faible",
+    subtitle:
+      "La production dépasse les prévisions, l'organisation de la filière reste le point faible",
     excerpt:
       "La campagne arachidière affiche un excédent de production. Les producteurs s'inquiètent toutefois du niveau des prix d'achat au producteur et des capacités de stockage.",
     body: [
-      "La campagne arachidière affiche un excédent de production par rapport aux prévisions initiales, porté par une pluviométrie favorable dans le bassin arachidier.",
+      'La campagne arachidière affiche un excédent de production par rapport aux prévisions initiales, porté par une pluviométrie favorable dans le bassin arachidier.',
       "Les producteurs s'inquiètent néanmoins du niveau des prix d'achat au producteur et des capacités de stockage, qui restent le maillon faible de la filière.",
       "Les huiliers se disent contraints par la concurrence des importations d'huile brute et demandent un cadre tarifaire stabilisé sur la campagne.",
-      "Les coopératives plaident pour un renforcement des capacités de transformation locale, afin de capter davantage de valeur ajoutée sur le territoire.",
+      'Les coopératives plaident pour un renforcement des capacités de transformation locale, afin de capter davantage de valeur ajoutée sur le territoire.',
     ],
     tags: ['agriculture', 'arachide', 'filière'],
     daysAgo: 4,
@@ -333,14 +344,14 @@ const ARTICLES: SeedArticle[] = [
     categorySlug: 'sports',
     authorEmail: 'ibrahima.ba@sencourrier.sn',
     title: "Lions de la Teranga : le Sénégal s'impose 2-0 et valide sa qualification",
-    subtitle: "Une victoire maîtrisée au stade Abdoulaye Wade devant 45 000 spectateurs",
+    subtitle: 'Une victoire maîtrisée au stade Abdoulaye Wade devant 45 000 spectateurs',
     excerpt:
       "Portés par une première période de haute intensité, les Lions ont dominé leur adversaire et composté leur billet pour la phase finale. La défense n'a pas encaissé depuis cinq matchs.",
     body: [
       "Le Sénégal s'est imposé 2-0 au stade Abdoulaye Wade devant 45 000 spectateurs, validant sa qualification pour la phase finale de la compétition continentale.",
       "Les Lions ont ouvert le score à la 23e minute sur un mouvement collectif conclu à l'entrée de la surface, avant de doubler la mise juste avant la pause sur coup de pied arrêté.",
       "La seconde période a été plus gestionnaire, l'équipe préservant sa solidité défensive. Le gardien n'a eu qu'une intervention réellement décisive à effectuer.",
-      "« On a respecté le plan de jeu et on a su être patients », a commenté le sélectionneur en conférence de presse, saluant la performance de son milieu de terrain.",
+      '« On a respecté le plan de jeu et on a su être patients », a commenté le sélectionneur en conférence de presse, saluant la performance de son milieu de terrain.',
       "Le Sénégal reste invaincu depuis huit rencontres et n'a plus encaissé de but depuis cinq matchs, une série qui place l'équipe parmi les favoris.",
     ],
     tags: ['football', 'Lions de la Teranga', 'sélection'],
@@ -372,14 +383,14 @@ const ARTICLES: SeedArticle[] = [
   {
     categorySlug: 'sports',
     authorEmail: 'ibrahima.ba@sencourrier.sn',
-    title: "Basketball : le Sénégal décroche sa qualification pour le tournoi continental",
-    subtitle: "Les Lions du basket renversent un match mal engagé dans le dernier quart-temps",
+    title: 'Basketball : le Sénégal décroche sa qualification pour le tournoi continental',
+    subtitle: 'Les Lions du basket renversent un match mal engagé dans le dernier quart-temps',
     excerpt:
       "Menés de douze points à l'entame du dernier quart-temps, les basketteurs sénégalais ont renversé la rencontre pour arracher leur qualification.",
     body: [
       "Menés de douze points à l'entame du dernier quart-temps, les basketteurs sénégalais ont renversé la rencontre pour arracher leur qualification au tournoi continental.",
       "Le tournant du match tient à un changement de défense et à l'entrée en jeu d'un ailier de 21 ans, auteur de trois tirs primés consécutifs.",
-      "« On a joué avec nos moyens, sans paniquer. Cette équipe a du caractère », a déclaré le sélectionneur après la rencontre.",
+      '« On a joué avec nos moyens, sans paniquer. Cette équipe a du caractère », a déclaré le sélectionneur après la rencontre.',
       "La fédération annonce un stage de préparation de six semaines avant la phase finale, avec plusieurs rencontres amicales à l'étranger.",
     ],
     tags: ['basketball', 'sélection', 'compétitions africaines'],
@@ -391,14 +402,14 @@ const ARTICLES: SeedArticle[] = [
   {
     categorySlug: 'technologies',
     authorEmail: 'nadia.sy@sencourrier.sn',
-    title: "Intelligence artificielle : le Sénégal lance un centre national de recherche appliquée",
-    subtitle: "Le centre sera adossé aux universités et aux entreprises du secteur numérique",
+    title: 'Intelligence artificielle : le Sénégal lance un centre national de recherche appliquée',
+    subtitle: 'Le centre sera adossé aux universités et aux entreprises du secteur numérique',
     excerpt:
       "Le pays se dote d'un centre national dédié à l'intelligence artificielle appliquée, avec pour priorité la santé, l'agriculture et l'administration publique.",
     body: [
       "Le Sénégal se dote d'un centre national de recherche en intelligence artificielle appliquée, adossé aux universités et aux entreprises du secteur numérique. La structure doit ouvrir ses portes au prochain semestre.",
       "Trois domaines sont prioritaires : l'aide au diagnostic médical, l'optimisation des rendements agricoles et la dématérialisation des services administratifs.",
-      "Le financement repose sur un partenariat public-privé et sur des conventions de recherche avec des institutions étrangères. Le centre prévoit de recruter cinquante chercheurs à terme.",
+      'Le financement repose sur un partenariat public-privé et sur des conventions de recherche avec des institutions étrangères. Le centre prévoit de recruter cinquante chercheurs à terme.',
       "« L'enjeu n'est pas de courir après les modèles les plus lourds, mais de constituer des données de qualité adaptées à nos réalités », insiste la directrice scientifique pressentie.",
       "Le texte encadrant le partage des données de santé fait l'objet d'une consultation avec les ordres professionnels et les associations de patients.",
     ],
@@ -411,16 +422,16 @@ const ARTICLES: SeedArticle[] = [
   {
     categorySlug: 'technologies',
     authorEmail: 'nadia.sy@sencourrier.sn',
-    title: "Cybersécurité : une campagne de sensibilisation face à la hausse des fraudes en ligne",
-    subtitle: "Les signalements ont doublé en un an, principalement sur le mobile money",
+    title: 'Cybersécurité : une campagne de sensibilisation face à la hausse des fraudes en ligne',
+    subtitle: 'Les signalements ont doublé en un an, principalement sur le mobile money',
     excerpt:
-      "Face au doublement des signalements de fraude en ligne, les autorités lancent une campagne nationale de sensibilisation ciblant les usagers du mobile money.",
+      'Face au doublement des signalements de fraude en ligne, les autorités lancent une campagne nationale de sensibilisation ciblant les usagers du mobile money.',
     body: [
-      "Face au doublement des signalements de fraude en ligne en un an, les autorités lancent une campagne nationale de sensibilisation ciblant en priorité les usagers du mobile money.",
+      'Face au doublement des signalements de fraude en ligne en un an, les autorités lancent une campagne nationale de sensibilisation ciblant en priorité les usagers du mobile money.',
       "Les techniques recensées sont variées : hameçonnage par SMS, faux appels du service client, usurpation d'identité d'un proche et faux liens de retrait d'argent.",
-      "Les opérateurs télécoms et les banques se sont associés à la campagne, qui repose sur des messages courts diffusés à la radio, sur les réseaux sociaux et dans les agences.",
+      'Les opérateurs télécoms et les banques se sont associés à la campagne, qui repose sur des messages courts diffusés à la radio, sur les réseaux sociaux et dans les agences.',
       "Les experts recommandent l'authentification à deux facteurs sur toutes les transactions et rappellent qu'aucun agent n'a besoin d'un code confidentiel.",
-      "Un guichet unique de signalement doit être généralisé, avec un délai de traitement cible de quarante-huit heures.",
+      'Un guichet unique de signalement doit être généralisé, avec un délai de traitement cible de quarante-huit heures.',
     ],
     tags: ['cybersécurité', 'fraude', 'mobile money'],
     daysAgo: 2,
@@ -430,14 +441,14 @@ const ARTICLES: SeedArticle[] = [
   {
     categorySlug: 'technologies',
     authorEmail: 'nadia.sy@sencourrier.sn',
-    title: "Télécoms : le déploiement de la fibre optique accélère dans les régions",
+    title: 'Télécoms : le déploiement de la fibre optique accélère dans les régions',
     subtitle: "Objectif de couverture de 90 % des communes d'ici trois ans",
     excerpt:
-      "Le programme national de déploiement de la fibre optique franchit une nouvelle étape avec la connexion de plusieurs chefs-lieux de région à haut débit.",
+      'Le programme national de déploiement de la fibre optique franchit une nouvelle étape avec la connexion de plusieurs chefs-lieux de région à haut débit.',
     body: [
       "Le programme national de déploiement de la fibre optique franchit une nouvelle étape avec la connexion de plusieurs chefs-lieux de région. L'objectif affiché est de couvrir 90 % des communes d'ici trois ans.",
-      "Le chantier repose sur un réseau dorsal national et sur des boucles métropolitaines. Les zones rurales les plus éloignées seront traitées par satellite en complément.",
-      "Les opérateurs soulignent que la demande de bande passante croît de 40 % par an, portée par le télétravail, le streaming et les services publics dématérialisés.",
+      'Le chantier repose sur un réseau dorsal national et sur des boucles métropolitaines. Les zones rurales les plus éloignées seront traitées par satellite en complément.',
+      'Les opérateurs soulignent que la demande de bande passante croît de 40 % par an, portée par le télétravail, le streaming et les services publics dématérialisés.',
       "Les collectivités demandent une meilleure articulation avec les projets d'aménagement, pour éviter d'ouvrir les voiries plusieurs fois.",
     ],
     tags: ['télécoms', 'fibre optique', 'numérique'],
@@ -449,8 +460,10 @@ const ARTICLES: SeedArticle[] = [
   {
     categorySlug: 'faits-divers',
     authorEmail: 'mariama.diallo@sencourrier.sn',
-    title: "Justice : ouverture du procès très attendu dans l'affaire de détournement de fonds publics",
-    subtitle: "Douze prévenus comparaissent devant la Cour de répression de l'enrichissement illicite",
+    title:
+      "Justice : ouverture du procès très attendu dans l'affaire de détournement de fonds publics",
+    subtitle:
+      "Douze prévenus comparaissent devant la Cour de répression de l'enrichissement illicite",
     excerpt:
       "Le procès de douze prévenus poursuivis pour détournement de fonds publics s'est ouvert devant la Cour de répression de l'enrichissement illicite, dans une affaire suivie de près par l'opinion.",
     body: [
@@ -468,14 +481,15 @@ const ARTICLES: SeedArticle[] = [
   {
     categorySlug: 'faits-divers',
     authorEmail: 'mariama.diallo@sencourrier.sn',
-    title: "Sécurité routière : le bilan des accidents en baisse de 14 % après les contrôles renforcés",
-    subtitle: "Les autorités annoncent la généralisation des radars sur les axes principaux",
+    title:
+      'Sécurité routière : le bilan des accidents en baisse de 14 % après les contrôles renforcés',
+    subtitle: 'Les autorités annoncent la généralisation des radars sur les axes principaux',
     excerpt:
       "Le nombre d'accidents corporels recule de 14 % sur le semestre, à la suite du renforcement des contrôles et de la sensibilisation des transporteurs.",
     body: [
       "Le nombre d'accidents corporels recule de 14 % sur le semestre, à la suite du renforcement des contrôles routiers et de la sensibilisation des transporteurs.",
-      "Les causes principales identifiées restent la vitesse excessive, la fatigue des conducteurs de transport en commun et le mauvais état de certains véhicules.",
-      "Les autorités annoncent la généralisation des radars automatiques sur les axes principaux et la mise en place de centres de contrôle technique mobiles.",
+      'Les causes principales identifiées restent la vitesse excessive, la fatigue des conducteurs de transport en commun et le mauvais état de certains véhicules.',
+      'Les autorités annoncent la généralisation des radars automatiques sur les axes principaux et la mise en place de centres de contrôle technique mobiles.',
       "Les syndicats de transporteurs demandent en contrepartie une amélioration de l'état des routes et un encadrement des amendes perçues sur le terrain.",
     ],
     tags: ['sécurité', 'accidents', 'transports'],
@@ -489,13 +503,14 @@ const ARTICLES: SeedArticle[] = [
     categorySlug: 'international',
     authorEmail: 'fatou.ndiaye@sencourrier.sn',
     title: "CEDEAO : le sommet des chefs d'État se penche sur la libre circulation des personnes",
-    subtitle: "Les discussions portent aussi sur la sécurité régionale et le commerce intracommunautaire",
+    subtitle:
+      'Les discussions portent aussi sur la sécurité régionale et le commerce intracommunautaire',
     excerpt:
-      "Réunis en sommet, les dirigeants de la CEDEAO ont abordé la libre circulation des personnes et des biens, ainsi que la coopération en matière de sécurité régionale.",
+      'Réunis en sommet, les dirigeants de la CEDEAO ont abordé la libre circulation des personnes et des biens, ainsi que la coopération en matière de sécurité régionale.',
     body: [
-      "Les dirigeants de la CEDEAO se sont réunis en sommet pour examiner la mise en œuvre effective du protocole sur la libre circulation des personnes et des biens.",
-      "Plusieurs États ont été appelés à harmoniser leurs procédures aux frontières, alors que des obstacles informels persistent sur certains corridors commerciaux.",
-      "Le sommet a également abordé la coopération en matière de sécurité régionale et le renforcement des capacités de la force en attente.",
+      'Les dirigeants de la CEDEAO se sont réunis en sommet pour examiner la mise en œuvre effective du protocole sur la libre circulation des personnes et des biens.',
+      'Plusieurs États ont été appelés à harmoniser leurs procédures aux frontières, alors que des obstacles informels persistent sur certains corridors commerciaux.',
+      'Le sommet a également abordé la coopération en matière de sécurité régionale et le renforcement des capacités de la force en attente.',
       "« L'intégration régionale ne progressera que si les citoyens en ressentent les bénéfices concrets », a déclaré un chef d'État en séance plénière.",
       "Les conclusions doivent donner lieu à une feuille de route assortie d'indicateurs de suivi présentés au prochain sommet.",
     ],
@@ -507,15 +522,16 @@ const ARTICLES: SeedArticle[] = [
   {
     categorySlug: 'international',
     authorEmail: 'fatou.ndiaye@sencourrier.sn',
-    title: "Afrique : la zone de libre-échange continentale franchit le cap des 40 pays opérationnels",
-    subtitle: "Les échanges intra-africains restent toutefois en deçà du potentiel estimé",
+    title:
+      'Afrique : la zone de libre-échange continentale franchit le cap des 40 pays opérationnels',
+    subtitle: 'Les échanges intra-africains restent toutefois en deçà du potentiel estimé',
     excerpt:
-      "La zone de libre-échange continentale africaine compte désormais plus de quarante pays appliquant effectivement les règles de préférence tarifaire.",
+      'La zone de libre-échange continentale africaine compte désormais plus de quarante pays appliquant effectivement les règles de préférence tarifaire.',
     body: [
-      "La zone de libre-échange continentale africaine compte désormais plus de quarante pays appliquant effectivement les règles de préférence tarifaire, une étape présentée comme décisive.",
+      'La zone de libre-échange continentale africaine compte désormais plus de quarante pays appliquant effectivement les règles de préférence tarifaire, une étape présentée comme décisive.',
       "Les échanges intra-africains restent toutefois en deçà du potentiel estimé, faute d'infrastructures de transport, de corridors douaniers efficaces et d'information des opérateurs.",
-      "Les experts recommandent de concentrer les efforts sur quelques chaînes de valeur prioritaires : agroalimentaire, pharmacie, logistique et énergie.",
-      "Le secteur privé demande une accélération de la numérisation des procédures douanières, principal frein opérationnel identifié par les entreprises exportatrices.",
+      'Les experts recommandent de concentrer les efforts sur quelques chaînes de valeur prioritaires : agroalimentaire, pharmacie, logistique et énergie.',
+      'Le secteur privé demande une accélération de la numérisation des procédures douanières, principal frein opérationnel identifié par les entreprises exportatrices.',
     ],
     tags: ['Afrique', 'ZLECAf', 'commerce'],
     daysAgo: 6,
@@ -526,15 +542,15 @@ const ARTICLES: SeedArticle[] = [
   {
     categorySlug: 'diaspora',
     authorEmail: 'ousmane.toure@sencourrier.sn',
-    title: "Diaspora : les transferts de fonds vers le Sénégal atteignent un niveau record",
-    subtitle: "Plus de 3 000 milliards FCFA transférés en un an, malgré la hausse des frais",
+    title: 'Diaspora : les transferts de fonds vers le Sénégal atteignent un niveau record',
+    subtitle: 'Plus de 3 000 milliards FCFA transférés en un an, malgré la hausse des frais',
     excerpt:
-      "Les transferts de la diaspora sénégalaise ont atteint un niveau record, dépassant les 3 000 milliards de francs CFA sur douze mois, selon les données de la banque centrale.",
+      'Les transferts de la diaspora sénégalaise ont atteint un niveau record, dépassant les 3 000 milliards de francs CFA sur douze mois, selon les données de la banque centrale.',
     body: [
-      "Les transferts de la diaspora sénégalaise ont atteint un niveau record, dépassant les 3 000 milliards de francs CFA sur douze mois, selon les données de la banque centrale.",
-      "Ces flux représentent plus de 10 % du produit intérieur brut et constituent une ressource plus stable que certains investissements directs étrangers.",
-      "Les associations de la diaspora dénoncent toutefois le niveau des frais de transfert, qui restent parmi les plus élevés au monde sur certains corridors.",
-      "Les opérateurs de transfert numérique gagnent du terrain, avec des coûts sensiblement inférieurs, mais leur adoption reste inégale selon les pays de résidence.",
+      'Les transferts de la diaspora sénégalaise ont atteint un niveau record, dépassant les 3 000 milliards de francs CFA sur douze mois, selon les données de la banque centrale.',
+      'Ces flux représentent plus de 10 % du produit intérieur brut et constituent une ressource plus stable que certains investissements directs étrangers.',
+      'Les associations de la diaspora dénoncent toutefois le niveau des frais de transfert, qui restent parmi les plus élevés au monde sur certains corridors.',
+      'Les opérateurs de transfert numérique gagnent du terrain, avec des coûts sensiblement inférieurs, mais leur adoption reste inégale selon les pays de résidence.',
       "Les économistes plaident pour une meilleure canalisation de ces flux vers l'investissement productif plutôt que vers la consommation immédiate.",
     ],
     tags: ['diaspora', 'transferts', 'économie'],
@@ -546,15 +562,15 @@ const ARTICLES: SeedArticle[] = [
   {
     categorySlug: 'diaspora',
     authorEmail: 'ousmane.toure@sencourrier.sn',
-    title: "France : la communauté sénégalaise se mobilise pour la scolarisation des enfants",
+    title: 'France : la communauté sénégalaise se mobilise pour la scolarisation des enfants',
     subtitle: "Un réseau associatif finance des bourses et de l'accompagnement scolaire",
     excerpt:
       "Un collectif d'associations sénégalaises de France lance un programme de bourses et d'accompagnement scolaire destiné aux enfants de familles récemment arrivées.",
     body: [
       "Un collectif d'associations sénégalaises de France lance un programme de bourses et d'accompagnement scolaire destiné aux enfants de familles récemment arrivées.",
-      "Le dispositif prévoit un soutien financier, du tutorat assuré par des étudiants bénévoles et une aide administrative pour les familles qui maîtrisent mal le système éducatif français.",
-      "Les initiateurs insistent sur la dimension préventive : le décrochage scolaire est identifié comme la principale vulnérabilité des jeunes de la deuxième génération.",
-      "Le programme sera expérimenté dans trois villes avant une extension nationale, en partenariat avec des collectivités locales.",
+      'Le dispositif prévoit un soutien financier, du tutorat assuré par des étudiants bénévoles et une aide administrative pour les familles qui maîtrisent mal le système éducatif français.',
+      'Les initiateurs insistent sur la dimension préventive : le décrochage scolaire est identifié comme la principale vulnérabilité des jeunes de la deuxième génération.',
+      'Le programme sera expérimenté dans trois villes avant une extension nationale, en partenariat avec des collectivités locales.',
     ],
     tags: ['diaspora', 'France', 'éducation'],
     daysAgo: 4,
@@ -564,15 +580,15 @@ const ARTICLES: SeedArticle[] = [
   {
     categorySlug: 'diaspora',
     authorEmail: 'ousmane.toure@sencourrier.sn',
-    title: "Italie : la régularisation des travailleurs sénégalais au cœur des discussions",
-    subtitle: "Les associations demandent un guichet unique pour les demandes en cours",
+    title: 'Italie : la régularisation des travailleurs sénégalais au cœur des discussions',
+    subtitle: 'Les associations demandent un guichet unique pour les demandes en cours',
     excerpt:
       "Les associations de la diaspora sénégalaise en Italie demandent la mise en place d'un guichet unique pour accélérer le traitement des dossiers de régularisation en attente.",
     body: [
       "Les associations de la diaspora sénégalaise en Italie demandent la mise en place d'un guichet unique pour accélérer le traitement des dossiers de régularisation en attente.",
-      "Elles estiment que la complexité administrative décourage une partie des travailleurs éligibles, qui renoncent à déposer leur demande dans les délais impartis.",
+      'Elles estiment que la complexité administrative décourage une partie des travailleurs éligibles, qui renoncent à déposer leur demande dans les délais impartis.',
       "Les secteurs concernés sont principalement l'agriculture, la restauration et l'aide à la personne, où la main-d'œuvre étrangère est structurellement importante.",
-      "Les représentants associatifs plaident également pour une meilleure information en langue locale, y compris pour les travailleurs peu alphabétisés.",
+      'Les représentants associatifs plaident également pour une meilleure information en langue locale, y compris pour les travailleurs peu alphabétisés.',
     ],
     tags: ['diaspora', 'Italie', 'migrations'],
     daysAgo: 7,
@@ -583,16 +599,17 @@ const ARTICLES: SeedArticle[] = [
   {
     categorySlug: 'economie',
     authorEmail: 'awa.sow@sencourrier.sn',
-    title: "Dossier spécial — Pétrole et gaz : les dix années qui vont transformer le Sénégal",
-    subtitle: "Enquête sur les contrats, le contenu local et les risques de la malédiction des ressources",
+    title: 'Dossier spécial — Pétrole et gaz : les dix années qui vont transformer le Sénégal',
+    subtitle:
+      'Enquête sur les contrats, le contenu local et les risques de la malédiction des ressources',
     excerpt:
-      "Comment éviter la malédiction des ressources ? Enquête sur les contrats pétroliers et gaziers, le contenu local, la fiscalité et les choix budgétaires qui détermineront la trajectoire du pays.",
+      'Comment éviter la malédiction des ressources ? Enquête sur les contrats pétroliers et gaziers, le contenu local, la fiscalité et les choix budgétaires qui détermineront la trajectoire du pays.',
     body: [
       "L'entrée en production des champs pétroliers et gaziers ouvre pour le Sénégal une décennie décisive. Les recettes attendues peuvent financer la transformation structurelle de l'économie — ou reproduire les schémas de dépendance observés ailleurs.",
       "Ce dossier examine les contrats signés, la répartition des revenus entre l'État et les opérateurs, et les marges de manœuvre réelles dont dispose le pays pour renégocier les termes des futurs accords.",
       "Le volet consacré au contenu local montre un écart important entre les ambitions affichées et la réalité des emplois qualifiés occupés par des nationaux. Seule une minorité des postes techniques est aujourd'hui pourvue localement.",
       "Sur le plan budgétaire, les économistes interrogés recommandent une règle de dépense prudente, fondée sur un prix de référence conservateur, et l'alimentation d'un fonds intergénérationnel.",
-      "Le dossier se conclut sur les scénarios à dix ans : industrialisation par le gaz, simple rente budgétaire, ou trajectoire intermédiaire. Le choix dépendra moins des ressources que des institutions chargées de les gérer.",
+      'Le dossier se conclut sur les scénarios à dix ans : industrialisation par le gaz, simple rente budgétaire, ou trajectoire intermédiaire. Le choix dépendra moins des ressources que des institutions chargées de les gérer.',
     ],
     tags: ['pétrole', 'gaz', 'enquête', 'économie', 'souveraineté'],
     isPremium: true,
@@ -605,10 +622,10 @@ const ARTICLES: SeedArticle[] = [
   {
     categorySlug: 'politique',
     authorEmail: 'fatou.ndiaye@sencourrier.sn',
-    title: "Analyse — Décentralisation : vingt ans après, quel bilan pour les collectivités ?",
+    title: 'Analyse — Décentralisation : vingt ans après, quel bilan pour les collectivités ?',
     subtitle: "Compétences transférées, ressources insuffisantes : l'écart persistant",
     excerpt:
-      "Deux décennies après les lois de décentralisation, le bilan reste contrasté. Analyse des compétences transférées et des ressources réellement mobilisées par les collectivités.",
+      'Deux décennies après les lois de décentralisation, le bilan reste contrasté. Analyse des compétences transférées et des ressources réellement mobilisées par les collectivités.',
     body: [
       "Vingt ans après les grandes lois de décentralisation, le bilan reste contrasté. Les collectivités ont vu leurs compétences s'élargir sans que les moyens suivent au même rythme.",
       "Les communes urbaines ont su mobiliser davantage de recettes propres, portées par la fiscalité locale et les droits de stationnement. Les communes rurales restent très dépendantes des transferts de l'État.",
@@ -634,14 +651,30 @@ const PODCAST_SHOWS = [
     name: 'Le Débrief',
     tagline: "L'actualité sénégalaise décryptée chaque soir",
     description:
-      "Chaque soir, la rédaction revient sur les trois informations qui comptent et reçoit un invité pour les mettre en perspective. Format court, ton direct, sans langue de bois.",
+      'Chaque soir, la rédaction revient sur les trois informations qui comptent et reçoit un invité pour les mettre en perspective. Format court, ton direct, sans langue de bois.',
     hostName: 'Fatou Ndiaye',
     category: 'Actualité',
     episodes: [
-      { title: "Emploi des jeunes : le plan du gouvernement peut-il fonctionner ?", daysAgo: 0, duration: 1_680 },
-      { title: 'Érosion côtière à Saint-Louis : que faire des 400 familles ?', daysAgo: 1, duration: 1_920 },
-      { title: "Gaz de Grand Tortue : qui profitera vraiment des recettes ?", daysAgo: 2, duration: 2_040 },
-      { title: 'Décentralisation : vingt ans de promesses non tenues', daysAgo: 4, duration: 2_280 },
+      {
+        title: 'Emploi des jeunes : le plan du gouvernement peut-il fonctionner ?',
+        daysAgo: 0,
+        duration: 1_680,
+      },
+      {
+        title: 'Érosion côtière à Saint-Louis : que faire des 400 familles ?',
+        daysAgo: 1,
+        duration: 1_920,
+      },
+      {
+        title: 'Gaz de Grand Tortue : qui profitera vraiment des recettes ?',
+        daysAgo: 2,
+        duration: 2_040,
+      },
+      {
+        title: 'Décentralisation : vingt ans de promesses non tenues',
+        daysAgo: 4,
+        duration: 2_280,
+      },
     ],
   },
   {
@@ -653,8 +686,16 @@ const PODCAST_SHOWS = [
     hostName: 'Amadou Diarra',
     category: 'Enquêtes',
     episodes: [
-      { title: 'Enquête : les coulisses du marché public de plusieurs milliards', daysAgo: 3, duration: 3_120 },
-      { title: 'Pêche : comment la ressource s\'épuise sur la Petite Côte', daysAgo: 8, duration: 2_760 },
+      {
+        title: 'Enquête : les coulisses du marché public de plusieurs milliards',
+        daysAgo: 3,
+        duration: 3_120,
+      },
+      {
+        title: "Pêche : comment la ressource s'épuise sur la Petite Côte",
+        daysAgo: 8,
+        duration: 2_760,
+      },
       { title: 'Foncier à Dakar : la spéculation invisible', daysAgo: 15, duration: 3_360 },
     ],
   },
@@ -667,9 +708,21 @@ const PODCAST_SHOWS = [
     hostName: 'Nadia Sy',
     category: 'Technologies',
     episodes: [
-      { title: 'IA appliquée : le Sénégal peut-il créer ses propres modèles ?', daysAgo: 1, duration: 1_980 },
-      { title: 'Fintech : les secrets d\'une levée de 12 millions de dollars', daysAgo: 5, duration: 2_400 },
-      { title: 'Cybersécurité : pourquoi les fraudes au mobile money explosent', daysAgo: 9, duration: 1_740 },
+      {
+        title: 'IA appliquée : le Sénégal peut-il créer ses propres modèles ?',
+        daysAgo: 1,
+        duration: 1_980,
+      },
+      {
+        title: "Fintech : les secrets d'une levée de 12 millions de dollars",
+        daysAgo: 5,
+        duration: 2_400,
+      },
+      {
+        title: 'Cybersécurité : pourquoi les fraudes au mobile money explosent',
+        daysAgo: 9,
+        duration: 1_740,
+      },
     ],
   },
   {
@@ -677,30 +730,81 @@ const PODCAST_SHOWS = [
     name: 'Les Lions',
     tagline: 'Le podcast qui vit au rythme du sport sénégalais',
     description:
-      "Football, lutte, basketball : chaque semaine, décryptage des performances des équipes nationales et du sport local, avec des invités du monde sportif.",
+      'Football, lutte, basketball : chaque semaine, décryptage des performances des équipes nationales et du sport local, avec des invités du monde sportif.',
     hostName: 'Ibrahima Ba',
     category: 'Sports',
     episodes: [
-      { title: 'Qualification validée : les clés de la victoire des Lions', daysAgo: 0, duration: 1_560 },
+      {
+        title: 'Qualification validée : les clés de la victoire des Lions',
+        daysAgo: 0,
+        duration: 1_560,
+      },
       { title: "Lutte : l'affiche du siècle se prépare à Pikine", daysAgo: 2, duration: 1_800 },
     ],
   },
 ];
 
 const VIDEOS = [
-  { slug: 'direct-jt-soir', title: 'Le journal du soir — édition complète', description: "L'intégralité de l'édition du soir : politique, économie, société et sport.", daysAgo: 0, duration: 1_500, isLive: false },
-  { slug: 'reportage-saint-louis', title: 'Reportage — Saint-Louis face à la montée des eaux', description: 'Immersion dans les quartiers menacés par l’érosion côtière, avec les habitants et les scientifiques.', daysAgo: 1, duration: 780, isLive: false },
-  { slug: 'itw-ministre-emploi', title: "Entretien — le ministre de l'Emploi détaille le plan jeunes", description: 'Vingt minutes d’entretien sur le financement, le calendrier et les critères d’évaluation du dispositif.', daysAgo: 1, duration: 1_260, isLive: false },
-  { slug: 'debat-economie', title: 'Débat — Pétrole et gaz : quelles retombées pour les Sénégalais ?', description: 'Trois économistes confrontent leurs analyses sur la gestion des recettes extractives.', daysAgo: 2, duration: 2_700, isLive: false },
-  { slug: 'grand-combat-lutte', title: "Lutte — les coulisses de l'arène de Pikine", description: 'Préparation, écuries et ambiance : reportage au plus près du grand combat.', daysAgo: 3, duration: 900, isLive: false },
-  { slug: 'teranga-tech-ia', title: 'Teranga Tech — le centre national IA en questions', description: 'Table ronde avec les chercheurs impliqués dans le futur centre national d’intelligence artificielle.', daysAgo: 4, duration: 1_620, isLive: false },
+  {
+    slug: 'direct-jt-soir',
+    title: 'Le journal du soir — édition complète',
+    description: "L'intégralité de l'édition du soir : politique, économie, société et sport.",
+    daysAgo: 0,
+    duration: 1_500,
+    isLive: false,
+  },
+  {
+    slug: 'reportage-saint-louis',
+    title: 'Reportage — Saint-Louis face à la montée des eaux',
+    description:
+      'Immersion dans les quartiers menacés par l’érosion côtière, avec les habitants et les scientifiques.',
+    daysAgo: 1,
+    duration: 780,
+    isLive: false,
+  },
+  {
+    slug: 'itw-ministre-emploi',
+    title: "Entretien — le ministre de l'Emploi détaille le plan jeunes",
+    description:
+      'Vingt minutes d’entretien sur le financement, le calendrier et les critères d’évaluation du dispositif.',
+    daysAgo: 1,
+    duration: 1_260,
+    isLive: false,
+  },
+  {
+    slug: 'debat-economie',
+    title: 'Débat — Pétrole et gaz : quelles retombées pour les Sénégalais ?',
+    description:
+      'Trois économistes confrontent leurs analyses sur la gestion des recettes extractives.',
+    daysAgo: 2,
+    duration: 2_700,
+    isLive: false,
+  },
+  {
+    slug: 'grand-combat-lutte',
+    title: "Lutte — les coulisses de l'arène de Pikine",
+    description: 'Préparation, écuries et ambiance : reportage au plus près du grand combat.',
+    daysAgo: 3,
+    duration: 900,
+    isLive: false,
+  },
+  {
+    slug: 'teranga-tech-ia',
+    title: 'Teranga Tech — le centre national IA en questions',
+    description:
+      'Table ronde avec les chercheurs impliqués dans le futur centre national d’intelligence artificielle.',
+    daysAgo: 4,
+    duration: 1_620,
+    isLive: false,
+  },
 ];
 
 const PLANS = [
   {
     tier: SubscriptionTier.FREE,
     name: 'Gratuit',
-    description: "L'essentiel de l'actualité sénégalaise, en accès libre et sans limite de consultation.",
+    description:
+      "L'essentiel de l'actualité sénégalaise, en accès libre et sans limite de consultation.",
     priceAmount: 0,
     interval: 'month',
     features: [
@@ -750,7 +854,8 @@ const PLANS = [
   {
     tier: SubscriptionTier.PRESS_PRO,
     name: 'Presse Pro',
-    description: 'Offre destinée aux entreprises, institutions, ONG et professionnels de l’information.',
+    description:
+      'Offre destinée aux entreprises, institutions, ONG et professionnels de l’information.',
     priceAmount: 75_000,
     interval: 'year',
     features: [
@@ -803,7 +908,12 @@ async function main() {
     for (const sub of def.subcategories) {
       await prisma.category.upsert({
         where: { slug: sub.slug },
-        update: { name: sub.name, description: sub.description, parentId: parent.id, position: subPosition },
+        update: {
+          name: sub.name,
+          description: sub.description,
+          parentId: parent.id,
+          position: subPosition,
+        },
         create: {
           slug: sub.slug,
           name: sub.name,
@@ -886,7 +996,10 @@ async function main() {
       passwordHash,
       emailVerified: new Date(),
       preferences: {
-        create: { preferredCategories: ['politique', 'economie', 'sports'], breakingNewsAlerts: true },
+        create: {
+          preferredCategories: ['politique', 'economie', 'sports'],
+          breakingNewsAlerts: true,
+        },
       },
     },
   });
@@ -987,7 +1100,7 @@ async function main() {
   let commentCount = 0;
   for (const art of commentable) {
     const texts = [
-      "Merci pour cet article très complet. On sent le travail de terrain derrière.",
+      'Merci pour cet article très complet. On sent le travail de terrain derrière.',
       'Article intéressant, mais j’aurais aimé plus de chiffres sur le financement.',
       'Enfin une analyse posée sur ce sujet. Bravo à la rédaction.',
     ];
@@ -1246,7 +1359,10 @@ async function main() {
     update: {},
     create: {
       key: 'seo.defaults',
-      value: { titleTemplate: '%s | SENCOURRIER', defaultDescription: 'Le média numérique de référence du Sénégal' },
+      value: {
+        titleTemplate: '%s | SENCOURRIER',
+        defaultDescription: 'Le média numérique de référence du Sénégal',
+      },
       group: 'seo',
     },
   });

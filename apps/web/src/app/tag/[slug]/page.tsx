@@ -12,7 +12,6 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const tag = await prisma.tag.findUnique({ where: { slug }, select: { name: true } });
@@ -51,19 +50,23 @@ export default async function TagPage({ params }: PageProps) {
 
       <div className="border-b border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-900/50">
         <div className="mx-auto max-w-screen-2xl px-4 py-8 sm:px-6 lg:px-8">
-          <nav aria-label="Fil d'Ariane" className="mb-3 flex items-center gap-1.5 text-xs text-neutral-500">
+          <nav
+            aria-label="Fil d'Ariane"
+            className="mb-3 flex items-center gap-1.5 text-xs text-neutral-500"
+          >
             <Link href="/" className="hover:text-sn-green">
               Accueil
             </Link>
             <span aria-hidden>/</span>
             <span>Mots-clés</span>
           </nav>
-          <h1 className="flex items-center gap-2 font-display text-3xl font-extrabold tracking-tight sm:text-4xl">
-            <Hash className="h-7 w-7 text-sn-green" aria-hidden />
+          <h1 className="font-display flex items-center gap-2 text-3xl font-extrabold tracking-tight sm:text-4xl">
+            <Hash className="text-sn-green h-7 w-7" aria-hidden />
             {tag.name}
           </h1>
           <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
-            {articles.length} article{articles.length > 1 ? 's' : ''} publié{articles.length > 1 ? 's' : ''} sur ce sujet.
+            {articles.length} article{articles.length > 1 ? 's' : ''} publié
+            {articles.length > 1 ? 's' : ''} sur ce sujet.
           </p>
         </div>
       </div>
@@ -76,13 +79,15 @@ export default async function TagPage({ params }: PageProps) {
                 Aucun article publié pour ce mot-clé.
               </p>
             ) : (
-              articles.map((article) => <ArticleCard key={article.id} article={article} variant="list" />)
+              articles.map((article) => (
+                <ArticleCard key={article.id} article={article} variant="list" />
+              ))
             )}
           </div>
 
           <aside className="lg:col-span-4">
             <section className="sticky top-24 rounded-lg border border-neutral-200 p-5 dark:border-neutral-800">
-              <h2 className="border-b border-neutral-200 pb-2 font-ui text-xs font-bold uppercase tracking-wider text-neutral-500 dark:border-neutral-800">
+              <h2 className="font-ui border-b border-neutral-200 pb-2 text-xs font-bold uppercase tracking-wider text-neutral-500 dark:border-neutral-800">
                 Autres sujets
               </h2>
               <ul className="mt-3 flex flex-wrap gap-2">
@@ -93,7 +98,7 @@ export default async function TagPage({ params }: PageProps) {
                       className={`inline-block rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${
                         item.slug === tag.slug
                           ? 'border-sn-green bg-sn-green text-white'
-                          : 'border-neutral-200 hover:border-sn-green hover:text-sn-green dark:border-neutral-700'
+                          : 'hover:border-sn-green hover:text-sn-green border-neutral-200 dark:border-neutral-700'
                       }`}
                     >
                       {item.name}

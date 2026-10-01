@@ -30,7 +30,7 @@ const FORMAT_CLASS: Record<NonNullable<AdSlotProps['format']>, string> = {
  */
 export function AdSlot({ slot, format = 'leaderboard', className }: AdSlotProps) {
   const label = (
-    <span className="absolute right-0 top-0 font-ui text-[9px] uppercase tracking-wider text-neutral-400 dark:text-neutral-600">
+    <span className="font-ui absolute right-0 top-0 text-[9px] uppercase tracking-wider text-neutral-400 dark:text-neutral-600">
       Publicité
     </span>
   );
@@ -58,7 +58,13 @@ export function AdSlot({ slot, format = 'leaderboard', className }: AdSlotProps)
           target="_blank"
           className="relative block h-full w-full overflow-hidden rounded-md border border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-900"
         >
-          <Image src={slot.imageUrl} alt={slot.name} fill sizes="728px" className="object-contain" />
+          <Image
+            src={slot.imageUrl}
+            alt={slot.name}
+            fill
+            sizes="728px"
+            className="object-contain"
+          />
         </Link>
       ) : null}
     </aside>

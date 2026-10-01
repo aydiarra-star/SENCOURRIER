@@ -69,7 +69,10 @@ export function Header({ categories }: { categories: NavCategory[] }) {
           <Logo className="h-8 w-auto sm:h-9" />
         </Link>
 
-        <nav className="ml-4 hidden flex-1 items-center gap-0.5 lg:flex" aria-label="Navigation principale">
+        <nav
+          className="ml-4 hidden flex-1 items-center gap-0.5 lg:flex"
+          aria-label="Navigation principale"
+        >
           {categories.slice(0, 7).map((category) => (
             <div
               key={category.id}
@@ -88,7 +91,9 @@ export function Header({ categories }: { categories: NavCategory[] }) {
                 aria-current={isActive(category.slug) ? 'page' : undefined}
               >
                 {category.shortName ?? category.name}
-                {category.children.length > 0 && <ChevronDown className="h-3.5 w-3.5 opacity-60" aria-hidden />}
+                {category.children.length > 0 && (
+                  <ChevronDown className="h-3.5 w-3.5 opacity-60" aria-hidden />
+                )}
               </Link>
 
               {category.children.length > 0 && openMenu === category.id && (
@@ -98,7 +103,7 @@ export function Header({ categories }: { categories: NavCategory[] }) {
                       <li key={child.id}>
                         <Link
                           href={`/${category.slug}/${child.slug}`}
-                          className="block px-4 py-2 text-sm text-neutral-700 transition-colors hover:bg-neutral-50 hover:text-sn-green dark:text-neutral-200 dark:hover:bg-neutral-800"
+                          className="hover:text-sn-green block px-4 py-2 text-sm text-neutral-700 transition-colors hover:bg-neutral-50 dark:text-neutral-200 dark:hover:bg-neutral-800"
                         >
                           {child.name}
                         </Link>
@@ -142,7 +147,7 @@ export function Header({ categories }: { categories: NavCategory[] }) {
 
           <Link
             href="/abonnement"
-            className="ml-1 hidden items-center gap-1.5 rounded-md bg-sn-green px-3.5 py-2 text-sm font-semibold text-white transition-colors hover:bg-sn-green-700 sm:flex"
+            className="bg-sn-green hover:bg-sn-green-700 ml-1 hidden items-center gap-1.5 rounded-md px-3.5 py-2 text-sm font-semibold text-white transition-colors sm:flex"
           >
             <Crown className="h-3.5 w-3.5" aria-hidden />
             Premium
@@ -152,7 +157,11 @@ export function Header({ categories }: { categories: NavCategory[] }) {
 
       {searchOpen && (
         <div className="border-t border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-900">
-          <form action="/recherche" method="get" className="mx-auto flex max-w-screen-2xl gap-2 px-4 py-3 sm:px-6 lg:px-8">
+          <form
+            action="/recherche"
+            method="get"
+            className="mx-auto flex max-w-screen-2xl gap-2 px-4 py-3 sm:px-6 lg:px-8"
+          >
             <label htmlFor="site-search" className="sr-only">
               Rechercher sur SENCOURRIER
             </label>
@@ -162,11 +171,11 @@ export function Header({ categories }: { categories: NavCategory[] }) {
               type="search"
               autoFocus
               placeholder="Rechercher une information, un sujet, un auteur…"
-              className="flex-1 rounded-md border border-neutral-300 bg-white px-4 py-2.5 text-sm outline-none focus:border-sn-green focus:ring-2 focus:ring-sn-green/20 dark:border-neutral-700 dark:bg-neutral-950"
+              className="focus:border-sn-green focus:ring-sn-green/20 flex-1 rounded-md border border-neutral-300 bg-white px-4 py-2.5 text-sm outline-none focus:ring-2 dark:border-neutral-700 dark:bg-neutral-950"
             />
             <button
               type="submit"
-              className="rounded-md bg-sn-green px-5 py-2.5 text-sm font-semibold text-white hover:bg-sn-green-700"
+              className="bg-sn-green hover:bg-sn-green-700 rounded-md px-5 py-2.5 text-sm font-semibold text-white"
             >
               Rechercher
             </button>
@@ -196,12 +205,17 @@ export function Header({ categories }: { categories: NavCategory[] }) {
 
             <nav className="px-2 py-3" aria-label="Navigation mobile">
               {categories.map((category) => (
-                <div key={category.id} className="border-b border-neutral-100 last:border-0 dark:border-neutral-800/60">
+                <div
+                  key={category.id}
+                  className="border-b border-neutral-100 last:border-0 dark:border-neutral-800/60"
+                >
                   <Link
                     href={`/${category.slug}`}
                     className={cn(
                       'block px-3 py-3 text-base font-semibold',
-                      isActive(category.slug) ? 'text-sn-green' : 'text-neutral-800 dark:text-neutral-100',
+                      isActive(category.slug)
+                        ? 'text-sn-green'
+                        : 'text-neutral-800 dark:text-neutral-100',
                     )}
                   >
                     {category.name}
@@ -227,7 +241,7 @@ export function Header({ categories }: { categories: NavCategory[] }) {
             <div className="flex flex-col gap-2 px-5 pb-8">
               <Link
                 href="/abonnement"
-                className="flex items-center justify-center gap-2 rounded-md bg-sn-green px-4 py-3 text-sm font-semibold text-white"
+                className="bg-sn-green flex items-center justify-center gap-2 rounded-md px-4 py-3 text-sm font-semibold text-white"
               >
                 <Crown className="h-4 w-4" aria-hidden />
                 S&apos;abonner à Premium

@@ -25,7 +25,10 @@ export function LegalPage({ title, updatedAt, children }: LegalPageProps) {
       <footer className="mt-12 rounded-lg border border-neutral-200 p-5 text-sm text-neutral-600 dark:border-neutral-800 dark:text-neutral-400">
         <p>
           Pour toute question relative à ce document, écrivez à{' '}
-          <a href="mailto:contact@sencourrier.sn" className="font-semibold text-sn-green hover:underline">
+          <a
+            href="mailto:contact@sencourrier.sn"
+            className="text-sn-green font-semibold hover:underline"
+          >
             contact@sencourrier.sn
           </a>
           .
@@ -40,7 +43,9 @@ export function LegalSection({ title, children }: { title: string; children: Rea
   return (
     <section>
       <h2 className="font-display text-lg font-bold tracking-tight">{title}</h2>
-      <div className="mt-3 space-y-3 text-sm leading-relaxed text-neutral-700 dark:text-neutral-300">{children}</div>
+      <div className="mt-3 space-y-3 text-sm leading-relaxed text-neutral-700 dark:text-neutral-300">
+        {children}
+      </div>
     </section>
   );
 }

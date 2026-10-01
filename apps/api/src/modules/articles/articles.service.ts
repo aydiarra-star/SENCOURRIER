@@ -1,13 +1,24 @@
 import { BadRequestException, Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { Prisma, PrismaClient } from '@sencourrier/database';
-import { ArticleStatus, PUBLIC_ARTICLE_STATUSES, RevisionAction, Role, STAFF_ROLES } from '@sencourrier/types';
+import {
+  ArticleStatus,
+  PUBLIC_ARTICLE_STATUSES,
+  RevisionAction,
+  Role,
+  STAFF_ROLES,
+} from '@sencourrier/types';
 import { createHash } from 'node:crypto';
 import slugify from 'slugify';
 import { PRISMA } from '../../infra/prisma/prisma.module';
 import { RedisService } from '../../infra/redis/redis.service';
 import type { AuthenticatedUser } from '../../common/decorators/auth.decorators';
 import { buildPagination } from '../../common/interceptors/pagination.interceptor';
-import type { CreateArticleDto, ListArticlesQueryDto, ModerateArticleDto, UpdateArticleDto } from './dto/article.dto';
+import type {
+  CreateArticleDto,
+  ListArticlesQueryDto,
+  ModerateArticleDto,
+  UpdateArticleDto,
+} from './dto/article.dto';
 import { ARTICLE_CARD_SELECT, toArticleCard } from './article.select';
 
 const ARTICLE_DETAIL_SELECT = {
@@ -78,7 +89,10 @@ export class ArticlesService {
 
   /** Vue back-office : tous les statuts, avec filtres éditoriaux. */
   async listForStaff(query: ListArticlesQueryDto, user: AuthenticatedUser) {
-    const isReviewer = STAFF_ROLES.includes(user.role) && user.role !== Role.JOURNALIST && user.role !== Role.CORRESPONDENT;
+    const isReviewer =
+      STAFF_ROLES.includes(user.role) &&
+      user.role !== Role.JOURNALIST &&
+      user.role !== Role.CORRESPONDENT;
 
     const where: Prisma.ArticleWhereInput = {
       ...this.buildFilters(query),
@@ -125,7 +139,9 @@ export class ArticlesService {
 
     return {
       ...article,
-      authors: article.authors.flatMap((entry) => (entry.user.authorProfile ? [entry.user.authorProfile] : [])),
+      authors: article.authors.flatMap((entry) =>
+        entry.user.authorProfile ? [entry.user.authorProfile] : [],
+      ),
       tags: article.tags.map((entry) => entry.tag),
     };
   }
@@ -475,7 +491,8 @@ export class ArticlesService {
       filters.category = { slug: query.subcategory };
     }
     if (query.tag) filters.tags = { some: { tag: { slug: query.tag } } };
-    if (query.author) filters.authors = { some: { user: { authorProfile: { slug: query.author } } } };
+    if (query.author)
+      filters.authors = { some: { user: { authorProfile: { slug: query.author } } } };
     if (query.format) filters.format = query.format;
     if (query.premium !== undefined) filters.isPremium = query.premium;
     if (query.featured !== undefined) filters.isFeatured = query.featured;
@@ -499,11 +516,14 @@ export class ArticlesService {
   }
 
   private async uniqueSlug(title: string): Promise<string> {
-    const base = slugify(title, { lower: true, strict: true, locale: 'fr' }).slice(0, 90) || 'article';
+    const base =
+      slugify(title, { lower: true, strict: true, locale: 'fr' }).slice(0, 90) || 'article';
     let candidate = base;
     let suffix = 1;
 
-    while (await this.prisma.article.findUnique({ where: { slug: candidate }, select: { id: true } })) {
+    while (
+      await this.prisma.article.findUnique({ where: { slug: candidate }, select: { id: true } })
+    ) {
       candidate = `${base}-${++suffix}`;
     }
 
@@ -548,5 +568,4 @@ export class ArticlesService {
       .replace(/\s+/g, ' ')
       .trim();
   }
-
 }

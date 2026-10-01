@@ -1,17 +1,13 @@
 import { ArticleFormat, ArticleStatus, Role } from '@sencourrier/types';
-import {
-  Body,
-  Controller,
-  Delete,
-  Get,
-  Param,
-  Patch,
-  Post,
-  Query,
-} from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { Throttle } from '@nestjs/throttler';
-import { CurrentUser, Public, Roles, type AuthenticatedUser } from '../../common/decorators/auth.decorators';
+import {
+  CurrentUser,
+  Public,
+  Roles,
+  type AuthenticatedUser,
+} from '../../common/decorators/auth.decorators';
 import { ArticlesService } from './articles.service';
 import {
   CreateArticleDto,

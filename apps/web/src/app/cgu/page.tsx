@@ -3,7 +3,8 @@ import { LegalPage, LegalSection } from '@/components/legal/legal-page';
 
 export const metadata: Metadata = {
   title: "Conditions générales d'utilisation",
-  description: "Conditions générales d'utilisation du site sencourrier.sn : accès au service, obligations des utilisateurs et modération.",
+  description:
+    "Conditions générales d'utilisation du site sencourrier.sn : accès au service, obligations des utilisateurs et modération.",
   alternates: { canonical: '/cgu' },
 };
 
@@ -34,8 +35,8 @@ export default function TermsPage() {
           conditions définies par les conditions générales de vente.
         </p>
         <p>
-          SENCOURRIER peut suspendre temporairement l&apos;accès au site pour maintenance ou mise
-          à jour, sans que cela ouvre droit à indemnité.
+          SENCOURRIER peut suspendre temporairement l&apos;accès au site pour maintenance ou mise à
+          jour, sans que cela ouvre droit à indemnité.
         </p>
       </LegalSection>
 
@@ -55,8 +56,8 @@ export default function TermsPage() {
       <LegalSection title="4. Contenus et commentaires">
         <p>
           Les espaces de commentaires sont modérés a priori. En publiant un commentaire, vous
-          garantissez détenir les droits nécessaires et vous accordez à SENCOURRIER une licence
-          non exclusive d&apos;affichage sur le site et ses déclinaisons.
+          garantissez détenir les droits nécessaires et vous accordez à SENCOURRIER une licence non
+          exclusive d&apos;affichage sur le site et ses déclinaisons.
         </p>
         <p>Sont notamment interdits :</p>
         <ul className="list-disc space-y-1.5 pl-5">
@@ -64,13 +65,15 @@ export default function TermsPage() {
           <li>les incitations à la haine, à la violence ou à la commission d&apos;infractions ;</li>
           <li>la diffusion de données personnelles de tiers sans leur consentement ;</li>
           <li>la publicité non sollicitée, le spam et les liens d&apos;affiliation ;</li>
-          <li>l&apos;usurpation d&apos;identité d&apos;un tiers ou d&apos;un membre de la rédaction ;</li>
+          <li>
+            l&apos;usurpation d&apos;identité d&apos;un tiers ou d&apos;un membre de la rédaction ;
+          </li>
           <li>la diffusion de contenus protégés par le droit d&apos;auteur sans autorisation.</li>
         </ul>
         <p>
-          SENCOURRIER se réserve le droit de refuser, masquer ou supprimer tout contenu
-          contrevenant à ces règles, sans préavis ni justification, et de suspendre le compte de
-          son auteur en cas de récidive.
+          SENCOURRIER se réserve le droit de refuser, masquer ou supprimer tout contenu contrevenant
+          à ces règles, sans préavis ni justification, et de suspendre le compte de son auteur en
+          cas de récidive.
         </p>
       </LegalSection>
 
@@ -78,22 +81,22 @@ export default function TermsPage() {
         <p>
           Tous les contenus publiés sur sencourrier.sn sont protégés par le droit d&apos;auteur.
           Toute reproduction ou représentation, totale ou partielle, sans autorisation écrite est
-          interdite, à l&apos;exception de la courte citation avec mention de la source et lien
-          vers l&apos;article original.
+          interdite, à l&apos;exception de la courte citation avec mention de la source et lien vers
+          l&apos;article original.
         </p>
         <p>
-          L&apos;usage de robots, extracteurs automatiques ou tout autre procédé destiné à
-          collecter massivement les contenus est prohibé, sauf accord préalable et notamment dans
-          le cadre d&apos;un accès à notre API de contenus.
+          L&apos;usage de robots, extracteurs automatiques ou tout autre procédé destiné à collecter
+          massivement les contenus est prohibé, sauf accord préalable et notamment dans le cadre
+          d&apos;un accès à notre API de contenus.
         </p>
       </LegalSection>
 
       <LegalSection title="6. Responsabilité">
         <p>
           SENCOURRIER s&apos;efforce d&apos;assurer l&apos;exactitude des informations publiées,
-          sans pouvoir garantir l&apos;absence totale d&apos;erreur. Les contenus sont fournis
-          « en l&apos;état » et ne constituent pas un conseil professionnel (juridique,
-          financier, médical).
+          sans pouvoir garantir l&apos;absence totale d&apos;erreur. Les contenus sont fournis « en
+          l&apos;état » et ne constituent pas un conseil professionnel (juridique, financier,
+          médical).
         </p>
         <p>
           SENCOURRIER ne saurait être tenu responsable des dommages indirects résultant de
@@ -104,18 +107,18 @@ export default function TermsPage() {
 
       <LegalSection title="7. Modification des CGU">
         <p>
-          SENCOURRIER peut modifier les présentes CGU à tout moment. Les utilisateurs sont
-          informés par une notification sur le site et, pour les titulaires de compte, par email,
-          au moins quinze jours avant l&apos;entrée en vigueur. La poursuite de
-          l&apos;utilisation du service vaut acceptation des nouvelles conditions.
+          SENCOURRIER peut modifier les présentes CGU à tout moment. Les utilisateurs sont informés
+          par une notification sur le site et, pour les titulaires de compte, par email, au moins
+          quinze jours avant l&apos;entrée en vigueur. La poursuite de l&apos;utilisation du service
+          vaut acceptation des nouvelles conditions.
         </p>
       </LegalSection>
 
       <LegalSection title="8. Droit applicable et juridiction">
         <p>
           Les présentes CGU sont régies par le droit sénégalais. En cas de litige, les parties
-          rechercheront une solution amiable avant toute action judiciaire. À défaut, les
-          tribunaux de Dakar seront compétents.
+          rechercheront une solution amiable avant toute action judiciaire. À défaut, les tribunaux
+          de Dakar seront compétents.
         </p>
       </LegalSection>
     </LegalPage>

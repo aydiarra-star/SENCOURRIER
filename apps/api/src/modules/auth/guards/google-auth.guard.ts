@@ -1,4 +1,4 @@
-import { Injectable, ServiceUnavailableException, type CanActivate, type ExecutionContext } from '@nestjs/common';
+import { Injectable, ServiceUnavailableException, type ExecutionContext } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { GoogleStrategy } from '../strategies/google.strategy';
 

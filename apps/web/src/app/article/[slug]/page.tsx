@@ -44,7 +44,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       authors: authorNames ? [authorNames] : undefined,
       section: article.category?.name,
       tags: article.tags.map((t) => t.tag.name),
-      images: [{ url: image, width: 1600, height: 900, alt: article.heroImage?.altText ?? article.title }],
+      images: [
+        { url: image, width: 1600, height: 900, alt: article.heroImage?.altText ?? article.title },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
@@ -68,7 +70,9 @@ export default async function ArticlePage({ params }: PageProps) {
     .catch(() => undefined);
 
   const [related, inArticleAd, sidebarAd] = await Promise.all([
-    article.categoryId ? getRelatedArticles(article.categoryId, article.id, 3) : Promise.resolve([]),
+    article.categoryId
+      ? getRelatedArticles(article.categoryId, article.id, 3)
+      : Promise.resolve([]),
     getAdSlot('IN_ARTICLE'),
     getAdSlot('SIDEBAR_MIDDLE'),
   ]);
@@ -100,7 +104,9 @@ export default async function ArticlePage({ params }: PageProps) {
                 altText: article.heroImage.altText,
               }
             : null,
-          category: article.category ? { slug: article.category.slug, name: article.category.name } : null,
+          category: article.category
+            ? { slug: article.category.slug, name: article.category.name }
+            : null,
           tags: tags.map((t) => t.name),
           authors: article.authors.map((a) => ({
             name: a.user.displayName ?? a.user.name ?? 'La rédaction',
@@ -112,20 +118,28 @@ export default async function ArticlePage({ params }: PageProps) {
       <JsonLd
         data={breadcrumbSchema([
           { name: 'Accueil', url: '/' },
-          ...(article.category ? [{ name: article.category.name, url: `/${article.category.slug}` }] : []),
+          ...(article.category
+            ? [{ name: article.category.name, url: `/${article.category.slug}` }]
+            : []),
           { name: article.title, url: `/article/${article.slug}` },
         ])}
       />
 
       <div className="mx-auto max-w-screen-2xl px-4 py-6 sm:px-6 lg:px-8">
-        <nav aria-label="Fil d'Ariane" className="mb-5 flex flex-wrap items-center gap-1.5 text-xs text-neutral-500">
+        <nav
+          aria-label="Fil d'Ariane"
+          className="mb-5 flex flex-wrap items-center gap-1.5 text-xs text-neutral-500"
+        >
           <Link href="/" className="hover:text-sn-green">
             Accueil
           </Link>
           {article.category && (
             <>
               <span aria-hidden>/</span>
-              <Link href={`/${article.category.slug}`} className="font-semibold hover:text-sn-green">
+              <Link
+                href={`/${article.category.slug}`}
+                className="hover:text-sn-green font-semibold"
+              >
                 {article.category.name}
               </Link>
             </>
@@ -138,13 +152,13 @@ export default async function ArticlePage({ params }: PageProps) {
               {article.category && (
                 <Link
                   href={`/${article.category.slug}`}
-                  className="font-ui text-xs font-bold uppercase tracking-wider text-sn-green hover:underline dark:text-sn-green-400"
+                  className="font-ui text-sn-green dark:text-sn-green-400 text-xs font-bold uppercase tracking-wider hover:underline"
                 >
                   {article.category.name}
                 </Link>
               )}
 
-              <h1 className="mt-3 font-display text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
+              <h1 className="font-display mt-3 text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
                 {article.title}
               </h1>
 
@@ -156,8 +170,11 @@ export default async function ArticlePage({ params }: PageProps) {
 
               <div className="mt-6 flex flex-wrap items-center gap-4 border-y border-neutral-200 py-4 dark:border-neutral-800">
                 {authorSlug ? (
-                  <Link href={`/journaliste/${authorSlug}`} className="group flex items-center gap-3">
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-sn-green text-sm font-bold text-white">
+                  <Link
+                    href={`/journaliste/${authorSlug}`}
+                    className="group flex items-center gap-3"
+                  >
+                    <span className="bg-sn-green flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full text-sm font-bold text-white">
                       {authorProfile?.avatarUrl ? (
                         <Image
                           src={authorProfile.avatarUrl}
@@ -171,9 +188,13 @@ export default async function ArticlePage({ params }: PageProps) {
                       )}
                     </span>
                     <span>
-                      <span className="block text-sm font-semibold group-hover:text-sn-green">{authorName}</span>
+                      <span className="group-hover:text-sn-green block text-sm font-semibold">
+                        {authorName}
+                      </span>
                       {authorProfile?.jobTitle && (
-                        <span className="block text-xs text-neutral-500">{authorProfile.jobTitle}</span>
+                        <span className="block text-xs text-neutral-500">
+                          {authorProfile.jobTitle}
+                        </span>
                       )}
                     </span>
                   </Link>
@@ -227,7 +248,9 @@ export default async function ArticlePage({ params }: PageProps) {
                   <figcaption className="mt-2 text-xs text-neutral-500">
                     {article.heroImage.caption}
                     {article.heroImage.credit && (
-                      <span className="ml-1 text-neutral-400">— Crédit : {article.heroImage.credit}</span>
+                      <span className="ml-1 text-neutral-400">
+                        — Crédit : {article.heroImage.credit}
+                      </span>
                     )}
                   </figcaption>
                 )}
@@ -237,18 +260,23 @@ export default async function ArticlePage({ params }: PageProps) {
             {article.isPremium ? (
               <PremiumPaywall excerpt={article.excerpt} />
             ) : (
-              <div className="article-prose mt-7" dangerouslySetInnerHTML={{ __html: article.bodyHtml }} />
+              <div
+                className="article-prose mt-7"
+                dangerouslySetInnerHTML={{ __html: article.bodyHtml }}
+              />
             )}
 
             {tags.length > 0 && (
               <div className="mt-10 border-t border-neutral-200 pt-6 dark:border-neutral-800">
-                <h2 className="font-ui text-xs font-bold uppercase tracking-wider text-neutral-500">Mots-clés</h2>
+                <h2 className="font-ui text-xs font-bold uppercase tracking-wider text-neutral-500">
+                  Mots-clés
+                </h2>
                 <ul className="mt-3 flex flex-wrap gap-2">
                   {tags.map((tag) => (
                     <li key={tag.id}>
                       <Link
                         href={`/tag/${tag.slug}`}
-                        className="inline-block rounded-full border border-neutral-200 px-3 py-1.5 text-xs font-medium transition-colors hover:border-sn-green hover:bg-sn-green hover:text-white dark:border-neutral-700"
+                        className="hover:border-sn-green hover:bg-sn-green inline-block rounded-full border border-neutral-200 px-3 py-1.5 text-xs font-medium transition-colors hover:text-white dark:border-neutral-700"
                       >
                         #{tag.name}
                       </Link>
@@ -266,13 +294,18 @@ export default async function ArticlePage({ params }: PageProps) {
               <section className="mt-12" aria-labelledby="related-title">
                 <h2
                   id="related-title"
-                  className="mb-5 border-b-2 border-neutral-900 pb-2 font-display text-lg font-extrabold uppercase tracking-tight dark:border-neutral-100"
+                  className="font-display mb-5 border-b-2 border-neutral-900 pb-2 text-lg font-extrabold uppercase tracking-tight dark:border-neutral-100"
                 >
                   À lire également
                 </h2>
                 <div className="grid gap-6 sm:grid-cols-3">
                   {related.map((item) => (
-                    <ArticleCard key={item.id} article={item} variant="standard" showExcerpt={false} />
+                    <ArticleCard
+                      key={item.id}
+                      article={item}
+                      variant="standard"
+                      showExcerpt={false}
+                    />
                   ))}
                 </div>
               </section>
@@ -289,7 +322,7 @@ export default async function ArticlePage({ params }: PageProps) {
                     À propos de l&apos;auteur
                   </h2>
                   <div className="mt-3 flex items-start gap-3">
-                    <span className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full bg-sn-green text-base font-bold text-white">
+                    <span className="bg-sn-green flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full text-base font-bold text-white">
                       {authorProfile.avatarUrl ? (
                         <Image
                           src={authorProfile.avatarUrl}
@@ -304,7 +337,9 @@ export default async function ArticlePage({ params }: PageProps) {
                     </span>
                     <div>
                       <p className="font-semibold">{authorName}</p>
-                      {authorProfile.jobTitle && <p className="text-xs text-neutral-500">{authorProfile.jobTitle}</p>}
+                      {authorProfile.jobTitle && (
+                        <p className="text-xs text-neutral-500">{authorProfile.jobTitle}</p>
+                      )}
                     </div>
                   </div>
                   {authorProfile.bio && (
@@ -315,7 +350,7 @@ export default async function ArticlePage({ params }: PageProps) {
                   {authorSlug && (
                     <Link
                       href={`/journaliste/${authorSlug}`}
-                      className="mt-3 inline-block text-xs font-semibold text-sn-green hover:underline dark:text-sn-green-400"
+                      className="text-sn-green dark:text-sn-green-400 mt-3 inline-block text-xs font-semibold hover:underline"
                     >
                       Tous ses articles →
                     </Link>
@@ -325,12 +360,17 @@ export default async function ArticlePage({ params }: PageProps) {
 
               {related.length > 0 && (
                 <section className="rounded-lg border border-neutral-200 p-5 dark:border-neutral-800">
-                  <h2 className="border-b border-neutral-200 pb-2 font-ui text-xs font-bold uppercase tracking-wider text-neutral-500 dark:border-neutral-800">
+                  <h2 className="font-ui border-b border-neutral-200 pb-2 text-xs font-bold uppercase tracking-wider text-neutral-500 dark:border-neutral-800">
                     Dans la même rubrique
                   </h2>
                   <div className="mt-3 flex flex-col divide-y divide-neutral-100 dark:divide-neutral-800">
                     {related.map((item) => (
-                      <ArticleCard key={item.id} article={item} variant="compact" className="py-3 first:pt-0" />
+                      <ArticleCard
+                        key={item.id}
+                        article={item}
+                        variant="compact"
+                        className="py-3 first:pt-0"
+                      />
                     ))}
                   </div>
                 </section>
@@ -352,14 +392,16 @@ function PremiumPaywall({ excerpt }: { excerpt: string | null }) {
   return (
     <div className="mt-7">
       {excerpt && (
-        <p className="text-lg font-medium leading-relaxed text-neutral-700 dark:text-neutral-300">{excerpt}</p>
+        <p className="text-lg font-medium leading-relaxed text-neutral-700 dark:text-neutral-300">
+          {excerpt}
+        </p>
       )}
 
       <div className="relative mt-5 max-h-32 overflow-hidden" aria-hidden>
-        <div className="space-y-3 select-none blur-[3px]">
+        <div className="select-none space-y-3 blur-[3px]">
           <p className="text-lg leading-relaxed text-neutral-700 dark:text-neutral-300">
-            La suite de cet article est réservée aux abonnés. Nos enquêtes et analyses longues demandent
-            des semaines de travail : c&apos;est votre abonnement qui les finance.
+            La suite de cet article est réservée aux abonnés. Nos enquêtes et analyses longues
+            demandent des semaines de travail : c&apos;est votre abonnement qui les finance.
           </p>
           <p className="text-lg leading-relaxed text-neutral-700 dark:text-neutral-300">
             Les lecteurs abonnés accèdent à l&apos;intégralité du texte, aux dossiers spéciaux et à
@@ -369,30 +411,30 @@ function PremiumPaywall({ excerpt }: { excerpt: string | null }) {
         <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-white to-transparent dark:from-neutral-950" />
       </div>
 
-      <div className="mt-6 rounded-xl border border-sn-yellow bg-sn-yellow-50 p-6 dark:bg-neutral-900">
+      <div className="border-sn-yellow bg-sn-yellow-50 mt-6 rounded-xl border p-6 dark:bg-neutral-900">
         <div className="flex items-center gap-2">
-          <Lock className="h-4 w-4 text-sn-yellow-700" aria-hidden />
-          <p className="font-ui text-xs font-bold uppercase tracking-wider text-sn-yellow-700 dark:text-sn-yellow-500">
+          <Lock className="text-sn-yellow-700 h-4 w-4" aria-hidden />
+          <p className="font-ui text-sn-yellow-700 dark:text-sn-yellow-500 text-xs font-bold uppercase tracking-wider">
             Article réservé aux abonnés
           </p>
         </div>
-        <h2 className="mt-2 font-display text-xl font-extrabold">
+        <h2 className="font-display mt-2 text-xl font-extrabold">
           Soutenez un journalisme exigeant, indépendant et sénégalais
         </h2>
         <p className="mt-2 text-sm leading-relaxed text-neutral-700 dark:text-neutral-300">
-          Pour 2 500 FCFA par mois, accédez à toutes les enquêtes, aux analyses de fond, aux podcasts
-          premium et à une lecture sans publicité.
+          Pour 2 500 FCFA par mois, accédez à toutes les enquêtes, aux analyses de fond, aux
+          podcasts premium et à une lecture sans publicité.
         </p>
         <div className="mt-4 flex flex-col gap-2 sm:flex-row">
           <Link
             href="/abonnement"
-            className="rounded-md bg-sn-green px-6 py-2.5 text-center text-sm font-semibold text-white transition-colors hover:bg-sn-green-700"
+            className="bg-sn-green hover:bg-sn-green-700 rounded-md px-6 py-2.5 text-center text-sm font-semibold text-white transition-colors"
           >
             Découvrir les offres
           </Link>
           <Link
             href="/connexion"
-            className="rounded-md border border-neutral-300 px-6 py-2.5 text-center text-sm font-semibold transition-colors hover:border-sn-green dark:border-neutral-700"
+            className="hover:border-sn-green rounded-md border border-neutral-300 px-6 py-2.5 text-center text-sm font-semibold transition-colors dark:border-neutral-700"
           >
             J&apos;ai déjà un compte
           </Link>

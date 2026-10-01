@@ -11,7 +11,6 @@ interface PageProps {
   params: Promise<{ category: string; sub: string }>;
 }
 
-
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { category, sub } = await params;
   const node = await prisma.category.findFirst({
@@ -58,7 +57,10 @@ export default async function SubCategoryPage({ params }: PageProps) {
 
       <div className="border-b border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-900/50">
         <div className="mx-auto max-w-screen-2xl px-4 py-8 sm:px-6 lg:px-8">
-          <nav aria-label="Fil d'Ariane" className="mb-3 flex flex-wrap items-center gap-1.5 text-xs text-neutral-500">
+          <nav
+            aria-label="Fil d'Ariane"
+            className="mb-3 flex flex-wrap items-center gap-1.5 text-xs text-neutral-500"
+          >
             <Link href="/" className="hover:text-sn-green">
               Accueil
             </Link>
@@ -71,10 +73,14 @@ export default async function SubCategoryPage({ params }: PageProps) {
               </>
             )}
             <span aria-hidden>/</span>
-            <span className="font-semibold text-neutral-700 dark:text-neutral-300">{node.name}</span>
+            <span className="font-semibold text-neutral-700 dark:text-neutral-300">
+              {node.name}
+            </span>
           </nav>
 
-          <h1 className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl">{node.name}</h1>
+          <h1 className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl">
+            {node.name}
+          </h1>
           {node.description && (
             <p className="mt-2 max-w-3xl text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
               {node.description}

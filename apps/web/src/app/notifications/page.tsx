@@ -4,7 +4,8 @@ import { Bell, Bookmark, Clock, CreditCard, Settings, User } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Notifications',
-  description: 'Gérez vos alertes d’actualité urgente, vos notifications d’articles et vos newsletters.',
+  description:
+    'Gérez vos alertes d’actualité urgente, vos notifications d’articles et vos newsletters.',
   robots: { index: false, follow: false },
 };
 
@@ -54,27 +55,32 @@ export default function NotificationsPage() {
   return (
     <div className="mx-auto max-w-screen-2xl px-4 py-10 sm:px-6 lg:px-8">
       <header>
-        <p className="font-ui text-xs font-bold uppercase tracking-wider text-sn-green dark:text-sn-green-400">
+        <p className="font-ui text-sn-green dark:text-sn-green-400 text-xs font-bold uppercase tracking-wider">
           Espace personnel
         </p>
-        <h1 className="mt-1.5 font-display text-3xl font-extrabold tracking-tight">Notifications</h1>
+        <h1 className="font-display mt-1.5 text-3xl font-extrabold tracking-tight">
+          Notifications
+        </h1>
         <p className="mt-2 max-w-2xl text-sm text-neutral-600 dark:text-neutral-400">
-          Choisissez précisément ce que vous souhaitez recevoir. Vous pouvez modifier ces réglages
-          à tout moment.
+          Choisissez précisément ce que vous souhaitez recevoir. Vous pouvez modifier ces réglages à
+          tout moment.
         </p>
       </header>
 
       <div className="mt-8 grid gap-8 lg:grid-cols-12">
         <aside className="lg:col-span-3">
-          <nav aria-label="Navigation de l'espace personnel" className="rounded-lg border border-neutral-200 p-2 dark:border-neutral-800">
+          <nav
+            aria-label="Navigation de l'espace personnel"
+            className="rounded-lg border border-neutral-200 p-2 dark:border-neutral-800"
+          >
             <ul>
               {NAV.map(({ href, label, icon: Icon }) => (
                 <li key={href}>
                   <Link
                     href={href}
-                    className={`flex items-center gap-2.5 rounded-md px-3 py-2.5 text-sm font-medium transition-colors hover:bg-neutral-50 hover:text-sn-green dark:hover:bg-neutral-800 ${
+                    className={`hover:text-sn-green flex items-center gap-2.5 rounded-md px-3 py-2.5 text-sm font-medium transition-colors hover:bg-neutral-50 dark:hover:bg-neutral-800 ${
                       href === '/notifications'
-                        ? 'bg-neutral-50 text-sn-green dark:bg-neutral-800'
+                        ? 'text-sn-green bg-neutral-50 dark:bg-neutral-800'
                         : 'text-neutral-700 dark:text-neutral-300'
                     }`}
                   >
@@ -98,7 +104,9 @@ export default function NotificationsPage() {
                 <div className="flex flex-wrap items-start justify-between gap-4">
                   <div className="max-w-xl">
                     <p className="text-sm font-semibold">{channel.label}</p>
-                    <p className="mt-1 text-xs leading-relaxed text-neutral-500">{channel.description}</p>
+                    <p className="mt-1 text-xs leading-relaxed text-neutral-500">
+                      {channel.description}
+                    </p>
                   </div>
                   <div className="flex gap-4">
                     <label className="flex items-center gap-2 text-xs font-medium">
@@ -106,7 +114,7 @@ export default function NotificationsPage() {
                         type="checkbox"
                         name={`${channel.id}-email`}
                         defaultChecked={channel.channels.includes('email')}
-                        className="h-4 w-4 rounded border-neutral-300 text-sn-green"
+                        className="text-sn-green h-4 w-4 rounded border-neutral-300"
                       />
                       Email
                     </label>
@@ -115,7 +123,7 @@ export default function NotificationsPage() {
                         type="checkbox"
                         name={`${channel.id}-push`}
                         defaultChecked={channel.channels.includes('push')}
-                        className="h-4 w-4 rounded border-neutral-300 text-sn-green"
+                        className="text-sn-green h-4 w-4 rounded border-neutral-300"
                       />
                       Notification push
                     </label>
@@ -126,7 +134,7 @@ export default function NotificationsPage() {
 
             <button
               type="submit"
-              className="rounded-md bg-sn-green px-6 py-2.5 text-sm font-semibold text-white hover:bg-sn-green-700"
+              className="bg-sn-green hover:bg-sn-green-700 rounded-md px-6 py-2.5 text-sm font-semibold text-white"
             >
               Enregistrer mes préférences
             </button>

@@ -1,4 +1,9 @@
-import { Injectable, type CallHandler, type ExecutionContext, type NestInterceptor } from '@nestjs/common';
+import {
+  Injectable,
+  type CallHandler,
+  type ExecutionContext,
+  type NestInterceptor,
+} from '@nestjs/common';
 import type { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -14,7 +19,11 @@ export interface Paginated<T> {
   };
 }
 
-export function buildPagination(page: number, perPage: number, total: number): Paginated<never>['meta'] {
+export function buildPagination(
+  page: number,
+  perPage: number,
+  total: number,
+): Paginated<never>['meta'] {
   const totalPages = Math.max(1, Math.ceil(total / perPage));
   return {
     page,
@@ -37,12 +46,7 @@ export class PaginationInterceptor implements NestInterceptor {
   intercept(_context: ExecutionContext, next: CallHandler): Observable<unknown> {
     return next.handle().pipe(
       map((payload: unknown) => {
-        if (
-          payload &&
-          typeof payload === 'object' &&
-          'data' in payload &&
-          'meta' in payload
-        ) {
+        if (payload && typeof payload === 'object' && 'data' in payload && 'meta' in payload) {
           return payload;
         }
         return { data: payload };

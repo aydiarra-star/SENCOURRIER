@@ -40,7 +40,10 @@ export async function POST(request: Request) {
     });
 
     if (!upstream.ok) {
-      return NextResponse.json({ error: 'Inscription momentanément indisponible.' }, { status: 502 });
+      return NextResponse.json(
+        { error: 'Inscription momentanément indisponible.' },
+        { status: 502 },
+      );
     }
 
     if (contentType.includes('application/json')) {

@@ -12,7 +12,6 @@ interface PageProps {
   params: Promise<{ category: string }>;
 }
 
-
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { category: slug } = await params;
   const category = await prisma.category.findUnique({
@@ -24,7 +23,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: category.name,
-    description: category.description ?? `Toute l'actualité ${category.name.toLowerCase()} au Sénégal.`,
+    description:
+      category.description ?? `Toute l'actualité ${category.name.toLowerCase()} au Sénégal.`,
     alternates: { canonical: `/${slug}` },
     openGraph: {
       type: 'website',
@@ -60,7 +60,9 @@ export default async function CategoryPage({ params }: PageProps) {
       <JsonLd
         data={breadcrumbSchema([
           { name: 'Accueil', url: '/' },
-          ...(category.parent ? [{ name: category.parent.name, url: `/${category.parent.slug}` }] : []),
+          ...(category.parent
+            ? [{ name: category.parent.name, url: `/${category.parent.slug}` }]
+            : []),
           { name: category.name, url: `/${category.slug}` },
         ])}
       />
@@ -69,15 +71,22 @@ export default async function CategoryPage({ params }: PageProps) {
       {/* En-tête de rubrique */}
       <div className="border-b border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-900/50">
         <div className="mx-auto max-w-screen-2xl px-4 py-8 sm:px-6 lg:px-8">
-          <nav aria-label="Fil d'Ariane" className="mb-3 flex items-center gap-1.5 text-xs text-neutral-500">
+          <nav
+            aria-label="Fil d'Ariane"
+            className="mb-3 flex items-center gap-1.5 text-xs text-neutral-500"
+          >
             <Link href="/" className="hover:text-sn-green">
               Accueil
             </Link>
             <span aria-hidden>/</span>
-            <span className="font-semibold text-neutral-700 dark:text-neutral-300">{category.name}</span>
+            <span className="font-semibold text-neutral-700 dark:text-neutral-300">
+              {category.name}
+            </span>
           </nav>
 
-          <h1 className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl">{category.name}</h1>
+          <h1 className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl">
+            {category.name}
+          </h1>
           {category.description && (
             <p className="mt-2 max-w-3xl text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
               {category.description}
@@ -91,7 +100,7 @@ export default async function CategoryPage({ params }: PageProps) {
                 <li key={child.id}>
                   <Link
                     href={`/${category.slug}/${child.slug}`}
-                    className="inline-block rounded-full border border-neutral-300 bg-white px-3.5 py-1.5 text-xs font-semibold transition-colors hover:border-sn-green hover:bg-sn-green hover:text-white dark:border-neutral-700 dark:bg-neutral-900"
+                    className="hover:border-sn-green hover:bg-sn-green inline-block rounded-full border border-neutral-300 bg-white px-3.5 py-1.5 text-xs font-semibold transition-colors hover:text-white dark:border-neutral-700 dark:bg-neutral-900"
                   >
                     {child.name}
                   </Link>
@@ -126,7 +135,7 @@ export default async function CategoryPage({ params }: PageProps) {
               <AdSlot slot={sidebarAd} format="rectangle" />
 
               <section className="rounded-lg border border-neutral-200 p-5 dark:border-neutral-800">
-                <h2 className="border-b border-neutral-200 pb-2 font-ui text-xs font-bold uppercase tracking-wider text-neutral-500 dark:border-neutral-800">
+                <h2 className="font-ui border-b border-neutral-200 pb-2 text-xs font-bold uppercase tracking-wider text-neutral-500 dark:border-neutral-800">
                   Toutes les rubriques
                 </h2>
                 <ul className="mt-3 space-y-1">
@@ -135,7 +144,9 @@ export default async function CategoryPage({ params }: PageProps) {
                       <Link
                         href={`/${item.slug}`}
                         className={`flex items-center justify-between rounded-md px-2 py-2 text-sm transition-colors hover:bg-neutral-50 dark:hover:bg-neutral-800 ${
-                          item.slug === category.slug ? 'font-semibold text-sn-green' : 'text-neutral-700 dark:text-neutral-300'
+                          item.slug === category.slug
+                            ? 'text-sn-green font-semibold'
+                            : 'text-neutral-700 dark:text-neutral-300'
                         }`}
                       >
                         {item.name}

@@ -26,7 +26,11 @@ export default function manifest(): MetadataRoute.Manifest {
     ],
     shortcuts: [
       { name: 'À la une', url: '/', description: "L'actualité du jour" },
-      { name: 'Dernières minutes', url: '/dernieres-minutes', description: "Le fil d'actualité en continu" },
+      {
+        name: 'Dernières minutes',
+        url: '/dernieres-minutes',
+        description: "Le fil d'actualité en continu",
+      },
       { name: 'TV en direct', url: '/tv-live', description: 'SENCOURRIER TV' },
       { name: 'Recherche', url: '/recherche', description: 'Rechercher un article' },
     ],

@@ -14,9 +14,12 @@ export default function PrivacyPolicyPage() {
       <LegalSection title="1. Responsable du traitement">
         <p>
           Le responsable du traitement des données personnelles collectées sur sencourrier.sn est
-          SENCOURRIER, établi à Dakar (Sénégal). Pour toute question relative à vos données,
-          écrivez à{' '}
-          <a href="mailto:donnees@sencourrier.sn" className="font-semibold text-sn-green hover:underline">
+          SENCOURRIER, établi à Dakar (Sénégal). Pour toute question relative à vos données, écrivez
+          à{' '}
+          <a
+            href="mailto:donnees@sencourrier.sn"
+            className="text-sn-green font-semibold hover:underline"
+          >
             donnees@sencourrier.sn
           </a>
           .
@@ -35,9 +38,9 @@ export default function PrivacyPolicyPage() {
             profil transmis par Google si vous choisissez cette méthode de connexion.
           </li>
           <li>
-            <strong>Abonnement</strong> : formule souscrite, historique de paiement et
-            identifiant de transaction transmis par le prestataire de paiement. Aucune donnée
-            bancaire complète n&apos;est stockée sur nos serveurs.
+            <strong>Abonnement</strong> : formule souscrite, historique de paiement et identifiant
+            de transaction transmis par le prestataire de paiement. Aucune donnée bancaire complète
+            n&apos;est stockée sur nos serveurs.
           </li>
           <li>
             <strong>Usage</strong> : pages consultées, articles lus, durée de lecture, rubriques
@@ -51,33 +54,29 @@ export default function PrivacyPolicyPage() {
       </LegalSection>
 
       <LegalSection title="3. Finalités et bases légales">
-        <p>
-          Chaque traitement repose sur une base légale précise :
-        </p>
+        <p>Chaque traitement repose sur une base légale précise :</p>
         <ul className="list-disc space-y-1.5 pl-5">
           <li>
             <strong>Exécution du contrat</strong> : création de compte, fourniture de
             l&apos;abonnement Premium, gestion des paiements, service client.
           </li>
           <li>
-            <strong>Intérêt légitime</strong> : sécurité du site, prévention de la fraude,
-            mesure d&apos;audience agrégée, amélioration éditoriale.
+            <strong>Intérêt légitime</strong> : sécurité du site, prévention de la fraude, mesure
+            d&apos;audience agrégée, amélioration éditoriale.
           </li>
           <li>
             <strong>Consentement</strong> : newsletters, notifications push, publicité
             personnalisée, cookies non essentiels.
           </li>
           <li>
-            <strong>Obligation légale</strong> : conservation des factures, réponse aux
-            réquisitions judiciaires.
+            <strong>Obligation légale</strong> : conservation des factures, réponse aux réquisitions
+            judiciaires.
           </li>
         </ul>
       </LegalSection>
 
       <LegalSection title="4. Cookies et traceurs">
-        <p>
-          Nous utilisons trois catégories de traceurs :
-        </p>
+        <p>Nous utilisons trois catégories de traceurs :</p>
         <ul className="list-disc space-y-1.5 pl-5">
           <li>
             <strong>Strictement nécessaires</strong> : session d&apos;authentification, jeton
@@ -88,21 +87,20 @@ export default function PrivacyPolicyPage() {
             respectueux de la vie privée, avec anonymisation des adresses IP.
           </li>
           <li>
-            <strong>Publicité</strong> : Google Ad Manager et régies partenaires, uniquement
-            après consentement explicite.
+            <strong>Publicité</strong> : Google Ad Manager et régies partenaires, uniquement après
+            consentement explicite.
           </li>
         </ul>
         <p>
-          Vous pouvez modifier vos choix à tout moment depuis le lien « Gérer mes cookies »
-          présent en pied de page.
+          Vous pouvez modifier vos choix à tout moment depuis le lien « Gérer mes cookies » présent
+          en pied de page.
         </p>
       </LegalSection>
 
       <LegalSection title="5. Partage des données">
         <p>
-          Vos données ne sont jamais vendues. Elles peuvent être transmises à des
-          sous-traitants strictement nécessaires au service, liés par un contrat de
-          sous-traitance :
+          Vos données ne sont jamais vendues. Elles peuvent être transmises à des sous-traitants
+          strictement nécessaires au service, liés par un contrat de sous-traitance :
         </p>
         <ul className="list-disc space-y-1.5 pl-5">
           <li>Microsoft Azure — hébergement et stockage des médias</li>
@@ -139,7 +137,10 @@ export default function PrivacyPolicyPage() {
         </ul>
         <p>
           Ces droits s&apos;exercent par email à{' '}
-          <a href="mailto:donnees@sencourrier.sn" className="font-semibold text-sn-green hover:underline">
+          <a
+            href="mailto:donnees@sencourrier.sn"
+            className="text-sn-green font-semibold hover:underline"
+          >
             donnees@sencourrier.sn
           </a>
           . Nous répondons dans un délai maximum de 30 jours.
@@ -150,16 +151,16 @@ export default function PrivacyPolicyPage() {
         <p>
           Les échanges sont chiffrés en transit (TLS 1.3) et les données sensibles chiffrées au
           repos. L&apos;accès aux systèmes est limité aux personnes habilitées, protégé par
-          authentification à deux facteurs. Des sauvegardes chiffrées sont réalisées
-          quotidiennement et testées régulièrement.
+          authentification à deux facteurs. Des sauvegardes chiffrées sont réalisées quotidiennement
+          et testées régulièrement.
         </p>
       </LegalSection>
 
       <LegalSection title="9. Mineurs">
         <p>
-          Le service n&apos;est pas destiné aux personnes de moins de 16 ans. Nous ne collectons
-          pas sciemment de données concernant des mineurs de moins de 16 ans sans le
-          consentement du titulaire de l&apos;autorité parentale.
+          Le service n&apos;est pas destiné aux personnes de moins de 16 ans. Nous ne collectons pas
+          sciemment de données concernant des mineurs de moins de 16 ans sans le consentement du
+          titulaire de l&apos;autorité parentale.
         </p>
       </LegalSection>
 

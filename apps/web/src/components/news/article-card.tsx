@@ -63,7 +63,10 @@ export function ArticleCard({
         </Link>
         <div className="min-w-0 flex-1">
           <h3 className="text-sm font-semibold leading-snug">
-            <Link href={href} className="transition-colors hover:text-sn-green dark:hover:text-sn-green-400">
+            <Link
+              href={href}
+              className="hover:text-sn-green dark:hover:text-sn-green-400 transition-colors"
+            >
               {article.title}
             </Link>
           </h3>
@@ -71,7 +74,12 @@ export function ArticleCard({
             <time dateTime={article.publishedAt?.toISOString()}>
               {article.publishedAt ? editorialTimestamp(article.publishedAt) : ''}
             </time>
-            {article.isPremium && <Lock className="h-3 w-3 text-sn-yellow-600" aria-label="Article réservé aux abonnés" />}
+            {article.isPremium && (
+              <Lock
+                className="text-sn-yellow-600 h-3 w-3"
+                aria-label="Article réservé aux abonnés"
+              />
+            )}
           </p>
         </div>
       </article>
@@ -80,14 +88,26 @@ export function ArticleCard({
 
   if (variant === 'list') {
     return (
-      <article className={cn('group border-b border-neutral-200 py-5 last:border-0 dark:border-neutral-800', className)}>
+      <article
+        className={cn(
+          'group border-b border-neutral-200 py-5 last:border-0 dark:border-neutral-800',
+          className,
+        )}
+      >
         <div className="flex flex-col gap-4 sm:flex-row">
           <div className="min-w-0 flex-1">
             {article.category && (
-              <CategoryBadge slug={article.category.slug} name={article.category.name} accent={article.category.accent} />
+              <CategoryBadge
+                slug={article.category.slug}
+                name={article.category.name}
+                accent={article.category.accent}
+              />
             )}
-            <h3 className="mt-2 font-display text-lg font-bold leading-snug sm:text-xl">
-              <Link href={href} className="transition-colors hover:text-sn-green dark:hover:text-sn-green-400">
+            <h3 className="font-display mt-2 text-lg font-bold leading-snug sm:text-xl">
+              <Link
+                href={href}
+                className="hover:text-sn-green dark:hover:text-sn-green-400 transition-colors"
+              >
                 {article.title}
               </Link>
             </h3>
@@ -139,7 +159,7 @@ export function ArticleCard({
             className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
           />
           {article.isPremium && (
-            <span className="absolute left-3 top-3 flex items-center gap-1 rounded-sm bg-sn-yellow px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-neutral-900">
+            <span className="bg-sn-yellow absolute left-3 top-3 flex items-center gap-1 rounded-sm px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-neutral-900">
               <Lock className="h-3 w-3" aria-hidden />
               Abonnés
             </span>
@@ -149,16 +169,27 @@ export function ArticleCard({
 
       <div className={cn(isHero ? 'mt-4' : 'mt-3')}>
         {article.category && (
-          <CategoryBadge slug={article.category.slug} name={article.category.name} accent={article.category.accent} />
+          <CategoryBadge
+            slug={article.category.slug}
+            name={article.category.name}
+            accent={article.category.accent}
+          />
         )}
 
         <h3
           className={cn(
-            'mt-2 font-display font-bold leading-tight tracking-tight',
-            isHero ? 'text-2xl sm:text-3xl lg:text-4xl' : isFeatured ? 'text-xl sm:text-2xl' : 'text-base sm:text-lg',
+            'font-display mt-2 font-bold leading-tight tracking-tight',
+            isHero
+              ? 'text-2xl sm:text-3xl lg:text-4xl'
+              : isFeatured
+                ? 'text-xl sm:text-2xl'
+                : 'text-base sm:text-lg',
           )}
         >
-          <Link href={href} className="transition-colors hover:text-sn-green dark:hover:text-sn-green-400">
+          <Link
+            href={href}
+            className="hover:text-sn-green dark:hover:text-sn-green-400 transition-colors"
+          >
             {article.title}
           </Link>
         </h3>
@@ -189,7 +220,9 @@ export function ArticleCard({
 function Meta({ article }: { article: ArticleCardData }) {
   return (
     <div className="mt-3 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-xs text-neutral-500 dark:text-neutral-400">
-      <span className="font-medium text-neutral-700 dark:text-neutral-300">{authorName(article)}</span>
+      <span className="font-medium text-neutral-700 dark:text-neutral-300">
+        {authorName(article)}
+      </span>
       <span aria-hidden>·</span>
       <time dateTime={article.publishedAt?.toISOString()}>
         {article.publishedAt ? editorialTimestamp(article.publishedAt) : ''}

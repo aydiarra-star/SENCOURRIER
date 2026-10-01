@@ -39,7 +39,7 @@ export function BreakingTicker({ items }: { items: BreakingItem[] }) {
   if (!current) return null;
 
   return (
-    <div className="relative z-40 bg-sn-red text-white">
+    <div className="bg-sn-red relative z-40 text-white">
       <div className="mx-auto flex max-w-screen-2xl items-center gap-3 px-4 py-2 sm:px-6 lg:px-8">
         <span className="flex shrink-0 items-center gap-1.5 rounded-sm bg-white/15 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider">
           <span className="relative flex h-1.5 w-1.5">

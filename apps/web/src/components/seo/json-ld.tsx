@@ -62,7 +62,12 @@ export function newsArticleSchema(article: {
   isPremium: boolean;
   readingMinutes: number;
   wordCount: number;
-  heroImage: { url: string; width: number | null; height: number | null; altText: string | null } | null;
+  heroImage: {
+    url: string;
+    width: number | null;
+    height: number | null;
+    altText: string | null;
+  } | null;
   category: { slug: string; name: string } | null;
   tags: string[];
   authors: { name: string; url: string | null; jobTitle: string | null }[];

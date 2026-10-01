@@ -5,18 +5,18 @@
 ## 1. Identité de marque
 
 **Nom** : SENCOURRIER
-**Signature** : *Le média numérique de référence du Sénégal*
+**Signature** : _Le média numérique de référence du Sénégal_
 **Éditeur** : SENCOURRIER Médias — Dakar, Sénégal
 
 ### Palette officielle
 
-| Rôle | Couleur | Code | Usage |
-| --- | --- | --- | --- |
-| Vert Sénégal | ![#00853F](https://img.shields.io/badge/-00853F-00853F) | `#00853F` | Couleur primaire, navigation, CTA |
-| Jaune Or | ![#FCD116](https://img.shields.io/badge/-FCD116-FCD116) | `#FCD116` | Accents, badges, surlignage |
-| Rouge | ![#E31B23](https://img.shields.io/badge/-E31B23-E31B23) | `#E31B23` | Urgence, « dernière minute », alertes |
-| Blanc | ![#FFFFFF](https://img.shields.io/badge/-FFFFFF-FFFFFF) | `#FFFFFF` | Fonds, respiration |
-| Gris Premium | ![#1F2937](https://img.shields.io/badge/-1F2937-1F2937) | `#1F2937` | Texte, surfaces, hiérarchie |
+| Rôle         | Couleur                                                 | Code      | Usage                                 |
+| ------------ | ------------------------------------------------------- | --------- | ------------------------------------- |
+| Vert Sénégal | ![#00853F](https://img.shields.io/badge/-00853F-00853F) | `#00853F` | Couleur primaire, navigation, CTA     |
+| Jaune Or     | ![#FCD116](https://img.shields.io/badge/-FCD116-FCD116) | `#FCD116` | Accents, badges, surlignage           |
+| Rouge        | ![#E31B23](https://img.shields.io/badge/-E31B23-E31B23) | `#E31B23` | Urgence, « dernière minute », alertes |
+| Blanc        | ![#FFFFFF](https://img.shields.io/badge/-FFFFFF-FFFFFF) | `#FFFFFF` | Fonds, respiration                    |
+| Gris Premium | ![#1F2937](https://img.shields.io/badge/-1F2937-1F2937) | `#1F2937` | Texte, surfaces, hiérarchie           |
 
 Le tricolore est **réservé aux accents** (filets, eyebrows, badges, appels à
 l'action). Le gris premium porte la typographie et les surfaces, afin de
@@ -27,11 +27,11 @@ Les jetons sont définis une seule fois dans `packages/config/src/brand.ts`
 
 ### Typographies
 
-| Police | Rôle |
-| --- | --- |
-| **Montserrat** | Titres, une, rubriques |
-| **Inter** | Corps de texte, interface |
-| **Poppins** | Accents, chiffres, micro-titres |
+| Police         | Rôle                            |
+| -------------- | ------------------------------- |
+| **Montserrat** | Titres, une, rubriques          |
+| **Inter**      | Corps de texte, interface       |
+| **Poppins**    | Accents, chiffres, micro-titres |
 
 Chargées via `next/font/google` avec `display: 'swap'` — aucune requête
 bloquante vers un domaine tiers, aucun décalage de mise en page.
@@ -54,12 +54,12 @@ bloquante vers un domaine tiers, aucun décalage de mise en page.
 
 ## 2. Grille et points de rupture
 
-| Palier | Largeur | Usage |
-| --- | --- | --- |
-| Mobile | < 640 px | Une colonne, navigation en tiroir |
-| Tablette | 640–1024 px | Deux colonnes |
-| Bureau | 1024–1440 px | Trois colonnes, barre latérale |
-| Large | > 1440 px | Conteneur centré, respiration accrue |
+| Palier   | Largeur      | Usage                                |
+| -------- | ------------ | ------------------------------------ |
+| Mobile   | < 640 px     | Une colonne, navigation en tiroir    |
+| Tablette | 640–1024 px  | Deux colonnes                        |
+| Bureau   | 1024–1440 px | Trois colonnes, barre latérale       |
+| Large    | > 1440 px    | Conteneur centré, respiration accrue |
 
 Approche **mobile first** : la mise en page mobile est la référence, les paliers
 supérieurs ajoutent des colonnes sans réorganiser la hiérarchie.
@@ -206,23 +206,23 @@ supérieurs ajoutent des colonnes sans réorganiser la hiérarchie.
 
 ## 4. Composants d'interface
 
-| Composant | Fichier | Rôle |
-| --- | --- | --- |
-| `Header` | `components/layout/header.tsx` | Navigation, recherche, compte |
-| `Footer` | `components/layout/footer.tsx` | Liens, société, légal |
-| `BreakingTicker` | `components/layout/breaking-ticker.tsx` | Bandeau « dernière minute » |
-| `Logo` | `components/layout/logo.tsx` | Logo SVG |
-| `ThemeToggle` | `components/layout/theme-toggle.tsx` | Bascule clair/sombre |
-| `ArticleCard` | `components/news/article-card.tsx` | Carte d'article |
-| `SearchResultCard` | `components/news/search-result-card.tsx` | Résultat de recherche |
-| `CategoryBadge` | `components/news/category-badge.tsx` | Badge de rubrique |
-| `AdSlot` | `components/news/ad-slot.tsx` | Espace publicitaire |
-| `LatestUpdates` | `components/home/latest-updates.tsx` | Fil « dernières minutes » |
-| `TrendingTopics` | `components/home/trending-topics.tsx` | Tendances |
-| `PodcastSection` | `components/home/podcast-section.tsx` | Bloc podcasts |
-| `VideoSection` | `components/home/video-section.tsx` | Bloc vidéos |
-| `NewsletterSignup` | `components/home/newsletter-signup.tsx` | Inscription newsletter |
-| `JsonLd` | `components/seo/json-ld.tsx` | Données structurées |
+| Composant          | Fichier                                  | Rôle                          |
+| ------------------ | ---------------------------------------- | ----------------------------- |
+| `Header`           | `components/layout/header.tsx`           | Navigation, recherche, compte |
+| `Footer`           | `components/layout/footer.tsx`           | Liens, société, légal         |
+| `BreakingTicker`   | `components/layout/breaking-ticker.tsx`  | Bandeau « dernière minute »   |
+| `Logo`             | `components/layout/logo.tsx`             | Logo SVG                      |
+| `ThemeToggle`      | `components/layout/theme-toggle.tsx`     | Bascule clair/sombre          |
+| `ArticleCard`      | `components/news/article-card.tsx`       | Carte d'article               |
+| `SearchResultCard` | `components/news/search-result-card.tsx` | Résultat de recherche         |
+| `CategoryBadge`    | `components/news/category-badge.tsx`     | Badge de rubrique             |
+| `AdSlot`           | `components/news/ad-slot.tsx`            | Espace publicitaire           |
+| `LatestUpdates`    | `components/home/latest-updates.tsx`     | Fil « dernières minutes »     |
+| `TrendingTopics`   | `components/home/trending-topics.tsx`    | Tendances                     |
+| `PodcastSection`   | `components/home/podcast-section.tsx`    | Bloc podcasts                 |
+| `VideoSection`     | `components/home/video-section.tsx`      | Bloc vidéos                   |
+| `NewsletterSignup` | `components/home/newsletter-signup.tsx`  | Inscription newsletter        |
+| `JsonLd`           | `components/seo/json-ld.tsx`             | Données structurées           |
 
 ---
 

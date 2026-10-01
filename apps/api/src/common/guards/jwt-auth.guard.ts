@@ -28,7 +28,9 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
 
   override handleRequest<TUser>(err: unknown, user: TUser): TUser {
     if (err || !user) {
-      throw err instanceof Error ? err : new UnauthorizedException('Jeton d’accès invalide ou expiré.');
+      throw err instanceof Error
+        ? err
+        : new UnauthorizedException('Jeton d’accès invalide ou expiré.');
     }
     return user;
   }

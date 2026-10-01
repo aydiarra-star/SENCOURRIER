@@ -5,7 +5,7 @@ import { PRISMA } from '../../infra/prisma/prisma.module';
 import { RedisService } from '../../infra/redis/redis.service';
 import { buildPagination } from '../../common/interceptors/pagination.interceptor';
 import { PaginationQueryDto } from '../../common/dto/pagination.dto';
-import { ARTICLE_CARD_SELECT, type ArticleCardRow, toArticleCard } from '../articles/article.select';
+import { ARTICLE_CARD_SELECT, toArticleCard } from '../articles/article.select';
 
 @Injectable()
 export class UsersService {
@@ -47,7 +47,12 @@ export class UsersService {
         ...((data.bio || data.jobTitle) && {
           authorProfile: {
             upsert: {
-              create: { slug: userId, displayName: data.displayName ?? '', bio: data.bio, jobTitle: data.jobTitle },
+              create: {
+                slug: userId,
+                displayName: data.displayName ?? '',
+                bio: data.bio,
+                jobTitle: data.jobTitle,
+              },
               update: { bio: data.bio, jobTitle: data.jobTitle },
             },
           },
@@ -98,7 +103,11 @@ export class UsersService {
     ]);
 
     return {
-      data: rows.map((row) => ({ ...toArticleCard(row.article), readAt: row.readAt, progress: row.progress })),
+      data: rows.map((row) => ({
+        ...toArticleCard(row.article),
+        readAt: row.readAt,
+        progress: row.progress,
+      })),
       meta: buildPagination(query.page, query.perPage, total),
     };
   }
@@ -204,7 +213,10 @@ export class UsersService {
    */
   async deleteAccount(userId: string) {
     await this.prisma.$transaction([
-      this.prisma.refreshToken.updateMany({ where: { userId, revokedAt: null }, data: { revokedAt: new Date() } }),
+      this.prisma.refreshToken.updateMany({
+        where: { userId, revokedAt: null },
+        data: { revokedAt: new Date() },
+      }),
       this.prisma.bookmark.deleteMany({ where: { userId } }),
       this.prisma.readingHistory.deleteMany({ where: { userId } }),
       this.prisma.user.update({

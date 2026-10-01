@@ -4,7 +4,8 @@ import { JsonLd, breadcrumbSchema } from '@/components/seo/json-ld';
 
 export const metadata: Metadata = {
   title: 'Contact',
-  description: 'Contactez la rédaction, le service abonnements ou le service publicité de SENCOURRIER.',
+  description:
+    'Contactez la rédaction, le service abonnements ou le service publicité de SENCOURRIER.',
   alternates: { canonical: '/contact' },
 };
 
@@ -34,11 +35,18 @@ const SERVICES = [
 export default function ContactPage() {
   return (
     <>
-      <JsonLd data={breadcrumbSchema([{ name: 'Accueil', url: '/' }, { name: 'Contact', url: '/contact' }])} />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: 'Accueil', url: '/' },
+          { name: 'Contact', url: '/contact' },
+        ])}
+      />
 
       <div className="border-b border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-900/50">
         <div className="mx-auto max-w-screen-2xl px-4 py-10 sm:px-6 lg:px-8">
-          <h1 className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl">Contact</h1>
+          <h1 className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl">
+            Contact
+          </h1>
           <p className="mt-3 max-w-3xl text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
             Notre équipe répond aux messages du lundi au vendredi, de 9 h à 18 h (GMT). Pour les
             demandes urgentes liées à l&apos;actualité, privilégiez l&apos;adresse de la rédaction.
@@ -50,7 +58,9 @@ export default function ContactPage() {
         <div className="grid gap-10 lg:grid-cols-3">
           {/* Formulaire */}
           <div className="lg:col-span-2">
-            <h2 className="font-display text-xl font-extrabold tracking-tight">Envoyer un message</h2>
+            <h2 className="font-display text-xl font-extrabold tracking-tight">
+              Envoyer un message
+            </h2>
             <form action="/api/contact" method="post" className="mt-5 space-y-4">
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
@@ -63,7 +73,7 @@ export default function ContactPage() {
                     type="text"
                     required
                     autoComplete="name"
-                    className="mt-1.5 w-full rounded-md border border-neutral-300 bg-white px-4 py-2.5 text-sm outline-none focus:border-sn-green focus:ring-2 focus:ring-sn-green/20 dark:border-neutral-700 dark:bg-neutral-950"
+                    className="focus:border-sn-green focus:ring-sn-green/20 mt-1.5 w-full rounded-md border border-neutral-300 bg-white px-4 py-2.5 text-sm outline-none focus:ring-2 dark:border-neutral-700 dark:bg-neutral-950"
                   />
                 </div>
                 <div>
@@ -76,7 +86,7 @@ export default function ContactPage() {
                     type="email"
                     required
                     autoComplete="email"
-                    className="mt-1.5 w-full rounded-md border border-neutral-300 bg-white px-4 py-2.5 text-sm outline-none focus:border-sn-green focus:ring-2 focus:ring-sn-green/20 dark:border-neutral-700 dark:bg-neutral-950"
+                    className="focus:border-sn-green focus:ring-sn-green/20 mt-1.5 w-full rounded-md border border-neutral-300 bg-white px-4 py-2.5 text-sm outline-none focus:ring-2 dark:border-neutral-700 dark:bg-neutral-950"
                   />
                 </div>
               </div>
@@ -108,12 +118,17 @@ export default function ContactPage() {
                   name="message"
                   rows={7}
                   required
-                  className="mt-1.5 w-full rounded-md border border-neutral-300 bg-white px-4 py-2.5 text-sm outline-none focus:border-sn-green focus:ring-2 focus:ring-sn-green/20 dark:border-neutral-700 dark:bg-neutral-950"
+                  className="focus:border-sn-green focus:ring-sn-green/20 mt-1.5 w-full rounded-md border border-neutral-300 bg-white px-4 py-2.5 text-sm outline-none focus:ring-2 dark:border-neutral-700 dark:bg-neutral-950"
                 />
               </div>
 
               <label className="flex items-start gap-2 text-xs leading-relaxed text-neutral-600 dark:text-neutral-400">
-                <input type="checkbox" name="consent" required className="mt-0.5 h-4 w-4 shrink-0 rounded border-neutral-300 text-sn-green" />
+                <input
+                  type="checkbox"
+                  name="consent"
+                  required
+                  className="text-sn-green mt-0.5 h-4 w-4 shrink-0 rounded border-neutral-300"
+                />
                 <span>
                   J&apos;accepte que mes données soient utilisées pour traiter ma demande,
                   conformément à la politique de confidentialité.
@@ -122,7 +137,7 @@ export default function ContactPage() {
 
               <button
                 type="submit"
-                className="rounded-md bg-sn-green px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-sn-green-700"
+                className="bg-sn-green hover:bg-sn-green-700 rounded-md px-6 py-3 text-sm font-semibold text-white transition-colors"
               >
                 Envoyer le message
               </button>
@@ -132,10 +147,12 @@ export default function ContactPage() {
           {/* Coordonnées */}
           <aside className="space-y-4">
             <div className="rounded-lg border border-neutral-200 p-5 dark:border-neutral-800">
-              <h2 className="font-ui text-xs font-bold uppercase tracking-wider text-neutral-500">Coordonnées</h2>
+              <h2 className="font-ui text-xs font-bold uppercase tracking-wider text-neutral-500">
+                Coordonnées
+              </h2>
               <ul className="mt-4 space-y-3.5 text-sm">
                 <li className="flex items-start gap-2.5">
-                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-sn-green" aria-hidden />
+                  <MapPin className="text-sn-green mt-0.5 h-4 w-4 shrink-0" aria-hidden />
                   <span>
                     SENCOURRIER
                     <br />
@@ -143,21 +160,20 @@ export default function ContactPage() {
                   </span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <Mail className="mt-0.5 h-4 w-4 shrink-0 text-sn-green" aria-hidden />
+                  <Mail className="text-sn-green mt-0.5 h-4 w-4 shrink-0" aria-hidden />
                   <a href="mailto:contact@sencourrier.sn" className="hover:underline">
                     contact@sencourrier.sn
                   </a>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <Phone className="mt-0.5 h-4 w-4 shrink-0 text-sn-green" aria-hidden />
+                  <Phone className="text-sn-green mt-0.5 h-4 w-4 shrink-0" aria-hidden />
                   <span>+221 33 000 00 00</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <Clock className="mt-0.5 h-4 w-4 shrink-0 text-sn-green" aria-hidden />
+                  <Clock className="text-sn-green mt-0.5 h-4 w-4 shrink-0" aria-hidden />
                   <span>
                     Lundi – vendredi
-                    <br />
-                    9 h – 18 h (GMT)
+                    <br />9 h – 18 h (GMT)
                   </span>
                 </li>
               </ul>
@@ -171,10 +187,12 @@ export default function ContactPage() {
                 {SERVICES.map((service) => (
                   <li key={service.email}>
                     <p className="text-sm font-semibold">{service.title}</p>
-                    <p className="mt-0.5 text-xs leading-relaxed text-neutral-500">{service.description}</p>
+                    <p className="mt-0.5 text-xs leading-relaxed text-neutral-500">
+                      {service.description}
+                    </p>
                     <a
                       href={`mailto:${service.email}`}
-                      className="mt-1 inline-block text-xs font-semibold text-sn-green hover:underline dark:text-sn-green-400"
+                      className="text-sn-green dark:text-sn-green-400 mt-1 inline-block text-xs font-semibold hover:underline"
                     >
                       {service.email}
                     </a>

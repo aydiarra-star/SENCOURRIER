@@ -1,4 +1,11 @@
-import { type ArgumentsHost, Catch, type ExceptionFilter, HttpException, HttpStatus, Logger } from '@nestjs/common';
+import {
+  type ArgumentsHost,
+  Catch,
+  type ExceptionFilter,
+  HttpException,
+  HttpStatus,
+  Logger,
+} from '@nestjs/common';
 import type { Request, Response } from 'express';
 
 interface ErrorBody {
@@ -42,10 +49,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
         error = record.error ?? exception.name;
       }
     } else if (exception instanceof Error) {
-      this.logger.error(
-        `${request.method} ${request.url} — ${exception.message}`,
-        exception.stack,
-      );
+      this.logger.error(`${request.method} ${request.url} — ${exception.message}`, exception.stack);
     }
 
     const body: ErrorBody = {

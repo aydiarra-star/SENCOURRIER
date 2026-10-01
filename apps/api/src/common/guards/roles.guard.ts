@@ -1,4 +1,9 @@
-import { Injectable, type CanActivate, type ExecutionContext, ForbiddenException } from '@nestjs/common';
+import {
+  Injectable,
+  type CanActivate,
+  type ExecutionContext,
+  ForbiddenException,
+} from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { ROLE_RANK, type Role } from '@sencourrier/types';
 import { ROLES_KEY, type AuthenticatedRequest } from '../decorators/auth.decorators';

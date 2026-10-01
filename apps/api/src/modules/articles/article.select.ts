@@ -29,11 +29,14 @@ export const ARTICLE_CARD_SELECT = {
       role: true,
       user: {
         select: {
-          authorProfile: { select: { slug: true, displayName: true, avatarUrl: true, jobTitle: true } },
+          authorProfile: {
+            select: { slug: true, displayName: true, avatarUrl: true, jobTitle: true },
+          },
         },
       },
     },
-  },  tags: { select: { tag: { select: { slug: true, name: true } } } },
+  },
+  tags: { select: { tag: { select: { slug: true, name: true } } } },
 } satisfies Prisma.ArticleSelect;
 
 export type ArticleCardRow = {

@@ -13,17 +13,17 @@ continu et en toute indépendance.
 SENCOURRIER est un monorepo npm réunissant un portail public performant, une
 API REST complète et un système éditorial professionnel.
 
-| | |
-| --- | --- |
-| Frontend | Next.js 15.5 · React 19 · TypeScript · Tailwind CSS · Framer Motion |
-| Backend | NestJS 11 · Node.js 20 |
-| Données | PostgreSQL 16 · Prisma 6.19 |
-| Cache | Redis 7 |
-| Recherche | Trigrammes PostgreSQL (insensible aux accents) |
-| Authentification | NextAuth · JWT · OAuth Google · 2FA |
-| Médias | Azure Blob Storage |
-| IA | Azure OpenAI (RAG, pgvector) |
-| Hébergement | Microsoft Azure · CDN Cloudflare |
+|                  |                                                                     |
+| ---------------- | ------------------------------------------------------------------- |
+| Frontend         | Next.js 15.5 · React 19 · TypeScript · Tailwind CSS · Framer Motion |
+| Backend          | NestJS 11 · Node.js 20                                              |
+| Données          | PostgreSQL 16 · Prisma 6.19                                         |
+| Cache            | Redis 7                                                             |
+| Recherche        | Trigrammes PostgreSQL (insensible aux accents)                      |
+| Authentification | NextAuth · JWT · OAuth Google · 2FA                                 |
+| Médias           | Azure Blob Storage                                                  |
+| IA               | Azure OpenAI (RAG, pgvector)                                        |
+| Hébergement      | Microsoft Azure · CDN Cloudflare                                    |
 
 ---
 
@@ -65,14 +65,14 @@ sencourrier/
 
 ## Commandes
 
-| Commande | Rôle |
-| --- | --- |
-| `npm run dev:web` · `npm run dev:api` | Développement |
-| `npm run build` | Construction des deux applications |
-| `npm run typecheck` | Vérification des types |
-| `npm run lint` | Analyse statique |
-| `npm run db:migrate` · `npm run db:seed` | Base de données |
-| `npm run docker:up` · `npm run docker:down` | Infrastructure locale |
+| Commande                                    | Rôle                               |
+| ------------------------------------------- | ---------------------------------- |
+| `npm run dev:web` · `npm run dev:api`       | Développement                      |
+| `npm run build`                             | Construction des deux applications |
+| `npm run typecheck`                         | Vérification des types             |
+| `npm run lint`                              | Analyse statique                   |
+| `npm run db:migrate` · `npm run db:seed`    | Base de données                    |
+| `npm run docker:up` · `npm run docker:down` | Infrastructure locale              |
 
 ---
 

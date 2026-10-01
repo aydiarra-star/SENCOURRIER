@@ -58,10 +58,21 @@ export class SubscriptionsService {
    * une référence interne : le webhook du fournisseur retrouve ainsi toujours
    * la commande, même si l'utilisateur abandonne puis reprend le parcours.
    */
-  async startCheckout(userId: string, planId: string, provider: PaymentProvider): Promise<CheckoutResult> {
+  async startCheckout(
+    userId: string,
+    planId: string,
+    provider: PaymentProvider,
+  ): Promise<CheckoutResult> {
     const plan = await this.prisma.subscriptionPlan.findFirst({
       where: { id: planId, isActive: true },
-      select: { id: true, tier: true, name: true, priceAmount: true, currency: true, stripePriceId: true },
+      select: {
+        id: true,
+        tier: true,
+        name: true,
+        priceAmount: true,
+        currency: true,
+        stripePriceId: true,
+      },
     });
     if (!plan) throw new NotFoundException('Formule d’abonnement introuvable.');
 
@@ -141,12 +152,16 @@ export class SubscriptionsService {
           providerRef,
           currentPeriodStart: new Date(),
           currentPeriodEnd: periodEnd,
-          trialEndsAt: plan.trialDays > 0 ? new Date(Date.now() + plan.trialDays * 86_400_000) : null,
+          trialEndsAt:
+            plan.trialDays > 0 ? new Date(Date.now() + plan.trialDays * 86_400_000) : null,
         },
         select: { id: true },
       });
 
-      await tx.payment.update({ where: { id: payment.id }, data: { subscriptionId: subscription.id } });
+      await tx.payment.update({
+        where: { id: payment.id },
+        data: { subscriptionId: subscription.id },
+      });
 
       // L'abonnement Premium ouvre les droits éditoriaux correspondants.
       if (plan.tier !== SubscriptionTier.FREE) {
@@ -237,7 +252,10 @@ export class SubscriptionsService {
       };
     }
 
-    const user = await this.prisma.user.findUnique({ where: { id: userId }, select: { email: true } });
+    const user = await this.prisma.user.findUnique({
+      where: { id: userId },
+      select: { email: true },
+    });
 
     const session = await this.stripe.checkout.sessions.create({
       mode: 'subscription',
@@ -274,7 +292,11 @@ export class SubscriptionsService {
       if (!response.ok) throw new Error(`Wave a répondu ${response.status}`);
 
       const session = (await response.json()) as { wave_launch_url?: string };
-      return { reference, provider: PaymentProvider.WAVE, paymentUrl: session.wave_launch_url ?? null };
+      return {
+        reference,
+        provider: PaymentProvider.WAVE,
+        paymentUrl: session.wave_launch_url ?? null,
+      };
     } catch (error) {
       this.logger.error(`Échec Wave : ${(error as Error).message}`);
       return this.mobileMoneyFallback(reference, PaymentProvider.WAVE, plan.name);
@@ -286,7 +308,8 @@ export class SubscriptionsService {
     plan: { priceAmount: number; name: string },
   ): Promise<CheckoutResult> {
     const clientId = this.config.get<string>('ORANGE_MONEY_CLIENT_ID');
-    if (!clientId) return this.mobileMoneyFallback(reference, PaymentProvider.ORANGE_MONEY, plan.name);
+    if (!clientId)
+      return this.mobileMoneyFallback(reference, PaymentProvider.ORANGE_MONEY, plan.name);
 
     // Orange Money Sénégal : paiement par validation USSD sur le téléphone.
     return {

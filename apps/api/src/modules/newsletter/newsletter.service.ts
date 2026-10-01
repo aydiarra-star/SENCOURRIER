@@ -78,7 +78,11 @@ export class NewsletterService {
 
     await this.prisma.newsletterSubscriber.update({
       where: { id: subscriber.id },
-      data: { status: NewsletterStatus.UNSUBSCRIBED, unsubscribedAt: new Date(), confirmToken: null },
+      data: {
+        status: NewsletterStatus.UNSUBSCRIBED,
+        unsubscribedAt: new Date(),
+        confirmToken: null,
+      },
     });
 
     return { unsubscribed: true };

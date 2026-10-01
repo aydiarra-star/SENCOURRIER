@@ -108,9 +108,12 @@
   }
 
   body {
-    @apply bg-background font-sans text-foreground antialiased;
+    @apply bg-background text-foreground font-sans antialiased;
     text-rendering: optimizeLegibility;
-    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+    font-feature-settings:
+      'kern' 1,
+      'liga' 1,
+      'calt' 1;
   }
 
   h1,
@@ -129,7 +132,7 @@
 
   /* Cible tactile confortable pour les liens de navigation mobile */
   :focus-visible {
-    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+    @apply ring-ring ring-offset-background outline-none ring-2 ring-offset-2;
   }
 
   ::selection {
@@ -157,55 +160,55 @@
   }
 
   .section-heading {
-    @apply flex items-baseline justify-between gap-4 border-b-2 border-brand-slate-900 pb-2 dark:border-white/20;
+    @apply border-brand-slate-900 flex items-baseline justify-between gap-4 border-b-2 pb-2 dark:border-white/20;
   }
 
   .section-heading-title {
-    @apply font-display text-xl font-extrabold tracking-tight text-brand-slate-900 dark:text-white;
+    @apply font-display text-brand-slate-900 text-xl font-extrabold tracking-tight dark:text-white;
   }
 
   .card-editorial {
-    @apply overflow-hidden rounded-lg border border-border bg-card shadow-editorial transition-shadow duration-300 hover:shadow-editorial-lg;
+    @apply border-border bg-card shadow-editorial hover:shadow-editorial-lg overflow-hidden rounded-lg border transition-shadow duration-300;
   }
 
   .link-underline {
-    @apply relative inline-block after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-brand-green after:transition-all after:duration-300 hover:after:w-full;
+    @apply after:bg-brand-green relative inline-block after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:transition-all after:duration-300 hover:after:w-full;
   }
 
   .premium-badge {
-    @apply inline-flex items-center gap-1 rounded-xs bg-gradient-to-r from-brand-yellow to-brand-yellow-300 px-2 py-0.5 font-ui text-[0.625rem] font-bold uppercase tracking-wider text-brand-slate-900;
+    @apply rounded-xs from-brand-yellow to-brand-yellow-300 font-ui text-brand-slate-900 inline-flex items-center gap-1 bg-gradient-to-r px-2 py-0.5 text-[0.625rem] font-bold uppercase tracking-wider;
   }
 
   .breaking-badge {
-    @apply inline-flex items-center gap-1.5 rounded-xs bg-brand-red px-2 py-0.5 font-ui text-[0.625rem] font-bold uppercase tracking-wider text-white;
+    @apply rounded-xs bg-brand-red font-ui inline-flex items-center gap-1.5 px-2 py-0.5 text-[0.625rem] font-bold uppercase tracking-wider text-white;
   }
 
   .live-dot {
-    @apply inline-block h-2 w-2 rounded-full bg-white animate-pulse-live;
+    @apply animate-pulse-live inline-block h-2 w-2 rounded-full bg-white;
   }
 
   /* Squelette de chargement respectant le thème */
   .skeleton {
-    @apply relative overflow-hidden rounded-md bg-muted;
+    @apply bg-muted relative overflow-hidden rounded-md;
   }
 
   .skeleton::after {
-    @apply absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-white/25 to-transparent;
+    @apply animate-shimmer absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent;
     content: '';
   }
 
   /* Le fil d'Ariane conserve une hauteur stable pour éviter le CLS */
   .breadcrumb {
-    @apply flex flex-wrap items-center gap-1.5 font-ui text-xs text-muted-foreground;
+    @apply font-ui text-muted-foreground flex flex-wrap items-center gap-1.5 text-xs;
   }
 
   /* Conteneur d'article : largeur de lecture maîtrisée + gouttières sûres */
   .article-prose {
-    @apply prose prose-lg max-w-none dark:prose-invert;
+    @apply prose prose-lg dark:prose-invert max-w-none;
   }
 
   .article-prose > p:first-of-type::first-letter {
-    @apply float-left mr-3 mt-1 font-display text-[3.5rem] font-black leading-[0.8] text-brand-green;
+    @apply font-display text-brand-green float-left mr-3 mt-1 text-[3.5rem] font-black leading-[0.8];
   }
 }
 

@@ -30,7 +30,10 @@ async function bootstrap(): Promise<void> {
   app.use(cookieParser());
 
   app.enableCors({
-    origin: config.get<string>('CORS_ORIGINS', 'http://localhost:3000').split(',').map((value) => value.trim()),
+    origin: config
+      .get<string>('CORS_ORIGINS', 'http://localhost:3000')
+      .split(',')
+      .map((value) => value.trim()),
     credentials: true,
     methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
     maxAge: 86_400,
@@ -55,7 +58,7 @@ async function bootstrap(): Promise<void> {
       new DocumentBuilder()
         .setTitle('SENCOURRIER API')
         .setDescription(
-          "API REST du média numérique de référence du Sénégal : articles, rubriques, journalistes, recherche, abonnements, médias et analytique.",
+          'API REST du média numérique de référence du Sénégal : articles, rubriques, journalistes, recherche, abonnements, médias et analytique.',
         )
         .setVersion('1.0')
         .addBearerAuth()

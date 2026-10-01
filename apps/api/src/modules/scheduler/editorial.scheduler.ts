@@ -1,7 +1,12 @@
 import { Inject, Injectable, Logger } from '@nestjs/common';
 import { Cron, CronExpression } from '@nestjs/schedule';
 import { PrismaClient } from '@sencourrier/database';
-import { ArticleStatus, NewsletterStatus, RevisionAction, SubscriptionStatus } from '@sencourrier/types';
+import {
+  ArticleStatus,
+  NewsletterStatus,
+  RevisionAction,
+  SubscriptionStatus,
+} from '@sencourrier/types';
 import { PRISMA } from '../../infra/prisma/prisma.module';
 import { RedisService } from '../../infra/redis/redis.service';
 import { AnalyticsService } from '../analytics/analytics.service';

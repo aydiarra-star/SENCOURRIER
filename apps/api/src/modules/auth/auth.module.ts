@@ -16,7 +16,10 @@ import { JwtStrategy } from './strategies/jwt.strategy';
       useFactory: (config: ConfigService) => ({
         secret: config.getOrThrow<string>('JWT_ACCESS_SECRET'),
         signOptions: {
-          expiresIn: config.get<string>('JWT_ACCESS_TTL', '15m') as `${number}${'s' | 'm' | 'h' | 'd'}`,
+          expiresIn: config.get<string>(
+            'JWT_ACCESS_TTL',
+            '15m',
+          ) as `${number}${'s' | 'm' | 'h' | 'd'}`,
           issuer: config.get<string>('JWT_ISSUER'),
           audience: config.get<string>('JWT_AUDIENCE'),
         },

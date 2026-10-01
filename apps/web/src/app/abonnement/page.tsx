@@ -10,7 +10,7 @@ export const dynamic = 'force-dynamic';
 export const metadata: Metadata = {
   title: 'Abonnement Premium',
   description:
-    "Abonnez-vous à SENCOURRIER Premium : enquêtes exclusives, dossiers spéciaux, podcasts premium et lecture sans publicité. Paiement par Wave, Orange Money, Free Money ou carte bancaire.",
+    'Abonnez-vous à SENCOURRIER Premium : enquêtes exclusives, dossiers spéciaux, podcasts premium et lecture sans publicité. Paiement par Wave, Orange Money, Free Money ou carte bancaire.',
   alternates: { canonical: '/abonnement' },
   openGraph: { type: 'website', title: 'Abonnement Premium — SENCOURRIER', url: '/abonnement' },
 };
@@ -27,21 +27,26 @@ export default async function SubscriptionPage() {
 
   return (
     <>
-      <JsonLd data={breadcrumbSchema([{ name: 'Accueil', url: '/' }, { name: 'Abonnement', url: '/abonnement' }])} />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: 'Accueil', url: '/' },
+          { name: 'Abonnement', url: '/abonnement' },
+        ])}
+      />
 
-      <div className="border-b border-neutral-200 bg-gradient-to-b from-sn-green-50 to-white dark:border-neutral-800 dark:from-neutral-900 dark:to-neutral-950">
+      <div className="from-sn-green-50 border-b border-neutral-200 bg-gradient-to-b to-white dark:border-neutral-800 dark:from-neutral-900 dark:to-neutral-950">
         <div className="mx-auto max-w-screen-2xl px-4 py-14 text-center sm:px-6 lg:px-8">
-          <p className="inline-flex items-center gap-2 rounded-full bg-sn-yellow px-4 py-1.5 font-ui text-xs font-bold uppercase tracking-wider text-neutral-900">
+          <p className="bg-sn-yellow font-ui inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-neutral-900">
             <Crown className="h-3.5 w-3.5" aria-hidden />
             SENCOURRIER Premium
           </p>
-          <h1 className="mx-auto mt-5 max-w-3xl font-display text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
+          <h1 className="font-display mx-auto mt-5 max-w-3xl text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
             Un journalisme sénégalais exigeant, financé par ses lecteurs
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-neutral-600 dark:text-neutral-400">
-            Nos enquêtes demandent des semaines de travail, des déplacements dans les régions et
-            des vérifications systématiques. Votre abonnement finance directement cette exigence,
-            et vous donne accès à tout.
+            Nos enquêtes demandent des semaines de travail, des déplacements dans les régions et des
+            vérifications systématiques. Votre abonnement finance directement cette exigence, et
+            vous donne accès à tout.
           </p>
         </div>
       </div>
@@ -54,12 +59,12 @@ export default async function SubscriptionPage() {
               className={cn(
                 'relative flex flex-col rounded-xl border p-6 transition-shadow hover:shadow-lg',
                 plan.isPopular
-                  ? 'border-sn-yellow bg-white shadow-premium dark:bg-neutral-900'
+                  ? 'border-sn-yellow shadow-premium bg-white dark:bg-neutral-900'
                   : 'border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900',
               )}
             >
               {plan.isPopular && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-sn-yellow px-3 py-1 font-ui text-[10px] font-bold uppercase tracking-wider text-neutral-900">
+                <span className="bg-sn-yellow font-ui absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-neutral-900">
                   Le plus choisi
                 </span>
               )}
@@ -85,19 +90,23 @@ export default async function SubscriptionPage() {
               <ul className="mt-5 flex-1 space-y-2.5">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-2 text-sm">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-sn-green" aria-hidden />
+                    <Check className="text-sn-green mt-0.5 h-4 w-4 shrink-0" aria-hidden />
                     <span className="text-neutral-700 dark:text-neutral-300">{feature}</span>
                   </li>
                 ))}
               </ul>
 
               <Link
-                href={plan.priceAmount === 0 ? '/inscription' : `/abonnement/souscrire?plan=${plan.tier}`}
+                href={
+                  plan.priceAmount === 0
+                    ? '/inscription'
+                    : `/abonnement/souscrire?plan=${plan.tier}`
+                }
                 className={cn(
                   'mt-6 rounded-md px-5 py-3 text-center text-sm font-semibold transition-colors',
                   plan.isPopular
-                    ? 'bg-sn-green text-white hover:bg-sn-green-700'
-                    : 'border border-neutral-300 hover:border-sn-green hover:text-sn-green dark:border-neutral-700',
+                    ? 'bg-sn-green hover:bg-sn-green-700 text-white'
+                    : 'hover:border-sn-green hover:text-sn-green border border-neutral-300 dark:border-neutral-700',
                 )}
               >
                 {plan.priceAmount === 0 ? 'Créer un compte gratuit' : 'Choisir cette offre'}
@@ -107,7 +116,10 @@ export default async function SubscriptionPage() {
         </div>
 
         {/* Moyens de paiement */}
-        <section className="mt-14 rounded-xl border border-neutral-200 p-6 sm:p-8 dark:border-neutral-800" aria-labelledby="payment-title">
+        <section
+          className="mt-14 rounded-xl border border-neutral-200 p-6 sm:p-8 dark:border-neutral-800"
+          aria-labelledby="payment-title"
+        >
           <h2 id="payment-title" className="font-display text-xl font-extrabold tracking-tight">
             Moyens de paiement acceptés
           </h2>
@@ -149,15 +161,20 @@ export default async function SubscriptionPage() {
               },
               {
                 q: 'Puis-je offrir un abonnement ?',
-                a: "Oui, contactez notre service abonnés pour un abonnement cadeau. Une facture nominative vous sera adressée par email.",
+                a: 'Oui, contactez notre service abonnés pour un abonnement cadeau. Une facture nominative vous sera adressée par email.',
               },
             ].map((item) => (
-              <div key={item.q} className="rounded-lg border border-neutral-200 p-5 dark:border-neutral-800">
+              <div
+                key={item.q}
+                className="rounded-lg border border-neutral-200 p-5 dark:border-neutral-800"
+              >
                 <dt className="flex items-start gap-2 font-semibold">
-                  <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-sn-yellow-600" aria-hidden />
+                  <Sparkles className="text-sn-yellow-600 mt-0.5 h-4 w-4 shrink-0" aria-hidden />
                   {item.q}
                 </dt>
-                <dd className="mt-2 pl-6 text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">{item.a}</dd>
+                <dd className="mt-2 pl-6 text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
+                  {item.a}
+                </dd>
               </div>
             ))}
           </dl>

@@ -1,9 +1,25 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Post, Req, Res, UnauthorizedException, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Post,
+  Req,
+  Res,
+  UnauthorizedException,
+  UseGuards,
+} from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { Throttle } from '@nestjs/throttler';
 import type { Response } from 'express';
-import { CurrentUser, Public, type AuthenticatedRequest, type AuthenticatedUser } from '../../common/decorators/auth.decorators';
+import {
+  CurrentUser,
+  Public,
+  type AuthenticatedRequest,
+  type AuthenticatedUser,
+} from '../../common/decorators/auth.decorators';
 import { GoogleAuthGuard } from './guards/google-auth.guard';
 import { AuthService } from './auth.service';
 import {
@@ -66,7 +82,10 @@ export class AuthController {
   @Post('logout-all')
   @HttpCode(HttpStatus.NO_CONTENT)
   @ApiOperation({ summary: 'Fermer toutes les sessions de l’utilisateur' })
-  async logoutAll(@CurrentUser() user: AuthenticatedUser, @Res({ passthrough: true }) res: Response) {
+  async logoutAll(
+    @CurrentUser() user: AuthenticatedUser,
+    @Res({ passthrough: true }) res: Response,
+  ) {
     await this.auth.logoutAllSessions(user.id);
     this.clearAuthCookies(res);
   }
@@ -97,7 +116,10 @@ export class AuthController {
     if (!profile) throw new UnauthorizedException('Profil Google indisponible.');
     const result = await this.auth.loginWithGoogle(profile);
     this.attachAuthCookies(res, result.refreshToken);
-    const target = new URL('/tableau-de-bord', this.config.get<string>('APP_URL', 'http://localhost:3000'));
+    const target = new URL(
+      '/tableau-de-bord',
+      this.config.get<string>('APP_URL', 'http://localhost:3000'),
+    );
     res.redirect(target.toString());
   }
 

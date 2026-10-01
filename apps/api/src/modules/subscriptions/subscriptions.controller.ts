@@ -17,7 +17,11 @@ import { IsEnum, IsString } from 'class-validator';
 import type { RawBodyRequest } from '@nestjs/common';
 import type { Request } from 'express';
 import Stripe from 'stripe';
-import { CurrentUser, Public, type AuthenticatedUser } from '../../common/decorators/auth.decorators';
+import {
+  CurrentUser,
+  Public,
+  type AuthenticatedUser,
+} from '../../common/decorators/auth.decorators';
 import { SubscriptionsService } from './subscriptions.service';
 
 class CheckoutDto {

@@ -150,7 +150,14 @@ export class AuthService {
           role: Role.READER,
           preferences: { create: {} },
         },
-        select: { id: true, email: true, displayName: true, role: true, image: true, isBanned: true },
+        select: {
+          id: true,
+          email: true,
+          displayName: true,
+          role: true,
+          image: true,
+          isBanned: true,
+        },
       });
       user = created;
     }
@@ -282,7 +289,11 @@ export class AuthService {
     return { enabled: true };
   }
 
-  async disableTwoFactor(userId: string, password: string, code: string): Promise<{ enabled: false }> {
+  async disableTwoFactor(
+    userId: string,
+    password: string,
+    code: string,
+  ): Promise<{ enabled: false }> {
     const user = await this.prisma.user.findUnique({
       where: { id: userId },
       include: { twoFactorSecret: true },

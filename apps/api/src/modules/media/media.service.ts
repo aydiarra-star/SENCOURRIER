@@ -1,5 +1,16 @@
-import { BlobServiceClient, ContainerClient, StorageSharedKeyCredential } from '@azure/storage-blob';
-import { BadRequestException, Inject, Injectable, Logger, NotFoundException, ServiceUnavailableException } from '@nestjs/common';
+import {
+  BlobServiceClient,
+  ContainerClient,
+  StorageSharedKeyCredential,
+} from '@azure/storage-blob';
+import {
+  BadRequestException,
+  Inject,
+  Injectable,
+  Logger,
+  NotFoundException,
+  ServiceUnavailableException,
+} from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { PrismaClient } from '@sencourrier/database';
 import { MediaType } from '@sencourrier/types';
@@ -63,7 +74,11 @@ export class MediaService {
    * le front peut ainsi réserver la place exacte de l'image et éviter tout
    * décalage de mise en page (CLS).
    */
-  async uploadImage(file: Buffer, originalName: string, uploadedById?: string): Promise<UploadResult> {
+  async uploadImage(
+    file: Buffer,
+    originalName: string,
+    uploadedById?: string,
+  ): Promise<UploadResult> {
     if (!this.enabled) {
       throw new ServiceUnavailableException(
         'Le stockage Azure Blob n’est pas configuré sur cet environnement.',
@@ -82,7 +97,8 @@ export class MediaService {
     }
 
     const mimeType = `image/${metadata.format}`;
-    const baseName = slugify(originalName.replace(/\.[^.]+$/, ''), { lower: true, strict: true }) || 'media';
+    const baseName =
+      slugify(originalName.replace(/\.[^.]+$/, ''), { lower: true, strict: true }) || 'media';
     const storageKey = `${new Date().toISOString().slice(0, 7)}/${baseName}-${randomUUID().slice(0, 8)}.webp`;
 
     const optimized = await image
@@ -102,12 +118,18 @@ export class MediaService {
     const blur = await image.clone().resize({ width: 16 }).webp({ quality: 30 }).toBuffer();
 
     await this.container!.getBlockBlobClient(storageKey).uploadData(optimized, {
-      blobHTTPHeaders: { blobContentType: 'image/webp', blobCacheControl: 'public, max-age=31536000, immutable' },
+      blobHTTPHeaders: {
+        blobContentType: 'image/webp',
+        blobCacheControl: 'public, max-age=31536000, immutable',
+      },
     });
 
     const thumbKey = storageKey.replace(/\.webp$/, '-480.webp');
     await this.container!.getBlockBlobClient(thumbKey).uploadData(thumbnail, {
-      blobHTTPHeaders: { blobContentType: 'image/webp', blobCacheControl: 'public, max-age=31536000, immutable' },
+      blobHTTPHeaders: {
+        blobContentType: 'image/webp',
+        blobCacheControl: 'public, max-age=31536000, immutable',
+      },
     });
 
     const baseUrl = this.config.get<string>('AZURE_STORAGE_PUBLIC_BASE_URL') || this.container!.url;
@@ -177,7 +199,10 @@ export class MediaService {
   }
 
   async updateMetadata(id: string, data: { altText?: string; caption?: string; credit?: string }) {
-    const media = await this.prisma.media.findFirst({ where: { id, deletedAt: null }, select: { id: true } });
+    const media = await this.prisma.media.findFirst({
+      where: { id, deletedAt: null },
+      select: { id: true },
+    });
     if (!media) throw new NotFoundException('Média introuvable.');
 
     return this.prisma.media.update({ where: { id }, data });
@@ -185,7 +210,10 @@ export class MediaService {
 
   /** Suppression logique : les URL publiques restent valides pour les articles indexés. */
   async remove(id: string): Promise<void> {
-    const media = await this.prisma.media.findFirst({ where: { id, deletedAt: null }, select: { id: true } });
+    const media = await this.prisma.media.findFirst({
+      where: { id, deletedAt: null },
+      select: { id: true },
+    });
     if (!media) throw new NotFoundException('Média introuvable.');
 
     await this.prisma.media.update({ where: { id }, data: { deletedAt: new Date() } });

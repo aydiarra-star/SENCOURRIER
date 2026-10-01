@@ -30,7 +30,7 @@ const SERVICES = [
 
 export function Footer({ categories }: { categories: FooterCategory[] }) {
   return (
-    <footer className="mt-16 border-t-4 border-sn-green bg-neutral-900 text-neutral-300 dark:bg-black">
+    <footer className="border-sn-green mt-16 border-t-4 bg-neutral-900 text-neutral-300 dark:bg-black">
       <div className="mx-auto max-w-screen-2xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div>
@@ -49,13 +49,19 @@ export function Footer({ categories }: { categories: FooterCategory[] }) {
           </div>
 
           <nav aria-labelledby="footer-rubriques">
-            <h2 id="footer-rubriques" className="font-display text-sm font-bold uppercase tracking-wider text-white">
+            <h2
+              id="footer-rubriques"
+              className="font-display text-sm font-bold uppercase tracking-wider text-white"
+            >
               Rubriques
             </h2>
             <ul className="mt-4 space-y-2.5">
               {categories.slice(0, 8).map((category) => (
                 <li key={category.id}>
-                  <Link href={`/${category.slug}`} className="text-sm text-neutral-400 transition-colors hover:text-sn-yellow">
+                  <Link
+                    href={`/${category.slug}`}
+                    className="hover:text-sn-yellow text-sm text-neutral-400 transition-colors"
+                  >
                     {category.name}
                   </Link>
                 </li>
@@ -64,13 +70,19 @@ export function Footer({ categories }: { categories: FooterCategory[] }) {
           </nav>
 
           <nav aria-labelledby="footer-services">
-            <h2 id="footer-services" className="font-display text-sm font-bold uppercase tracking-wider text-white">
+            <h2
+              id="footer-services"
+              className="font-display text-sm font-bold uppercase tracking-wider text-white"
+            >
               Services
             </h2>
             <ul className="mt-4 space-y-2.5">
               {SERVICES.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="text-sm text-neutral-400 transition-colors hover:text-sn-yellow">
+                  <Link
+                    href={item.href}
+                    className="hover:text-sn-yellow text-sm text-neutral-400 transition-colors"
+                  >
                     {item.label}
                   </Link>
                 </li>
@@ -79,13 +91,19 @@ export function Footer({ categories }: { categories: FooterCategory[] }) {
           </nav>
 
           <nav aria-labelledby="footer-legal">
-            <h2 id="footer-legal" className="font-display text-sm font-bold uppercase tracking-wider text-white">
+            <h2
+              id="footer-legal"
+              className="font-display text-sm font-bold uppercase tracking-wider text-white"
+            >
               Informations
             </h2>
             <ul className="mt-4 space-y-2.5">
               {SECTIONS_LEGALES.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="text-sm text-neutral-400 transition-colors hover:text-sn-yellow">
+                  <Link
+                    href={item.href}
+                    className="hover:text-sn-yellow text-sm text-neutral-400 transition-colors"
+                  >
                     {item.label}
                   </Link>
                 </li>
@@ -100,9 +118,9 @@ export function Footer({ categories }: { categories: FooterCategory[] }) {
           </p>
           <p className="flex items-center gap-2 text-xs text-neutral-500">
             <span className="inline-flex h-3 w-6 overflow-hidden rounded-sm" aria-hidden>
-              <span className="h-full w-1/3 bg-sn-green" />
-              <span className="h-full w-1/3 bg-sn-yellow" />
-              <span className="h-full w-1/3 bg-sn-red" />
+              <span className="bg-sn-green h-full w-1/3" />
+              <span className="bg-sn-yellow h-full w-1/3" />
+              <span className="bg-sn-red h-full w-1/3" />
             </span>
             Fièrement conçu et hébergé au Sénégal
           </p>

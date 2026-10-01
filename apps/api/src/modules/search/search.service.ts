@@ -91,7 +91,9 @@ export class SearchService {
     const pattern = `%${trimmed}%`;
 
     const [articles, tags] = await Promise.all([
-      this.prisma.$queryRaw<Array<{ slug: string; title: string; categoryName: string | null }>>(Prisma.sql`
+      this.prisma.$queryRaw<
+        Array<{ slug: string; title: string; categoryName: string | null }>
+      >(Prisma.sql`
         SELECT a."slug", a."title", c."name" AS "categoryName"
         FROM "articles" a
         LEFT JOIN "categories" c ON c."id" = a."categoryId"
@@ -118,7 +120,12 @@ export class SearchService {
         title: article.title,
         category: article.categoryName,
       })),
-      ...tags.map((tag) => ({ type: 'tag' as const, slug: tag.slug, title: tag.name, category: null })),
+      ...tags.map((tag) => ({
+        type: 'tag' as const,
+        slug: tag.slug,
+        title: tag.name,
+        category: null,
+      })),
     ];
   }
 

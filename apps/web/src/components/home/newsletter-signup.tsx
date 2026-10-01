@@ -16,11 +16,14 @@ export function NewsletterSignup() {
       <div className="senegal-rule h-1.5 w-full" aria-hidden />
       <div className="p-6 sm:p-8">
         <div className="flex items-start gap-4">
-          <span className="hidden h-11 w-11 shrink-0 items-center justify-center rounded-full bg-sn-green/10 text-sn-green sm:flex dark:bg-sn-green/20">
+          <span className="bg-sn-green/10 text-sn-green dark:bg-sn-green/20 hidden h-11 w-11 shrink-0 items-center justify-center rounded-full sm:flex">
             <Mail className="h-5 w-5" aria-hidden />
           </span>
           <div className="flex-1">
-            <h2 id="newsletter-title" className="font-display text-xl font-extrabold tracking-tight sm:text-2xl">
+            <h2
+              id="newsletter-title"
+              className="font-display text-xl font-extrabold tracking-tight sm:text-2xl"
+            >
               La lettre d&apos;information SENCOURRIER
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
@@ -43,11 +46,11 @@ export function NewsletterSignup() {
                 required
                 autoComplete="email"
                 placeholder="votre.email@exemple.sn"
-                className="flex-1 rounded-md border border-neutral-300 bg-white px-4 py-2.5 text-sm outline-none transition-colors focus:border-sn-green focus:ring-2 focus:ring-sn-green/20 dark:border-neutral-700 dark:bg-neutral-950"
+                className="focus:border-sn-green focus:ring-sn-green/20 flex-1 rounded-md border border-neutral-300 bg-white px-4 py-2.5 text-sm outline-none transition-colors focus:ring-2 dark:border-neutral-700 dark:bg-neutral-950"
               />
               <button
                 type="submit"
-                className="rounded-md bg-sn-green px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-sn-green-700"
+                className="bg-sn-green hover:bg-sn-green-700 rounded-md px-6 py-2.5 text-sm font-semibold text-white transition-colors"
               >
                 Je m&apos;abonne
               </button>
@@ -55,11 +58,11 @@ export function NewsletterSignup() {
 
             <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-xs text-neutral-500">
               <li className="flex items-center gap-1.5">
-                <CheckCircle2 className="h-3.5 w-3.5 text-sn-green" aria-hidden />
-                1 email par jour, pas plus
+                <CheckCircle2 className="text-sn-green h-3.5 w-3.5" aria-hidden />1 email par jour,
+                pas plus
               </li>
               <li className="flex items-center gap-1.5">
-                <ShieldCheck className="h-3.5 w-3.5 text-sn-green" aria-hidden />
+                <ShieldCheck className="text-sn-green h-3.5 w-3.5" aria-hidden />
                 Données jamais revendues
               </li>
             </ul>

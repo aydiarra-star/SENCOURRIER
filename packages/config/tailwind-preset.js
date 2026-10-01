@@ -115,10 +115,22 @@ module.exports = {
         ui: ['var(--font-poppins)', 'Poppins', 'system-ui', 'sans-serif'],
       },
       fontSize: {
-        'headline-xl': ['3.5rem', { lineHeight: '1.05', letterSpacing: '-0.03em', fontWeight: '800' }],
-        'headline-lg': ['2.5rem', { lineHeight: '1.1', letterSpacing: '-0.025em', fontWeight: '800' }],
-        'headline-md': ['1.875rem', { lineHeight: '1.15', letterSpacing: '-0.02em', fontWeight: '700' }],
-        'headline-sm': ['1.375rem', { lineHeight: '1.25', letterSpacing: '-0.015em', fontWeight: '700' }],
+        'headline-xl': [
+          '3.5rem',
+          { lineHeight: '1.05', letterSpacing: '-0.03em', fontWeight: '800' },
+        ],
+        'headline-lg': [
+          '2.5rem',
+          { lineHeight: '1.1', letterSpacing: '-0.025em', fontWeight: '800' },
+        ],
+        'headline-md': [
+          '1.875rem',
+          { lineHeight: '1.15', letterSpacing: '-0.02em', fontWeight: '700' },
+        ],
+        'headline-sm': [
+          '1.375rem',
+          { lineHeight: '1.25', letterSpacing: '-0.015em', fontWeight: '700' },
+        ],
         kicker: ['0.6875rem', { lineHeight: '1', letterSpacing: '0.09em', fontWeight: '700' }],
         byline: ['0.8125rem', { lineHeight: '1.4', letterSpacing: '0.01em', fontWeight: '500' }],
       },
@@ -130,7 +142,8 @@ module.exports = {
       },
       boxShadow: {
         editorial: '0 1px 2px rgba(15, 23, 42, 0.06), 0 8px 24px -12px rgba(15, 23, 42, 0.18)',
-        'editorial-lg': '0 2px 4px rgba(15, 23, 42, 0.06), 0 24px 48px -20px rgba(15, 23, 42, 0.28)',
+        'editorial-lg':
+          '0 2px 4px rgba(15, 23, 42, 0.06), 0 24px 48px -20px rgba(15, 23, 42, 0.28)',
         premium: '0 0 0 1px rgba(252, 209, 22, 0.35), 0 12px 32px -16px rgba(0, 133, 63, 0.45)',
       },
       keyframes: {
@@ -179,7 +192,11 @@ module.exports = {
             fontFamily: theme('fontFamily.sans').join(', '),
             fontSize: '1.125rem',
             lineHeight: '1.75',
-            a: { color: theme('colors.brand.green.600'), textDecoration: 'underline', fontWeight: '500' },
+            a: {
+              color: theme('colors.brand.green.600'),
+              textDecoration: 'underline',
+              fontWeight: '500',
+            },
             'a:hover': { color: theme('colors.brand.green.700') },
             strong: { color: theme('colors.brand.slate.900'), fontWeight: '700' },
             'h2, h3, h4': {

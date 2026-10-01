@@ -31,11 +31,11 @@ mémorisé et appliqué avant le premier rendu, sans clignotement.
 
 ### Autres formats
 
-| Page | Contenu |
-| --- | --- |
-| **TV Live** | Diffusion vidéo en direct |
-| **Vidéos** | Reportages et formats courts |
-| **Podcasts** | Émissions et épisodes |
+| Page           | Contenu                         |
+| -------------- | ------------------------------- |
+| **TV Live**    | Diffusion vidéo en direct       |
+| **Vidéos**     | Reportages et formats courts    |
+| **Podcasts**   | Émissions et épisodes           |
 | **Newsletter** | Lettre d'information périodique |
 
 ---
@@ -49,11 +49,11 @@ directe avec un compte Google. Un courriel de vérification est envoyé.
 
 ### Espace personnel
 
-| Page | Fonction |
-| --- | --- |
-| **Profil** | Identité, avatar, mot de passe, 2FA |
+| Page                | Fonction                                      |
+| ------------------- | --------------------------------------------- |
+| **Profil**          | Identité, avatar, mot de passe, 2FA           |
 | **Tableau de bord** | Articles sauvegardés, historique, préférences |
-| **Notifications** | Alertes, nouveaux articles, newsletters |
+| **Notifications**   | Alertes, nouveaux articles, newsletters       |
 
 ### Préférences
 
@@ -76,9 +76,9 @@ La suppression du compte entraîne l'effacement des données personnelles.
 
 ## 3. Abonnement Premium
 
-| Offre | Accès |
-| --- | --- |
-| **Gratuit** | Ensemble de l'actualité, newsletters générales |
+| Offre       | Accès                                                                              |
+| ----------- | ---------------------------------------------------------------------------------- |
+| **Gratuit** | Ensemble de l'actualité, newsletters générales                                     |
 | **Premium** | Articles exclusifs, podcasts premium, dossiers spéciaux, navigation sans publicité |
 
 Paiement par **carte bancaire (Stripe)**, **Wave**, **Orange Money** ou
@@ -91,16 +91,16 @@ effet à la fin de la période en cours.
 
 ### Rôles
 
-| Rôle | Périmètre |
-| --- | --- |
-| Super Admin | Administration complète, rôles, réglages |
+| Rôle                     | Périmètre                                    |
+| ------------------------ | -------------------------------------------- |
+| Super Admin              | Administration complète, rôles, réglages     |
 | Directeur de publication | Validation finale, responsabilité éditoriale |
-| Rédacteur en chef | Affectation, validation, planification |
-| Journaliste | Rédaction, soumission pour validation |
-| Correspondant | Rédaction depuis une zone géographique |
-| Community Manager | Commentaires, réseaux sociaux, modération |
-| Abonné Premium | Accès aux contenus exclusifs |
-| Lecteur | Accès standard |
+| Rédacteur en chef        | Affectation, validation, planification       |
+| Journaliste              | Rédaction, soumission pour validation        |
+| Correspondant            | Rédaction depuis une zone géographique       |
+| Community Manager        | Commentaires, réseaux sociaux, modération    |
+| Abonné Premium           | Accès aux contenus exclusifs                 |
+| Lecteur                  | Accès standard                               |
 
 ### Cycle de rédaction
 

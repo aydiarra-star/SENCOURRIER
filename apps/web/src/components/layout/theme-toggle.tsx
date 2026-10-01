@@ -35,9 +35,15 @@ export function ThemeToggle() {
       type="button"
       onClick={toggle}
       className="rounded-md p-2 text-neutral-700 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-neutral-800"
-      aria-label={mounted && theme === 'dark' ? 'Activer le thème clair' : 'Activer le thème sombre'}
+      aria-label={
+        mounted && theme === 'dark' ? 'Activer le thème clair' : 'Activer le thème sombre'
+      }
     >
-      {mounted && theme === 'dark' ? <Sun className="h-[18px] w-[18px]" /> : <Moon className="h-[18px] w-[18px]" />}
+      {mounted && theme === 'dark' ? (
+        <Sun className="h-[18px] w-[18px]" />
+      ) : (
+        <Moon className="h-[18px] w-[18px]" />
+      )}
     </button>
   );
 }

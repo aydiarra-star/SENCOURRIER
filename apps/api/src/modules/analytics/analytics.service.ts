@@ -59,50 +59,69 @@ export class AnalyticsService {
     const from = new Date(to.getTime() - days * 86_400_000);
     const previousFrom = new Date(from.getTime() - days * 86_400_000);
 
-    const [current, previous, daily, topArticles, sources, devices, countries, premiumSubscribers, previousTotals] =
-      await Promise.all([
-        this.aggregateRange(from, to),
-        this.aggregateRange(previousFrom, from),
-        this.prisma.dailyMetric.findMany({
-          where: { date: { gte: from } },
-          orderBy: { date: 'asc' },
-          select: { date: true, visitors: true, pageViews: true, revenueXof: true, adRevenueXof: true, adImpressions: true, bounceRate: true, avgSessionMs: true, sessions: true },
-        }),
-        this.prisma.article.findMany({
-          where: { status: ArticleStatus.PUBLISHED, deletedAt: null, publishedAt: { gte: from } },
-          orderBy: { viewCount: 'desc' },
-          take: 10,
-          select: { slug: true, title: true, viewCount: true, category: { select: { name: true } } },
-        }),
-        this.prisma.pageViewEvent.groupBy({
-          by: ['source'],
-          where: { createdAt: { gte: from } },
-          _count: { _all: true },
-          orderBy: { _count: { source: 'desc' } },
-          take: 10,
-        }),
-        this.prisma.pageViewEvent.groupBy({
-          by: ['deviceType'],
-          where: { createdAt: { gte: from } },
-          _count: { _all: true },
-          orderBy: { _count: { deviceType: 'desc' } },
-          take: 5,
-        }),
-        this.prisma.pageViewEvent.groupBy({
-          by: ['country'],
-          where: { createdAt: { gte: from } },
-          _count: { _all: true },
-          orderBy: { _count: { country: 'desc' } },
-          take: 10,
-        }),
-        this.prisma.subscription.count({
-          where: { status: { in: [SubscriptionStatus.ACTIVE, SubscriptionStatus.TRIALING] } },
-        }),
-        this.prisma.dailyMetric.aggregate({
-          where: { date: { gte: previousFrom, lt: from } },
-          _sum: { revenueXof: true },
-        }),
-      ]);
+    const [
+      current,
+      previous,
+      daily,
+      topArticles,
+      sources,
+      devices,
+      countries,
+      premiumSubscribers,
+      previousTotals,
+    ] = await Promise.all([
+      this.aggregateRange(from, to),
+      this.aggregateRange(previousFrom, from),
+      this.prisma.dailyMetric.findMany({
+        where: { date: { gte: from } },
+        orderBy: { date: 'asc' },
+        select: {
+          date: true,
+          visitors: true,
+          pageViews: true,
+          revenueXof: true,
+          adRevenueXof: true,
+          adImpressions: true,
+          bounceRate: true,
+          avgSessionMs: true,
+          sessions: true,
+        },
+      }),
+      this.prisma.article.findMany({
+        where: { status: ArticleStatus.PUBLISHED, deletedAt: null, publishedAt: { gte: from } },
+        orderBy: { viewCount: 'desc' },
+        take: 10,
+        select: { slug: true, title: true, viewCount: true, category: { select: { name: true } } },
+      }),
+      this.prisma.pageViewEvent.groupBy({
+        by: ['source'],
+        where: { createdAt: { gte: from } },
+        _count: { _all: true },
+        orderBy: { _count: { source: 'desc' } },
+        take: 10,
+      }),
+      this.prisma.pageViewEvent.groupBy({
+        by: ['deviceType'],
+        where: { createdAt: { gte: from } },
+        _count: { _all: true },
+        orderBy: { _count: { deviceType: 'desc' } },
+        take: 5,
+      }),
+      this.prisma.pageViewEvent.groupBy({
+        by: ['country'],
+        where: { createdAt: { gte: from } },
+        _count: { _all: true },
+        orderBy: { _count: { country: 'desc' } },
+        take: 10,
+      }),
+      this.prisma.subscription.count({
+        where: { status: { in: [SubscriptionStatus.ACTIVE, SubscriptionStatus.TRIALING] } },
+      }),
+      this.prisma.dailyMetric.aggregate({
+        where: { date: { gte: previousFrom, lt: from } },
+        _sum: { revenueXof: true },
+      }),
+    ]);
 
     const totals = daily.reduce(
       (accumulator, day) => ({
@@ -115,7 +134,16 @@ export class AnalyticsService {
         adRevenueXof: accumulator.adRevenueXof + day.adRevenueXof,
         adImpressions: accumulator.adImpressions + day.adImpressions,
       }),
-      { visitors: 0, pageViews: 0, sessions: 0, avgSessionMs: 0, bounceRate: 0, revenueXof: 0, adRevenueXof: 0, adImpressions: 0 },
+      {
+        visitors: 0,
+        pageViews: 0,
+        sessions: 0,
+        avgSessionMs: 0,
+        bounceRate: 0,
+        revenueXof: 0,
+        adRevenueXof: 0,
+        adImpressions: 0,
+      },
     );
 
     const dayCount = daily.length || 1;
@@ -148,9 +176,18 @@ export class AnalyticsService {
         viewCount: article.viewCount,
         category: article.category?.name ?? null,
       })),
-      trafficSources: sources.map((row) => ({ source: row.source ?? 'direct', sessions: row._count._all })),
-      devices: devices.map((row) => ({ deviceType: row.deviceType ?? 'inconnu', sessions: row._count._all })),
-      countries: countries.map((row) => ({ country: row.country ?? 'inconnu', sessions: row._count._all })),
+      trafficSources: sources.map((row) => ({
+        source: row.source ?? 'direct',
+        sessions: row._count._all,
+      })),
+      devices: devices.map((row) => ({
+        deviceType: row.deviceType ?? 'inconnu',
+        sessions: row._count._all,
+      })),
+      countries: countries.map((row) => ({
+        country: row.country ?? 'inconnu',
+        sessions: row._count._all,
+      })),
     };
 
     await this.redis.set(cacheKey, overview, CACHE_TTL_SECONDS);

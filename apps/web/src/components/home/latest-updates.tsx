@@ -23,11 +23,11 @@ export function LatestUpdates({ updates }: { updates: Update[] }) {
     >
       <h2
         id="latest-title"
-        className="flex items-center gap-2 border-b border-neutral-200 pb-3 font-display text-sm font-extrabold uppercase tracking-wider dark:border-neutral-800"
+        className="font-display flex items-center gap-2 border-b border-neutral-200 pb-3 text-sm font-extrabold uppercase tracking-wider dark:border-neutral-800"
       >
         <span className="relative flex h-2 w-2">
-          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sn-red opacity-75" />
-          <span className="relative inline-flex h-2 w-2 rounded-full bg-sn-red" />
+          <span className="bg-sn-red absolute inline-flex h-full w-full animate-ping rounded-full opacity-75" />
+          <span className="bg-sn-red relative inline-flex h-2 w-2 rounded-full" />
         </span>
         Dernières minutes
       </h2>
@@ -36,26 +36,37 @@ export function LatestUpdates({ updates }: { updates: Update[] }) {
         {updates.map((update) => (
           <li key={update.id} className="py-3 first:pt-3">
             <p className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wide">
-              <time dateTime={update.publishedAt?.toISOString()} className="tabular-nums text-sn-green dark:text-sn-green-400">
+              <time
+                dateTime={update.publishedAt?.toISOString()}
+                className="text-sn-green dark:text-sn-green-400 tabular-nums"
+              >
                 {update.publishedAt
-                  ? new Date(update.publishedAt).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })
+                  ? new Date(update.publishedAt).toLocaleTimeString('fr-FR', {
+                      hour: '2-digit',
+                      minute: '2-digit',
+                    })
                   : '--:--'}
               </time>
               {update.category && <span className="text-neutral-400">{update.category.name}</span>}
             </p>
             <h3 className="mt-1 text-sm font-medium leading-snug">
-              <Link href={`/article/${update.slug}`} className="hover:text-sn-green dark:hover:text-sn-green-400">
+              <Link
+                href={`/article/${update.slug}`}
+                className="hover:text-sn-green dark:hover:text-sn-green-400"
+              >
                 {update.title}
               </Link>
             </h3>
-            <p className="mt-0.5 text-[11px] text-neutral-400">{editorialTimestamp(update.publishedAt ?? new Date())}</p>
+            <p className="mt-0.5 text-[11px] text-neutral-400">
+              {editorialTimestamp(update.publishedAt ?? new Date())}
+            </p>
           </li>
         ))}
       </ol>
 
       <Link
         href="/dernieres-minutes"
-        className="mt-3 block text-center text-xs font-semibold uppercase tracking-wide text-sn-green hover:underline dark:text-sn-green-400"
+        className="text-sn-green dark:text-sn-green-400 mt-3 block text-center text-xs font-semibold uppercase tracking-wide hover:underline"
       >
         Tout le fil d&apos;actualité →
       </Link>

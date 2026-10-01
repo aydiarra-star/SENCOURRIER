@@ -5,9 +5,10 @@ const DEFAULT_SITE_URL = 'https://www.sencourrier.sn';
 
 // Une variable définie mais vide (`NEXT_PUBLIC_SITE_URL=`) ne doit pas écraser
 // la valeur par défaut : `new URL('')` lèverait une exception au rendu.
-export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL?.trim() || DEFAULT_SITE_URL
-).replace(/\/$/, '');
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL?.trim() || DEFAULT_SITE_URL).replace(
+  /\/$/,
+  '',
+);
 
 export const SITE = {
   url: SITE_URL,

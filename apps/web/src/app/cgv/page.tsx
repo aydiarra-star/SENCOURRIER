@@ -4,7 +4,7 @@ import { LegalPage, LegalSection } from '@/components/legal/legal-page';
 export const metadata: Metadata = {
   title: 'Conditions générales de vente',
   description:
-    "Conditions générales de vente des abonnements SENCOURRIER Premium : tarifs, paiement, résiliation et droit de rétractation.",
+    'Conditions générales de vente des abonnements SENCOURRIER Premium : tarifs, paiement, résiliation et droit de rétractation.',
   alternates: { canonical: '/cgv' },
 };
 
@@ -15,8 +15,8 @@ export default function SalesTermsPage() {
         <p>
           Les présentes conditions générales de vente (CGV) régissent la souscription et
           l&apos;exécution des abonnements Premium proposés par SENCOURRIER sur le site
-          sencourrier.sn. Toute souscription implique l&apos;acceptation sans réserve des
-          présentes CGV.
+          sencourrier.sn. Toute souscription implique l&apos;acceptation sans réserve des présentes
+          CGV.
         </p>
       </LegalSection>
 
@@ -28,23 +28,21 @@ export default function SalesTermsPage() {
             podcasts publics.
           </li>
           <li>
-            <strong>Premium Mensuel</strong> — 2 500 FCFA par mois : accès intégral, sans
-            publicité.
+            <strong>Premium Mensuel</strong> — 2 500 FCFA par mois : accès intégral, sans publicité.
           </li>
           <li>
             <strong>Premium Annuel</strong> — 25 000 FCFA par an : mêmes avantages, deux mois
             offerts.
           </li>
           <li>
-            <strong>Presse Pro</strong> — 75 000 FCFA par an : cinq comptes, licence de
-            reproduction interne et accès API.
+            <strong>Presse Pro</strong> — 75 000 FCFA par an : cinq comptes, licence de reproduction
+            interne et accès API.
           </li>
         </ul>
         <p>
-          Les prix sont exprimés en francs CFA (XOF), toutes taxes comprises. SENCOURRIER se
-          réserve le droit de modifier ses tarifs ; toute évolution s&apos;applique à compter du
-          prochain renouvellement et fait l&apos;objet d&apos;une information préalable de
-          trente jours.
+          Les prix sont exprimés en francs CFA (XOF), toutes taxes comprises. SENCOURRIER se réserve
+          le droit de modifier ses tarifs ; toute évolution s&apos;applique à compter du prochain
+          renouvellement et fait l&apos;objet d&apos;une information préalable de trente jours.
         </p>
       </LegalSection>
 
@@ -70,10 +68,10 @@ export default function SalesTermsPage() {
           <li>Carte bancaire Visa ou Mastercard, via Stripe</li>
         </ul>
         <p>
-          Le paiement est exigible immédiatement à la souscription, puis à chaque échéance pour
-          les abonnements reconduits. En cas d&apos;échec de paiement au renouvellement,
-          l&apos;abonné dispose d&apos;un délai de sept jours pour régulariser, après quoi
-          l&apos;accès Premium est suspendu jusqu&apos;à régularisation.
+          Le paiement est exigible immédiatement à la souscription, puis à chaque échéance pour les
+          abonnements reconduits. En cas d&apos;échec de paiement au renouvellement, l&apos;abonné
+          dispose d&apos;un délai de sept jours pour régulariser, après quoi l&apos;accès Premium
+          est suspendu jusqu&apos;à régularisation.
         </p>
       </LegalSection>
 
@@ -81,8 +79,8 @@ export default function SalesTermsPage() {
         <p>
           L&apos;abonnement mensuel est conclu pour une durée d&apos;un mois et se reconduit
           tacitement. L&apos;abonnement annuel est conclu pour douze mois et se reconduit
-          tacitement. La reconduction peut être désactivée à tout moment depuis
-          l&apos;espace personnel.
+          tacitement. La reconduction peut être désactivée à tout moment depuis l&apos;espace
+          personnel.
         </p>
       </LegalSection>
 
@@ -94,8 +92,8 @@ export default function SalesTermsPage() {
         </p>
         <p>
           Toutefois, en accédant immédiatement aux contenus Premium, l&apos;abonné demande
-          l&apos;exécution du contrat avant l&apos;expiration de ce délai et reconnaît renoncer
-          à son droit de rétractation pour la période déjà consommée. Le remboursement est alors
+          l&apos;exécution du contrat avant l&apos;expiration de ce délai et reconnaît renoncer à
+          son droit de rétractation pour la période déjà consommée. Le remboursement est alors
           calculé au prorata des jours restants.
         </p>
       </LegalSection>
@@ -104,8 +102,8 @@ export default function SalesTermsPage() {
         <p>
           La résiliation s&apos;effectue en un clic depuis l&apos;espace personnel, sans
           justification ni frais. Elle prend effet à la fin de la période en cours, déjà payée :
-          l&apos;abonné conserve l&apos;accès Premium jusqu&apos;à cette date et ne sera pas
-          prélevé à nouveau.
+          l&apos;abonné conserve l&apos;accès Premium jusqu&apos;à cette date et ne sera pas prélevé
+          à nouveau.
         </p>
         <p>
           Aucun remboursement au prorata n&apos;est effectué en cas de résiliation en cours de
@@ -115,8 +113,8 @@ export default function SalesTermsPage() {
 
       <LegalSection title="8. Suspension et résiliation par SENCOURRIER">
         <p>
-          SENCOURRIER peut suspendre ou résilier un abonnement en cas de manquement grave aux CGU
-          — notamment le partage d&apos;identifiants, l&apos;extraction massive de contenus ou
+          SENCOURRIER peut suspendre ou résilier un abonnement en cas de manquement grave aux CGU —
+          notamment le partage d&apos;identifiants, l&apos;extraction massive de contenus ou
           l&apos;usage commercial non autorisé. Dans ce cas, aucun remboursement n&apos;est dû.
         </p>
       </LegalSection>
@@ -124,22 +122,25 @@ export default function SalesTermsPage() {
       <LegalSection title="9. Facturation">
         <p>
           Une facture électronique est mise à disposition dans l&apos;espace personnel à chaque
-          paiement. Pour les offres Presse Pro, une facture nominative peut être établie sur bon
-          de commande, sur demande auprès du service abonnements.
+          paiement. Pour les offres Presse Pro, une facture nominative peut être établie sur bon de
+          commande, sur demande auprès du service abonnements.
         </p>
       </LegalSection>
 
       <LegalSection title="10. Service client et litiges">
         <p>
           Le service abonnements est joignable à{' '}
-          <a href="mailto:abonnements@sencourrier.sn" className="font-semibold text-sn-green hover:underline">
+          <a
+            href="mailto:abonnements@sencourrier.sn"
+            className="text-sn-green font-semibold hover:underline"
+          >
             abonnements@sencourrier.sn
           </a>
           . Les réclamations sont traitées dans un délai maximum de quinze jours ouvrés.
         </p>
         <p>
-          À défaut de solution amiable, le litige sera porté devant les tribunaux de Dakar, le
-          droit sénégalais étant applicable.
+          À défaut de solution amiable, le litige sera porté devant les tribunaux de Dakar, le droit
+          sénégalais étant applicable.
         </p>
       </LegalSection>
     </LegalPage>

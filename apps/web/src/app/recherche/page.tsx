@@ -11,7 +11,8 @@ interface PageProps {
 
 export const metadata: Metadata = {
   title: 'Recherche',
-  description: 'Recherchez une information, un sujet ou un auteur dans les archives de SENCOURRIER.',
+  description:
+    'Recherchez une information, un sujet ou un auteur dans les archives de SENCOURRIER.',
   robots: { index: false, follow: true },
 };
 
@@ -46,11 +47,11 @@ export default async function SearchPage({ searchParams }: PageProps) {
             defaultValue={query}
             autoFocus
             placeholder="Ex. : gaz, Saint-Louis, Lions de la Teranga…"
-            className="flex-1 rounded-md border border-neutral-300 bg-white px-4 py-3 text-sm outline-none focus:border-sn-green focus:ring-2 focus:ring-sn-green/20 dark:border-neutral-700 dark:bg-neutral-950"
+            className="focus:border-sn-green focus:ring-sn-green/20 flex-1 rounded-md border border-neutral-300 bg-white px-4 py-3 text-sm outline-none focus:ring-2 dark:border-neutral-700 dark:bg-neutral-950"
           />
           <button
             type="submit"
-            className="inline-flex items-center gap-2 rounded-md bg-sn-green px-6 py-3 text-sm font-semibold text-white hover:bg-sn-green-700"
+            className="bg-sn-green hover:bg-sn-green-700 inline-flex items-center gap-2 rounded-md px-6 py-3 text-sm font-semibold text-white"
           >
             <Search className="h-4 w-4" aria-hidden />
             Rechercher
@@ -60,13 +61,15 @@ export default async function SearchPage({ searchParams }: PageProps) {
     );
   }
 
-  const { items, total } = await searchArticles({ query, categorySlug: rubrique || undefined, sort });
+  const { items, total } = await searchArticles({
+    query,
+    categorySlug: rubrique || undefined,
+    sort,
+  });
 
   return (
     <div className="mx-auto max-w-screen-2xl px-4 py-8 sm:px-6 lg:px-8">
-      <h1 className="font-display text-3xl font-extrabold tracking-tight">
-        Recherche
-      </h1>
+      <h1 className="font-display text-3xl font-extrabold tracking-tight">Recherche</h1>
 
       <form action="/recherche" method="get" className="mt-5 flex flex-col gap-2 sm:flex-row">
         <input
@@ -74,7 +77,7 @@ export default async function SearchPage({ searchParams }: PageProps) {
           type="search"
           defaultValue={query}
           placeholder="Rechercher…"
-          className="flex-1 rounded-md border border-neutral-300 bg-white px-4 py-3 text-sm outline-none focus:border-sn-green focus:ring-2 focus:ring-sn-green/20 dark:border-neutral-700 dark:bg-neutral-950"
+          className="focus:border-sn-green focus:ring-sn-green/20 flex-1 rounded-md border border-neutral-300 bg-white px-4 py-3 text-sm outline-none focus:ring-2 dark:border-neutral-700 dark:bg-neutral-950"
         />
         <select
           name="rubrique"
@@ -100,7 +103,7 @@ export default async function SearchPage({ searchParams }: PageProps) {
         </select>
         <button
           type="submit"
-          className="inline-flex items-center justify-center gap-2 rounded-md bg-sn-green px-6 py-3 text-sm font-semibold text-white hover:bg-sn-green-700"
+          className="bg-sn-green hover:bg-sn-green-700 inline-flex items-center justify-center gap-2 rounded-md px-6 py-3 text-sm font-semibold text-white"
         >
           <Search className="h-4 w-4" aria-hidden />
           Rechercher
@@ -110,7 +113,8 @@ export default async function SearchPage({ searchParams }: PageProps) {
       <p className="mt-6 flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400">
         <SlidersHorizontal className="h-4 w-4" aria-hidden />
         <span>
-          <strong className="font-semibold text-neutral-900 dark:text-white">{total}</strong> résultat
+          <strong className="font-semibold text-neutral-900 dark:text-white">{total}</strong>{' '}
+          résultat
           {total > 1 ? 's' : ''} pour « <span className="font-medium">{query}</span> »
         </span>
       </p>
@@ -120,7 +124,7 @@ export default async function SearchPage({ searchParams }: PageProps) {
           <p className="font-semibold">Aucun article ne correspond à votre recherche.</p>
           <p className="mt-2 text-sm text-neutral-500">
             Essayez des termes plus généraux, ou parcourez nos{' '}
-            <Link href="/" className="font-semibold text-sn-green hover:underline">
+            <Link href="/" className="text-sn-green font-semibold hover:underline">
               rubriques
             </Link>
             .
