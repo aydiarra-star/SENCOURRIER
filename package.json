@@ -24,6 +24,7 @@
     "build:api": "npm run build --workspace=@sencourrier/api",
     "build:showcase": "npm run build --workspace=@sencourrier/showcase",
     "check:showcase-links": "node scripts/check-showcase-links.mjs",
+    "icons:generate": "node scripts/generate-icons.mjs",
     "start:web": "npm run start --workspace=@sencourrier/web",
     "start:api": "npm run start:prod --workspace=@sencourrier/api",
     "lint": "npm run lint --workspaces --if-present",

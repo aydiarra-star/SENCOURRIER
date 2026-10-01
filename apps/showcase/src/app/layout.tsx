@@ -6,6 +6,7 @@ import { BreakingTicker } from '@/components/layout/breaking-ticker';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { articles, taxonomy } from '@/lib/data';
+import { assetPath } from '@/lib/asset-path';
 import '@/styles/globals.css';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
@@ -37,6 +38,10 @@ export const metadata: Metadata = {
     description: SITE.description,
   },
   twitter: { card: 'summary_large_image' },
+  icons: {
+    icon: [{ url: assetPath('/favicon.svg'), type: 'image/svg+xml' }],
+    apple: [{ url: assetPath('/apple-touch-icon.png') }],
+  },
   robots: { index: true, follow: true },
 };
 
